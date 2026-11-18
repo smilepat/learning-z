@@ -1,21 +1,21 @@
 /* ReadStep 검수 기록. dev/index.html(개발 현황판)의 "검수" 구역이 이 파일을 보여 준다.
-   status: applied = 책 데이터에 반영함, human = 사람이 판단해야 함, rejected = 반영하지 않음.
+   status: applied = 책 데이터에 반영함, human = 사람이 판단해야 함, rejected = 반영하지 않음(사람이 그대로 두기로 한 것 포함).
    by: 지적한 검토자. A = GPT-6.1 Sol, B = Claude Opus 5.5 (서로 결과를 보지 않고 따로 검수). */
 window.RS_REVIEW={
 date:'2026-11-18',
 reviewers:['A: GPT-6.1 Sol','B: Claude Opus 5.5'],
 scope:'책 18권, 퀴즈 90문항, 낱말 풀이 253개, 단계 진단 글 6개',
-summary:'사람 검수 전에 두 AI 모델이 서로 결과를 보지 않고 전체를 검수했습니다. A는 17건, B는 45건을 지적했고 겹치는 것을 합치면 41건입니다. 사실 오류, 문법, 낱말 뜻처럼 답이 분명한 것은 반영했고, 이야기 설정이나 단계 배치처럼 판단이 필요한 것은 사람 몫으로 남겼습니다. AI 검수는 사람 검수를 대신하지 않습니다.',
+summary:'사람 검수 전에 두 AI 모델이 서로 결과를 보지 않고 전체를 검수했습니다. A는 17건, B는 45건을 지적했고 겹치는 것을 합치면 41건입니다. 사실 오류, 문법, 낱말 뜻처럼 답이 분명한 것은 반영했고, 이야기 설정이나 단계 배치처럼 판단이 필요한 9건은 사람이 결정했습니다(smile, 이슈 #1: 제안대로 6건, 그대로 둠 3건). AI 검수는 사람 검수를 대신하지 않으며, 본문과 퀴즈 전체에 대한 사람의 줄별 검수는 아직 남아 있습니다.',
 items:[
-{where:'little-seed',item:'단계',problem:'현재형 정보 글인데 3단계(과거형 이야기)에 들어 있음',fix:'5단계로 옮기고 분량을 늘리거나, 3단계 설명에 "쉬운 정보 글 포함"을 명시',by:['A','B'],status:'human'},
-{where:'missing-apples',item:'이야기 설정',problem:'작은 새가 사과 세 개를 통째로 가져갔다는 설정이 비현실적',fix:'"사과에 구멍이 나 있었다" 같은 설정으로 바꿀지 검토',by:['B'],status:'human'},
-{where:'my-hat',item:'퀴즈 5',problem:'정답 "The dog had the hat."은 고맙다고 한 이유로 약함',fix:'정답 보기를 "The dog found the hat."으로 변경',by:['B'],status:'human',note:'본문에는 found가 나오지 않음'},
-{where:'big-pig',item:'3쪽 그림',problem:'구덩이는 4쪽에서 파는데 3쪽 그림에 이미 구덩이가 있음',fix:'3쪽 그림을 돼지만 남기기',by:['B'],status:'human',note:'구덩이 그림을 빼면 dig의 뜻을 그림으로 전하기 어려움'},
-{where:'rain-day',item:'4쪽',problem:'고양이가 앞에 나온 적 없이 갑자기 등장',fix:'"They put the cat in the boat, too."로 바꾸거나 앞에서 고양이를 미리 등장',by:['B'],status:'human'},
-{where:'garden-box',item:'5쪽',problem:'친구 Minho가 한 번만 나오고 다시 나오지 않음',fix:'인물을 빼거나 뒤에서 다시 등장',by:['B'],status:'human'},
-{where:'lights-out',item:'5쪽',problem:'"Do a dog!"는 구어체라 학습용 문장으로는 덜 자연스러움',fix:'"Make a dog!"',by:['B'],status:'human'},
-{where:'new-girl',item:'5쪽',problem:'"Lina\'s eyes became bright."가 어색함',fix:'"Lina\'s eyes lit up."',by:['B'],status:'human',note:'lit up은 낱말 하나씩의 풀이로 설명하기 어려움'},
-{where:'busy-bees',item:'7쪽',problem:'벌을 만지지 말라는 안전 안내가 없음',fix:'"do not touch it or hurt it."',by:['B'],status:'human'},
+{where:'little-seed',item:'단계',problem:'현재형 정보 글인데 3단계(과거형 이야기)에 들어 있음',fix:'5단계로 옮기고 분량을 늘리거나, 3단계 설명에 "쉬운 정보 글 포함"을 명시',by:['A','B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로. 두 방법 중 3단계 설명에 "쉬운 정보 글"을 넣는 쪽으로 반영'},
+{where:'missing-apples',item:'이야기 설정',problem:'작은 새가 사과 세 개를 통째로 가져갔다는 설정이 비현실적',fix:'"사과에 구멍이 나 있었다" 같은 설정으로 바꿀지 검토',by:['B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로. 사과에 구멍이 난 설정으로 다시 쓰고 제목을 "Who Ate My Apples?"로 바꿈. 낱말 문제는 beak으로 교체'},
+{where:'my-hat',item:'퀴즈 5',problem:'정답 "The dog had the hat."은 고맙다고 한 이유로 약함',fix:'정답 보기를 "The dog found the hat."으로 변경',by:['B'],status:'rejected',note:'사람 결정(smile, 이슈 #1): 그대로 둠'},
+{where:'big-pig',item:'3쪽 그림',problem:'구덩이는 4쪽에서 파는데 3쪽 그림에 이미 구덩이가 있음',fix:'3쪽 그림을 돼지만 남기기',by:['B'],status:'rejected',note:'사람 결정(smile, 이슈 #1): 그대로 둠'},
+{where:'rain-day',item:'4쪽',problem:'고양이가 앞에 나온 적 없이 갑자기 등장',fix:'"They put the cat in the boat, too."로 바꾸거나 앞에서 고양이를 미리 등장',by:['B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로. "They put the cat in the boat, too."로 반영'},
+{where:'garden-box',item:'5쪽',problem:'친구 Minho가 한 번만 나오고 다시 나오지 않음',fix:'인물을 빼거나 뒤에서 다시 등장',by:['B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로. Minho를 빼고 "she ran to tell her mom."으로 반영'},
+{where:'lights-out',item:'5쪽',problem:'"Do a dog!"는 구어체라 학습용 문장으로는 덜 자연스러움',fix:'"Make a dog!"',by:['B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로 고침'},
+{where:'new-girl',item:'5쪽',problem:'"Lina\'s eyes became bright."가 어색함',fix:'"Lina\'s eyes lit up."',by:['B'],status:'rejected',note:'사람 결정(smile, 이슈 #1): 그대로 둠'},
+{where:'busy-bees',item:'7쪽',problem:'벌을 만지지 말라는 안전 안내가 없음',fix:'"do not touch it or hurt it."',by:['B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로 고침'},
 {where:'little-seed',item:'2쪽, 퀴즈 2',problem:'"흙이 먼저, 물이 나중"이라는 순서는 사실과 다름. 싹트는 데 핵심은 물',fix:'본문 "The seed is in the soil. It needs water to start growing." / 퀴즈 "What does the seed need to start growing?" 정답 Water',by:['A','B'],status:'applied',note:'두 검토자의 제안을 합쳐 다시 씀'},
 {where:'little-seed',item:'3쪽, 퀴즈 3',problem:'씨앗이 햇빛을 받아 싹트는 것처럼 읽힘',fix:'"Soon a little plant comes up. The sun gives the plant light." / 퀴즈 "What gives the plant light?"',by:['A','B'],status:'applied'},
 {where:'little-seed',item:'1쪽',problem:'씨앗 종류를 말하지 않았는데 끝에서 사과나무가 됨',fix:'"An apple seed is very small. But it can grow into a big apple tree."',by:['A'],status:'applied'},
