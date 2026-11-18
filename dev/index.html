@@ -26,6 +26,7 @@ a{color:var(--blue-d);font-weight:700}
 .links a.btn.ghost{color:var(--blue-d)}
 .links a.btn:not(.ghost){color:#fff}
 .tiles{grid-template-columns:repeat(6,1fr)}
+.tiles.t4{grid-template-columns:repeat(4,1fr)}
 .tiles .card{padding:16px}
 .tiles .num{font-size:30px}
 .tiles .bad .num{color:var(--retry)}
@@ -60,7 +61,7 @@ ul.plain li{margin:6px 0}
 .none{color:var(--mut);padding:10px 0}
 footer{margin-top:40px}
 @media(max-width:900px){.tiles{grid-template-columns:repeat(3,1fr)}.cols{grid-template-columns:1fr}}
-@media(max-width:720px){body{padding-bottom:0}.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){body{padding-bottom:0}.tiles,.tiles.t4{grid-template-columns:repeat(2,1fr)}}
 @media print{body>*:not(#print){display:block!important}body>.dtop:not(#print){display:none!important}.filters,.links{display:none}.bk{break-inside:avoid}}
 </style>
 </head>
@@ -68,7 +69,7 @@ footer{margin-top:40px}
 <header class="dtop"><div class="wrap">
   <b>ReadStep 개발 현황판</b>
   <nav class="dnav" aria-label="현황판 메뉴">
-    <a href="#status">현황</a><a href="#books">책 전체</a><a href="#steps">단계 기준</a><a href="#placement">단계 진단</a><a href="#pictures">그림</a><a href="#glossary">낱말 풀이</a><a href="#screens">화면</a><a href="#plan">할 일</a>
+    <a href="#status">현황</a><a href="#books">책 전체</a><a href="#steps">단계 기준</a><a href="#placement">단계 진단</a><a href="#pictures">그림</a><a href="#glossary">낱말 풀이</a><a href="#screens">화면</a><a href="#review">검수</a><a href="#plan">할 일</a>
   </nav>
 </div></header>
 <main id="root"><div class="wrap"><p style="padding:30px 0">불러오는 중...</p></div></main>
@@ -76,6 +77,7 @@ footer{margin-top:40px}
 <script src="../data/pictures.js"></script>
 <script src="../data/books.js"></script>
 <script src="../data/project.js"></script>
+<script src="../data/review.js"></script>
 <script src="../js/check.js"></script>
 <script>
 (()=>{
@@ -161,12 +163,24 @@ const sScreens=`<section id="screens"><div class="wrap"><h2>화면</h2>
 <div class="card tablebox" style="margin-top:12px"><table><thead><tr><th scope="col">화면</th><th scope="col">들어 있는 것</th><th scope="col">주소</th></tr></thead><tbody>${screens.map(s=>`<tr><td><b>${s[0]}</b></td><td>${s[2]}</td><td><a href="${esc(s[1])}">${esc(s[1].replace('../','/'))}</a></td></tr>`).join('')}</tbody></table></div>
 </div></section>`;
 
-/* 8. 할 일 */
+/* 8. 검수 */
+const RV=window.RS_REVIEW,RST={applied:['반영함','done'],human:['사람이 판단','help'],rejected:['반영 안 함','']};
+const rvCount=s=>RV?RV.items.filter(x=>x.status===s).length:0;
+const sReview=`<section id="review"><div class="wrap"><h2>검수</h2>`+(RV?`
+<p class="lead">${esc(RV.summary||'')}</p>
+<p class="mut" style="margin-top:6px">검수일 ${esc(RV.date||'')} · 검토자: ${esc((RV.reviewers||[]).join(', '))} · 대상: ${esc(RV.scope||'')}</p>
+<div class="tiles t4"><div class="card"><p class="num">${RV.items.length}</p><small>지적 항목</small></div><div class="card good"><p class="num">${rvCount('applied')}</p><small>반영함</small></div><div class="card ${rvCount('human')?'bad':'good'}"><p class="num">${rvCount('human')}</p><small>사람이 판단할 것</small></div><div class="card"><p class="num">${rvCount('rejected')}</p><small>반영 안 함</small></div></div>
+<div class="filters" role="group" aria-label="검수 결과 고르기"><button data-rv="" aria-pressed="true">전체</button><button data-rv="human" aria-pressed="false">사람이 판단할 것</button><button data-rv="applied" aria-pressed="false">반영함</button><button data-rv="rejected" aria-pressed="false">반영 안 함</button></div>
+<div class="card tablebox"><table><thead><tr><th scope="col">위치</th><th scope="col">문제</th><th scope="col">고칠 내용</th><th scope="col" style="white-space:nowrap">검토자</th><th scope="col">처리</th></tr></thead><tbody id="rvbody">
+${RV.items.map(x=>{const s=RST[x.status]||[x.status,''];return `<tr data-rv="${esc(x.status)}"><td><b>${esc(x.where)}</b><br><span class="mut" style="font-size:13px">${esc(x.item)}</span></td><td>${esc(x.problem)}</td><td>${esc(x.fix||'')}</td><td>${esc((x.by||[]).join(', '))}</td><td><span class="chip ${s[1]}">${s[0]}</span>${x.note?'<br><span class="mut" style="font-size:13px">'+esc(x.note)+'</span>':''}</td></tr>`}).join('')}</tbody></table></div>`:'<p class="none">아직 검수 기록이 없습니다.</p>')+`</div></section>`;
+
+/* 9. 할 일 */
 const sPlan=`<section id="plan"><div class="wrap"><h2>할 일과 정할 것</h2>
 <div class="cols"><div class="card"><h3>다음에 할 일</h3>${list(PJ.next)}</div><div class="card"><h3>정해야 할 것</h3>${list(PJ.decisions)}</div><div class="card"><h3>나중에 하기로 한 것</h3>${list(PJ.later)}</div><div class="card"><h3>알려진 한계</h3>${list(PJ.limits)}</div><div class="card"><h3>끝낸 것</h3>${list(PJ.done)}</div><div class="card"><h3>변경 기록</h3>${(PJ.log||[]).length?`<ul class="plain">${PJ.log.slice().reverse().map(l=>`<li><b>${esc(l.v)}</b> <span class="mut">${esc(l.d)}</span> ${esc(l.t)}</li>`).join('')}</ul>`:'<p class="none">없음</p>'}</div></div>
 </div></section>`;
 
-root.innerHTML=sStatus+sBooks+sSteps+sPlace+sPics+sGloss+sScreens+sPlan;
+root.innerHTML=sStatus+sBooks+sSteps+sPlace+sPics+sGloss+sScreens+sReview+sPlan;
+$$('.filters button[data-rv]').forEach(b=>b.onclick=()=>{$$('.filters button[data-rv]').forEach(x=>x.setAttribute('aria-pressed',x===b));$$('#rvbody tr').forEach(tr=>tr.hidden=!!b.dataset.rv&&tr.dataset.rv!==b.dataset.rv)});
 
 /* 찾기와 고르기 */
 let fStep=0;
@@ -178,7 +192,7 @@ $$('.filters button[data-f]').forEach(b=>b.onclick=()=>{fStep=+b.dataset.f;$$('.
 $('#bq').oninput=filterBooks;filterBooks();
 function filterGloss(){const q=$('#gq').value.trim().toLowerCase();let n=0;$$('#gbody tr').forEach(tr=>{const ok=!q||tr.dataset.text.includes(q);tr.hidden=!ok;if(ok)n++});$('#gcount').textContent=n+'개 표시'}
 $('#gq').oninput=filterGloss;filterGloss();
-window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
+window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,review:RV?{items:RV.items.length,applied:rvCount('applied'),human:rvCount('human'),rejected:rvCount('rejected')}:null,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
 if(location.hash.length>1){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t)t.scrollIntoView()}
 })();
 </script>
