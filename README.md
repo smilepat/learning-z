@@ -9,6 +9,17 @@ ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.6
 - 개발 현황판(전체 내용 보기): https://smilepat.github.io/learning-z/dev/
 - 책 검사 도구: https://smilepat.github.io/learning-z/tools/check.html
 
+## 만드는 방식 (REA)
+
+이 프로젝트는 REA(Reverse Engineering Application) 방식을 따릅니다. 참고 서비스의 **공개된 모습만** 관찰해 업무 흐름을 참고하고, 책, 그림, 화면, 규칙은 모두 새로 만듭니다.
+
+- 관찰한 사실과 가져오지 않은 것: `docs/REA_ANALYSIS.md`
+- 데이터 출처와 검수 상태: `docs/DATA_SOURCES.md`
+- 결정 기록(사용자 결정과 에이전트 가정을 나눠 적음): `docs/HANDOFF.md`
+- 한눈에 보는 상태: `STATUS.md`
+
+이어서 작업할 때는 "docs/HANDOFF.md와 STATUS.md 읽고 이어서 진행해줘"로 시작합니다.
+
 ## 개발 참여자라면
 
 개발 현황판 하나만 보면 됩니다. 모든 책의 본문과 그림, 퀴즈와 정답, 단계 기준, 단계 진단 글, 그림 전체, 낱말 풀이, 화면별 주소, 할 일과 변경 기록이 한 화면에 있습니다.
@@ -45,6 +56,12 @@ ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.6
 | `tools/check.html` | 책 검사 도구 |
 | `docs/level-guide.md` | 단계 기준과 책 만드는 법 |
 | `docs/review-sheet.csv` | 본문과 퀴즈 검수표 |
+| `docs/REA_ANALYSIS.md` | 참고 서비스 공개 관찰 기록, 가져오지 않은 것 |
+| `docs/DATA_SOURCES.md` | 데이터 출처와 검수 상태 |
+| `docs/HANDOFF.md` | 인수인계, 결정 기록 |
+| `docs/independence-review-2026-11-18.md` | 독립성 점검 결과와 처리 |
+| `STATUS.md` | 한눈에 보는 상태 |
+| `.claude/settings.json` | Claude Code에서 REA 플러그인을 불러오는 설정 |
 | `readstep-prototype-v0.1.html` | 첫 버전 보존용 (파일 하나) |
 
 ## 책을 추가하려면
@@ -53,7 +70,7 @@ ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.6
 
 ## 알려진 한계
 
-- 서버와 로그인이 없습니다(나중에 하기로 함). 학습 기록은 각 기기의 브라우저에만 저장됩니다.
+- 서버와 로그인이 없습니다(나중에 하기로 함). 학습 기록은 각 기기의 브라우저에만 저장되고, 앱에는 자동으로 밖에 보내는 코드가 없습니다. 음성 읽기는 브라우저 기능이라 기기에 따라 온라인 음성이 쓰일 수 있습니다.
 - 개발 현황판은 퀴즈 정답까지 보여 주는 개발 단계용 화면입니다.
 - 기록 코드는 암호화되어 있지 않아 내용을 고칠 수 있습니다. 평가용으로는 적합하지 않습니다.
 - 음성은 브라우저의 기본 영어 음성을 씁니다. 기기에 따라 소리가 나지 않을 수 있습니다.
