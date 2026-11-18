@@ -45,6 +45,7 @@ function speak(text,o={}){
   const v=speechSynthesis.getVoices().find(v=>/^en[-_]US/i.test(v.lang));if(v)u.voice=v;
   if(o.onword)u.onboundary=e=>{if(my===tok)o.onword(e.charIndex)};
   u.onend=()=>{if(my===tok&&o.onend)o.onend()};
+  u.onerror=e=>{if(my===tok&&o.onerror)o.onerror(e.error)};
   speechSynthesis.speak(u);return true}
 
 /* ---------- 화면 전환 ---------- */
@@ -105,7 +106,7 @@ function turn(d){const n=R.b.pages.length,j=R.i+d;if(j<0||j>=n)return;stopSpeak(
 function heard(i){R.heard.add(i);if(R.heard.size===R.b.pages.length)mark(R.b.id,'listen')}
 function listenPage(){const i=R.i,text=R.b.pages[i][0],spans=$$('#rtext .w'),btn=$('#listen'),t0=Date.now();
   const clear=()=>{spans.forEach(s=>s.classList.remove('now'));if(btn.isConnected)btn.removeAttribute('aria-pressed')};
-  const ok=speak(text,{onword:ci=>{let cur=null;for(const s of spans)if(+s.dataset.i<=ci)cur=s;spans.forEach(s=>s.classList.toggle('now',s===cur))},rate:S.slow?.62:.85,onend:()=>{clear();if(Date.now()-t0<250&&text.length>8){const g=$('#gloss');if(g)g.textContent='이 기기에서 영어 음성이 재생되지 않았어요. 소리 설정을 확인해 주세요.';return}heard(i);if(R.auto&&R.i===i&&i<R.b.pages.length-1){turn(1);listenPage()}}});
+  const ok=speak(text,{onword:ci=>{let cur=null;for(const s of spans)if(+s.dataset.i<=ci)cur=s;spans.forEach(s=>s.classList.toggle('now',s===cur))},rate:S.slow?.62:.85,onerror:()=>{clear();const g=$('#gloss');if(g)g.textContent='소리를 재생하지 못했어요. 화면을 한 번 누른 뒤 다시 "듣기"를 눌러 주세요.'},onend:()=>{clear();if(Date.now()-t0<250&&text.length>8){const g=$('#gloss');if(g)g.textContent='이 기기에서 영어 음성이 재생되지 않았어요. 소리 설정을 확인해 주세요.';return}heard(i);if(R.auto&&R.i===i&&i<R.b.pages.length-1){turn(1);listenPage()}}});
   if(ok)btn.setAttribute('aria-pressed','true');else{$('#gloss').textContent='이 브라우저에서는 음성 듣기를 쓸 수 없어요.';heard(i)}}
 function tapWord(el){const w=el.dataset.w,k=G[w];speak(w,{rate:.75});const g=$('#gloss');if(g)g.innerHTML=`<b lang="en">${esc(w)}</b>${k?' · '+esc(k):''}`}
 let mr=null;
