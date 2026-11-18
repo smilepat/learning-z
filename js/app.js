@@ -50,11 +50,13 @@ function speak(text,o={}){
 
 /* ---------- 화면 전환 ---------- */
 const DRAW={};
+/* 화면별 주소: #library, #teacher, #parent, #place, #book/책ID, #quiz/책ID */
+function setHash(h){if(h==null)return;try{history.replaceState(null,'',h?'#'+h:location.pathname+location.search)}catch(e){}}
 function go(v){stopSpeak();stopRec();
   if(R&&R.t0&&v!=='reader'){S.secs=(S.secs||0)+Math.min(600,Math.round((Date.now()-R.t0)/1000));R.t0=null;save()}
   $$('main>section').forEach(s=>s.hidden=s.id!=='v-'+v);
   $$('.nav button').forEach(b=>{const on=b.dataset.go===v||(b.dataset.go==='library'&&(v==='reader'||v==='quiz'||v==='place'));on?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
-  if(DRAW[v])DRAW[v]();window.scrollTo(0,0)}
+  if(DRAW[v])DRAW[v]();window.scrollTo(0,0);setHash(v==='home'?'':(v==='library'||v==='teacher'||v==='parent')?v:null)}
 
 /* ---------- 서재 ---------- */
 let curStep=null;
@@ -80,7 +82,7 @@ DRAW.library=function(){const rs=recStep();if(curStep==null)curStep=rs;
 
 /* ---------- 읽기 ---------- */
 let R=null;
-function openBook(id){const b=byId(id);if(!b)return;R={b,i:0,seen:new Set([0]),heard:new Set(),fx:true,auto:false,t0:Date.now()};go('reader');drawReader()}
+function openBook(id){const b=byId(id);if(!b)return;R={b,i:0,seen:new Set([0]),heard:new Set(),fx:true,auto:false,t0:Date.now()};go('reader');drawReader();setHash('book/'+id)}
 function wordsHtml(text,b,fx){let out='',re=/[A-Za-z']+/g,m,last=0;
   while((m=re.exec(text))){out+=esc(text.slice(last,m.index));const w=m[0],lw=w.toLowerCase();let inner=esc(w);
     if(fx&&b.focus&&b.focus.words.includes(lw)){const k=lw.indexOf(b.focus.letter),n=b.focus.letter.length;if(k>=0)inner=esc(w.slice(0,k))+'<span class="fx">'+esc(w.slice(k,k+n))+'</span>'+esc(w.slice(k+n))}
@@ -121,7 +123,7 @@ async function toggleRec(){const btn=$('#rec'),out=$('#recout');if(mr&&mr.state=
 /* ---------- 퀴즈: 선택 전에는 모든 보기가 같은 모양 ---------- */
 let Q=null;
 const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-function startQuiz(b){Q={b,i:0,score:0,first:true,pick:null};go('quiz');drawQuiz()}
+function startQuiz(b){Q={b,i:0,score:0,first:true,pick:null};go('quiz');drawQuiz();setHash('quiz/'+b.id)}
 function drawQuiz(){const {b,i}=Q,q=b.quiz[i],n=b.quiz.length,lg=q.s==='vocab'?'ko':'en';Q.first=true;Q.pick=null;
   $('#v-quiz').innerHTML=`<div class="wrap narrow">
   <div class="rhead"><button class="btn ghost sm" data-book="${b.id}">← 책으로</button><div><h1 class="rt">퀴즈 · <span lang="en">${esc(b.title)}</span></h1><p class="mut">${SK[q.s]} 문제</p></div><span class="pg" aria-label="${n}문제 중 ${i+1}번">${i+1} / ${n}</span></div>
@@ -153,7 +155,7 @@ function finishQuiz(){const {b,score}=Q,n=b.quiz.length,r=rec(b.id),was=r.best,p
 
 /* ---------- 단계 진단: 쉬운 글부터 읽고, 두 문제를 모두 맞히면 다음 단계 글로 넘어간다 ---------- */
 let P=null;
-function startPlace(){if(!PLACEMENT.length)return;P={s:0,q:0,ok:0,pick:null,n:0};go('place');drawPlace()}
+function startPlace(){if(!PLACEMENT.length)return;P={s:0,q:0,ok:0,pick:null,n:0};go('place');drawPlace();setHash('place')}
 function drawPlace(){const it=PLACEMENT[P.s],q=it.q[P.q];P.pick=null;P.n++;
   $('#v-place').innerHTML=`<div class="wrap narrow">
   <div class="rhead"><button class="btn ghost sm" data-go="library">← 서재</button><div><h1 class="rt">내 단계 찾기</h1><p class="mut">글을 읽고 알맞은 답을 골라요. 틀려도 괜찮아요.</p></div><span class="pg" aria-label="${P.n}번째 문제">${P.n}번</span></div>
@@ -242,5 +244,9 @@ $('#sample').innerHTML=pics(s0.pages[1][1])+`<p class="rtext" lang="en">${wordsH
 $('#nBooks').textContent=BOOKS.length+'권';
 $('#nDesc').textContent=`${STEPS.filter(s=>s.ready).length}개 단계, 퀴즈 ${BOOKS.reduce((n,b)=>n+b.quiz.length,0)}문항. 책은 계속 늘어납니다.`;
 $('.nav button').setAttribute('aria-current','page');
+function route(){const [v,id]=decodeURIComponent(location.hash.slice(1)).split('/');
+  if(v==='book'&&byId(id))openBook(id);else if(v==='quiz'&&byId(id))startQuiz(byId(id));else if(v==='place')startPlace();else if(v==='library'||v==='teacher'||v==='parent')go(v);else if(!v&&$('#v-home').hidden)go('home')}
+window.addEventListener('hashchange',route);
+if(location.hash.length>1)route();
 drawStars();
 })();
