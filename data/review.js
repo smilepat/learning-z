@@ -4,8 +4,8 @@
 window.RS_REVIEW={
 date:'2026-11-18',
 reviewers:['A: GPT-6.1 Sol','B: Claude Opus 5.5'],
-scope:'책 18권, 퀴즈 90문항, 낱말 풀이 253개, 단계 진단 글 6개',
-summary:'사람 검수 전에 두 AI 모델이 서로 결과를 보지 않고 전체를 검수했습니다. A는 17건, B는 45건을 지적했고 겹치는 것을 합치면 41건입니다. 사실 오류, 문법, 낱말 뜻처럼 답이 분명한 것은 반영했고, 이야기 설정이나 단계 배치처럼 판단이 필요한 9건은 사람이 결정했습니다(smile, 이슈 #1: 제안대로 6건, 그대로 둠 3건). AI 검수는 사람 검수를 대신하지 않으며, 본문과 퀴즈 전체에 대한 사람의 줄별 검수는 아직 남아 있습니다.',
+scope:'1차: 책 18권, 퀴즈 90문항, 낱말 풀이 253개, 단계 진단 글 6개 / 2차(2026-11-18): 새 책 12권, 퀴즈 60문항과 그 낱말 풀이',
+summary:'사람 검수 전에 두 AI 모델이 서로 결과를 보지 않고 전체를 검수했습니다. A는 17건, B는 45건을 지적했고 겹치는 것을 합치면 41건입니다. 사실 오류, 문법, 낱말 뜻처럼 답이 분명한 것은 반영했고, 이야기 설정이나 단계 배치처럼 판단이 필요한 9건은 사람이 결정했습니다(smile, 이슈 #1: 제안대로 6건, 그대로 둠 3건). AI 검수는 사람 검수를 대신하지 않으며, 본문과 퀴즈 전체에 대한 사람의 줄별 검수는 아직 남아 있습니다. 2차 검수(새 책 12권)에서는 A 21건, B 38건을 지적했고 합치면 22건입니다. 16건을 반영했고 6건은 사람이 판단할 것으로 남겼습니다. 올리기 전 점검에서 찾은 그림 1건도 사람이 판단할 것에 넣었습니다.',
 items:[
 {where:'little-seed',item:'단계',problem:'현재형 정보 글인데 3단계(과거형 이야기)에 들어 있음',fix:'5단계로 옮기고 분량을 늘리거나, 3단계 설명에 "쉬운 정보 글 포함"을 명시',by:['A','B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로. 두 방법 중 3단계 설명에 "쉬운 정보 글"을 넣는 쪽으로 반영'},
 {where:'missing-apples',item:'이야기 설정',problem:'작은 새가 사과 세 개를 통째로 가져갔다는 설정이 비현실적',fix:'"사과에 구멍이 나 있었다" 같은 설정으로 바꿀지 검토',by:['B'],status:'applied',note:'사람 결정(smile, 이슈 #1): 제안대로. 사과에 구멍이 난 설정으로 다시 쓰고 제목을 "Who Ate My Apples?"로 바꿈. 낱말 문제는 beak으로 교체'},
@@ -47,6 +47,29 @@ items:[
 {where:'낱말 풀이',item:'sleep, lights, smiled, bright, really, worker, baby, funny',problem:'뜻이 부정확하거나(lights = 전등) 서로 구분되지 않음(smiled와 laughed가 둘 다 "웃었다")',fix:'뜻을 고침. smiled는 "미소 지었다"',by:['B'],status:'applied'},
 {where:'낱말 풀이',item:'빠진 낱말',problem:'3단계 이상의 핵심인 불규칙 과거형(took, went, came, saw 등)과 top(팽이) 같은 낱말이 없음',fix:'낱말 34개 추가 (본문을 고치며 새로 들어간 낱말 11개도 함께 추가해 모두 296개)',by:['B'],status:'applied'},
 {where:'단계 진단',item:'4단계 글',problem:'한국 초등학생은 급식을 먹어 "점심을 두고 갔다"는 상황이 낯섦',fix:'lunch를 water bottle로',by:['B'],status:'applied'},
-{where:'단계 진단',item:'5단계 글',problem:'펭귄이 "many minutes" 잠수한다는 것은 과장',fix:'"for a few minutes"',by:['B'],status:'applied'}
+{where:'단계 진단',item:'5단계 글',problem:'펭귄이 "many minutes" 잠수한다는 것은 과장',fix:'"for a few minutes"',by:['B'],status:'applied'},
+{round:2,where:'home-for-bori',item:'4쪽',problem:'아이가 길에서 만난 새끼 고양이를 혼자 바로 데려감. 어미가 근처에 있을 수 있고, 아이들이 그대로 따라 할 수 있음',fix:'"He called his mom. Then he put the kitten inside his jacket and ran home."처럼 어른에게 먼저 알리는 장면을 넣기',by:['A','B'],status:'human'},
+{round:2,where:'fish-name',item:'6쪽',problem:'한 쪽에 네 문장이라 4단계 기준(세 문장까지)을 넘음',fix:'"The class was quiet. Then Min smiled and said, \"Let\'s call it Bubble Star!\""',by:['B'],status:'human',note:'짧은 외침 "I know!"를 문장으로 셀지에 달림'},
+{round:2,where:'fish-name',item:'3쪽',problem:'"Everyone had an idea."라고 했지만 이름 후보는 둘뿐',fix:'"Jisu and Min had ideas."',by:['B'],status:'human'},
+{round:2,where:'the-moon',item:'6쪽',problem:'"People went to the moon a long time ago."가 오래전에 한 번 간 일로만 읽힐 수 있음',fix:'"People walked on the moon a long time ago."',by:['B'],status:'human'},
+{round:2,where:'red-hen',item:'4쪽',problem:'본문에 비가 나오지 않아 암탉이 젖는 이유를 그림으로만 알 수 있음',fix:'그대로 두거나, 1단계 낱말 범위 안에서 비를 언급',by:['B'],status:'human'},
+{round:2,where:'fox-box',item:'소리 글자',problem:'dog, frog는 미국 영어 일부 지역에서 fox, box와 모음이 조금 다르게 들릴 수 있음. 파닉스 교재에서는 흔히 짧은 o로 가르침',fix:'그대로 두되, 사람 음성을 넣을 때 같은 모음으로 녹음된 음성을 쓰기',by:['B'],status:'human'},
+{round:2,where:'snowman',item:'6쪽, 퀴즈 5',problem:'눈이 녹아도 막대기 팔은 남아야 하는데 "only the blue hat was left"라고 함. 퀴즈의 오답 "The sticks"도 정답이 될 수 있었음',fix:'"Soon only the blue hat and the two sticks were left." / 정답을 "The blue hat and the sticks"로',by:['A','B'],status:'applied'},
+{round:2,where:'rain-trip',item:'6쪽',problem:'물방울이 커지면 그대로 눈이 되는 것처럼 읽힘. 눈은 얼음 알갱이가 자라서 생김',fix:'"... they fall as rain. In very cold clouds, tiny bits of ice grow and fall as snow."',by:['A','B'],status:'applied',note:'두 검토자의 제안을 바탕으로 다시 씀'},
+{round:2,where:'science-fair',item:'2쪽',problem:'구멍으로만 빛이 들어온다는 설명이 없어 실험 원리가 빠짐',fix:'"Light came in only through the hole." 추가',by:['B'],status:'applied'},
+{round:2,where:'science-fair',item:'퀴즈 2',problem:'특정 요일의 일을 묻는 문제인데 유형이 순서로 되어 있음',fix:'유형을 세부 내용으로',by:['A','B'],status:'applied'},
+{round:2,where:'science-fair',item:'8쪽 그림',problem:'본문에 없는 별 그림이 붙어 있음',fix:'그림을 새싹, 책, 아이로',by:['B'],status:'applied'},
+{round:2,where:'home-for-bori',item:'7쪽',problem:'"fell asleep on her feet"는 "선 채로 졸다"라는 관용구이고 her가 누구인지도 모호함',fix:'"Bori fell asleep on Mom\'s lap."',by:['B'],status:'applied'},
+{round:2,where:'home-for-bori',item:'퀴즈 4',problem:'poster의 뜻이 "포스터"라 낱말을 몰라도 맞힐 수 있음',fix:'낱말 문제를 shaking(떨고 있는)으로 교체',by:['B'],status:'applied'},
+{round:2,where:'fox-box',item:'3쪽',problem:'"No. It is not a dog."가 두 문장이라 1단계의 한 쪽 한 문장 기준과 맞지 않음',fix:'"No, it is not a dog."',by:['A'],status:'applied'},
+{round:2,where:'fox-box',item:'퀴즈 5',problem:'"Hop, frog, hop!"은 명령문이라 개구리가 실제로 뛰었다고 나오지 않음. 낱말 문제와도 겹침',fix:'"Which animal do we read about first?"(순서)로 교체',by:['A','B'],status:'applied',note:'두 제안과 다른 문제로 새로 씀'},
+{round:2,where:'fish-name',item:'퀴즈 2, 퀴즈 3',problem:'투표는 동점이라 이름을 "투표로 정했다"고 할 수 없음. "had the same votes"는 표현이 어색함',fix:'"How did the class try to choose a name?" / "Both names got ten votes."',by:['A'],status:'applied'},
+{round:2,where:'good-night',item:'6쪽',problem:'"I go to my bed."는 잘 쓰지 않는 표현',fix:'"I go to bed."',by:['B'],status:'applied'},
+{round:2,where:'your-heart',item:'퀴즈 3',problem:'오답 "You are scared."는 실제로 심장이 빨리 뛰는 이유라 정답처럼 보임',fix:'"You are sleepy."로 교체',by:['B'],status:'applied'},
+{round:2,where:'the-moon',item:'퀴즈 3',problem:'오답 "The sun", "A star"가 과학적으로 아주 틀린 말은 아님',fix:'오답을 "A cloud", "A mountain"으로 교체',by:['B'],status:'applied'},
+{round:2,where:'낱말 풀이',item:'maybe, clapped, jacket',problem:'우리말 뜻에 오타가 있었음',fix:'어쩌면, 손뼉을 쳤다, 겉옷으로 고침',by:['A','B'],status:'applied'},
+{round:2,where:'낱말 풀이',item:'left, took, turns, runs, working, waiting, care, hard, fell, got, get, away 등 16개',problem:'새 책에서 다른 뜻으로 쓰여, 누르면 맞지 않는 뜻이 나옴 (was left, took the bus, turns into, fell asleep 등)',fix:'쓰인 뜻을 함께 적음',by:['A','B'],status:'applied'},
+{round:2,where:'낱말 풀이',item:'빠진 낱말',problem:'behind, make(make my bed), heard, show, keep 같은 내용어가 없음',fix:'낱말 38개 추가',by:['A','B'],status:'applied'},
+{round:2,where:'snowman',item:'1쪽 그림',problem:'눈이 와서 공원이 하얗다는 쪽인데 초록 나무 그림이 붙어 있음',fix:'눈 내리는 그림을 새로 그리거나 눈사람 그림으로 바꾸기',by:['작성자 점검'],status:'human'}
 ]
 };
