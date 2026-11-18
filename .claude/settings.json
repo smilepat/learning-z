@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "smilepat-rea": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/smilepat/rea-app-dev.git"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "rea@smilepat-rea": true
+  }
+}
