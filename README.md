@@ -5,6 +5,9 @@ ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.3
 초등 영어 학습자가 자기 단계의 책을 듣고, 읽고, 퀴즈로 확인하는 웹 서비스의 프로토타입입니다.
 설치와 빌드가 필요 없습니다. 폴더를 내려받아 `index.html`을 열면 동작합니다.
 
+- 사이트: https://smilepat.github.io/learning-z/
+- 책 검사 도구: https://smilepat.github.io/learning-z/tools/check.html
+
 ## 들어 있는 것 (v0.3)
 
 - 6단계, 책 18권(단계마다 3권), 퀴즈 90문항, 그림 32종
