@@ -127,5 +127,8 @@ const PLACEMENT=[
 {step:5,text:`Penguins are birds, but they cannot fly. Instead, they use their wings to swim. They can stay under the water for a few minutes to catch fish.`,q:[{q:'What do penguins use their wings for?',o:['Swimming','Flying','Digging'],a:0},{q:'Why do penguins go under the water?',o:['To sleep','To hide their eggs','To catch fish'],a:2}]},
 {step:6,text:`Dana wanted to win the race more than anything. But near the finish line, her friend fell down. Dana stopped, helped her up, and they crossed the line together. Dana did not win, but she felt proud.`,q:[{q:'Why did Dana stop running?',o:['She was too tired.','Her friend fell down.','She lost her shoe.'],a:1},{q:'Why did Dana feel proud?',o:['She helped her friend.','She won the race.','She ran faster than before.'],a:0}]}
 ];
-Object.assign(window.RS_DATA,{STEPS,BOOKS,G,PLACEMENT});
+/* 책별 검수 상태. 사람이 모든 줄을 통과시킨 책의 id만 human 목록에 넣는다. 목록에 없는 책은 "AI 검수만"으로 표시된다.
+   한 줄이라도 고친 책은 다시 확인받기 전까지 목록에서 뺀다. (docs/DATA_SOURCES.md) */
+const REVIEWED={human:[]};
+Object.assign(window.RS_DATA,{STEPS,BOOKS,G,PLACEMENT,REVIEWED});
 })();

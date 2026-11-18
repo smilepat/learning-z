@@ -4,7 +4,7 @@ window.RS_PROJECT={
 version:'v0.6',
 updated:'2026-11-18',
 purpose:'초등 영어 학습자가 자기 단계의 영어책을 듣고, 읽고, 퀴즈로 확인하는 단계별 읽기 서비스를 만든다. 선생님은 숙제를 내고 결과를 보고, 학부모는 기록을 본다.',
-links:{site:'https://smilepat.github.io/learning-z/',repo:'https://github.com/smilepat/learning-z',issues:'https://github.com/smilepat/learning-z/issues',guide:'https://github.com/smilepat/learning-z/blob/main/docs/level-guide.md',review:'https://github.com/smilepat/learning-z/blob/main/docs/review-sheet.csv'},
+links:{site:'https://smilepat.github.io/learning-z/',repo:'https://github.com/smilepat/learning-z',issues:'https://github.com/smilepat/learning-z/issues',guide:'https://github.com/smilepat/learning-z/blob/main/docs/level-guide.md',review:'https://github.com/smilepat/learning-z/blob/main/docs/review-sheet.csv',rea:'https://github.com/smilepat/learning-z/blob/main/docs/REA_ANALYSIS.md',handoff:'https://github.com/smilepat/learning-z/blob/main/docs/HANDOFF.md'},
 done:[
 '6단계 서재: 듣기, 낱말 뜻, 소리 글자 표시(1단계), 녹음, 퀴즈',
 '퀴즈: 틀리면 정답 대신 그 쪽을 다시 듣고 한 번 더 고름, 80% 이상 통과, 보기 순서 섞기',
@@ -19,11 +19,13 @@ done:[
 '사람 검수 도구: 현황판에서 줄마다 통과, 고침, 빼기를 누르고 결과를 복사하거나 GitHub 이슈로 보냄',
 '기기 점검: 현황판에서 소리, 녹음, 기록 저장을 버튼으로 확인',
 'AI 검수 의견 중 사람이 판단할 9건 결정과 반영 (smile, 이슈 #1): 제안대로 6건, 그대로 둠 3건',
-'책 12권 추가(단계마다 5권, 총 30권), 그림 5종 추가, 2차 AI 검수 22건 중 16건 반영'
+'책 12권 추가(단계마다 5권, 총 30권), 그림 5종 추가, 2차 AI 검수 22건 중 16건 반영',
+'REA 방식 적용: 공개 관찰 기록, 가져오지 않은 것, 데이터 출처, 결정 기록(사용자 결정과 에이전트 가정 구분), 책별 검수 상태 표시, 우리 규칙의 근거, 독립성 점검'
 ],
 next:[
 '사람 결정: 2차 AI 검수에서 남긴 "사람이 판단할 것" 7건을 현황판 검수 구역에서 결정',
-'사람 검수(줄별): 현황판에서 검수 모드를 켜고 본문과 퀴즈 401줄을 판정한 뒤 결과를 보냄. 2026-11-18 기준 판정된 줄은 0줄. 모든 글은 AI가 쓴 초안',
+'사람 검수(줄별): 현황판에서 검수 모드를 켜고 검수 항목 401개(제목, 본문, 퀴즈, 단계 진단)를 판정한 뒤 결과를 보냄. 2026-11-18 기준 판정된 줄은 0줄. 모든 글은 AI가 쓴 초안',
+'REA 재확인 목록: 통과 기준의 공식 출처, 책 제목이 참고 서비스와 겹치는지, 약관의 법률 검토 (docs/REA_ANALYSIS.md 5절)',
 '책 더 늘리기: 지금은 단계마다 5권. 더 늘릴지는 줄별 검수 뒤에 정함'
 ],
 later:[
@@ -34,6 +36,7 @@ later:[
 '요금과 이용 방식'
 ],
 decisions:[
+'레포 이름: learning-z가 참고 서비스 이름과 닮음. 바꾸면 공개 주소도 바뀜',
 '서비스 이름: ReadStep은 가칭',
 '목표 책 수: 단계마다 5권(총 30권)은 가정으로 진행함. 최종 목표는 미정',
 '단계 기준 확정: 지금 수치는 현재 책에서 잡은 잠정값. 3단계에 쉬운 정보 글을 넣는 것은 결정됨(이슈 #1)',
@@ -45,7 +48,7 @@ limits:[
 '음성은 브라우저 기본 영어 음성. 기기에 따라 소리가 나지 않을 수 있음',
 '단계 진단 규칙(두 문제 모두 맞히면 다음 단계)은 잠정',
 '선생님 화면은 가져온 학생 기록이 없으면 예시 데이터를 보여 줌',
-'이 현황판은 퀴즈 정답까지 보여 줌. 개발 단계용이며 학생에게 주소를 알리지 않음'
+'이 현황판은 퀴즈 정답까지 보여 줌. 개발 단계라 사이트 맨 아래에 현황판 링크가 있음. 학생에게 서비스를 열기 전에 링크를 빼고 현황판을 막아야 함'
 ],
 log:[
 {v:'v0.1',d:'2026-11-17',t:'첫 시제품. 1~3단계 책 9권, 서재, 읽기, 퀴즈, 선생님 화면, 학부모 화면'},
@@ -56,6 +59,7 @@ log:[
 {v:'v0.4',d:'2026-11-18',t:'현황판에 사람 검수 도구와 기기 점검 추가. 책 늘리기는 사람 검수 뒤로 미룸'},
 {v:'v0.5',d:'2026-11-18',t:'사람 결정 9건 반영(smile, 이슈 #1): 사과 이야기를 "Who Ate My Apples?"로 다시 씀, 3단계 설명에 쉬운 정보 글 추가, 문장 4곳 수정'},
 {v:'v0.5',d:'2026-11-18',t:'소리 문제는 나중에 따로 해결하기로 함'},
-{v:'v0.6',d:'2026-11-18',t:'책 12권 추가(짧은 e, 짧은 o, 눈사람, 달, 학급 물고기, 버스, 비, 심장, 과학 발표회, 새끼 고양이). 두 AI 모델의 2차 검수 반영'}
+{v:'v0.6',d:'2026-11-18',t:'책 12권 추가(짧은 e, 짧은 o, 눈사람, 달, 학급 물고기, 버스, 비, 심장, 과학 발표회, 새끼 고양이). 두 AI 모델의 2차 검수 반영'},
+{v:'v0.6',d:'2026-11-18',t:'REA 방식 적용: docs에 REA_ANALYSIS, DATA_SOURCES, HANDOFF 추가, STATUS.md 추가, 책별 검수 상태 표시, 독립성 점검 지적 10건 반영'}
 ]
 };
