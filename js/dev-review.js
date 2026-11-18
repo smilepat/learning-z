@@ -37,10 +37,10 @@ function report(){const R=rows(),c={ok:0,fix:0,cut:0},fix=[],cut=[];
   const done=c.ok+c.fix+c.cut,full=$$('.bk[data-step]').filter(a=>{const r=$$('[data-rk]',a);return r.length&&r.every(el=>{const v=valid(el);return v&&v.s==='ok'})}).map(a=>a.id.slice(2));
   const ai=aiRows().map(o=>{const d=S.ai[o.x.where+'|'+o.x.item];return d?`- [${o.x.where} ${o.x.item}] ${AL[d.s]}${d.n?': '+d.n:''}`:null}).filter(Boolean);
   const text=[`ReadStep 검수 결과`,`검수자: ${S.name||'이름 없음'} · ${new Date().toLocaleDateString('ko-KR')} · ${PJ.version||''}`,`판정: ${R.length}줄 중 ${done}줄 (통과 ${c.ok}, 고침 ${c.fix}, 빼기 ${c.cut})`,'',
-    `## AI 검수 의견에 대한 결정 (${ai.length}/${aiRows().length})`,ai.join('\n')||'- 없음','',`## 고침 (${c.fix})`,fix.join('\n')||'- 없음','',`## 빼기 (${c.cut})`,cut.join('\n')||'- 없음','',`## 모든 줄이 통과인 책 (${full.length})`,full.join(', ')||'- 없음','',`## 기기 점검`,devLine(),(navigator.userAgent||'').slice(0,150)].join('\n');
+    ...(aiRows().length?[`## AI 검수 의견에 대한 결정 (${ai.length}/${aiRows().length})`,ai.join('\n')||'- 없음','']:[]),`## 고침 (${c.fix})`,fix.join('\n')||'- 없음','',`## 빼기 (${c.cut})`,cut.join('\n')||'- 없음','',`## 모든 줄이 통과인 책 (${full.length})`,full.join(', ')||'- 없음','',`## 기기 점검`,devLine(),(navigator.userAgent||'').slice(0,150)].join('\n');
   return{text,total:R.length,done,c,ai:ai.length,aiTotal:aiRows().length,full}}
 function update(){const r=report(),p=$('#rvprog');if(!p)return r;
-  p.textContent=`${r.total}줄 중 ${r.done}줄 판정 (통과 ${r.c.ok}, 고침 ${r.c.fix}, 빼기 ${r.c.cut}) · AI 의견 ${r.aiTotal}건 중 ${r.ai}건 결정`;
+  p.textContent=`${r.total}줄 중 ${r.done}줄 판정 (통과 ${r.c.ok}, 고침 ${r.c.fix}, 빼기 ${r.c.cut})`+(r.aiTotal?` · AI 의견 ${r.aiTotal}건 중 ${r.ai}건 결정`:'');
   $('#rvbar').style.width=(r.total?r.done/r.total*100:0)+'%';$('#rvbar').parentNode.setAttribute('aria-valuenow',r.done);$('#rvbar').parentNode.setAttribute('aria-valuemax',r.total);
   $('#rvout').value=r.text;
   const base=(PJ.links&&PJ.links.issues)||'';if(base){let body=encodeURIComponent(r.text);if(body.length>5500)body=encodeURIComponent(`(내용이 길어 여기에 다 담지 못했습니다. 현황판에서 "결과 복사"를 누른 뒤 이 칸에 붙여 넣어 주세요.)\n\n판정: ${r.total}줄 중 ${r.done}줄 (통과 ${r.c.ok}, 고침 ${r.c.fix}, 빼기 ${r.c.cut})`);
@@ -50,7 +50,7 @@ function update(){const r=report(),p=$('#rvprog');if(!p)return r;
 /* ---------- 화면에 넣기 ---------- */
 const rvWrap=$('#review .wrap'),tool=document.createElement('div');tool.className='card';tool.id='rvtool';
 tool.innerHTML=`<h3 style="margin-top:0">사람 검수 하기</h3>
-<ol class="plain"><li>이름을 적고 검수 모드를 켭니다.</li><li>"책 전체"와 "단계 진단"에서 줄마다 통과, 고침, 빼기를 누릅니다. 책 한 권을 다 봤으면 "이 책의 남은 줄 모두 통과"를 누릅니다.</li><li>아래 표의 "사람이 판단할 것"에서 결정을 고릅니다.</li><li>결과를 복사해 보내거나 GitHub 이슈로 올립니다.</li></ol>
+<ol class="plain"><li>이름을 적고 검수 모드를 켭니다.</li><li>"책 전체"와 "단계 진단"에서 줄마다 통과, 고침, 빼기를 누릅니다. 책 한 권을 다 봤으면 "이 책의 남은 줄 모두 통과"를 누릅니다.</li>${aiRows().length?'<li>아래 표의 "사람이 판단할 것"에서 결정을 고릅니다.</li>':''}<li>결과를 복사해 보내거나 GitHub 이슈로 올립니다.</li></ol>
 <p class="mut" style="font-size:14px;margin-top:6px">판정은 이 기기에만 저장됩니다. 다른 사람의 판정은 보이지 않으니 각자 결과를 보내 주세요. 책 내용이 바뀌면 그 줄은 다시 확인하도록 표시됩니다.</p>
 <div class="rvrow"><label for="rvname" style="font-weight:700">검수자 이름</label><input type="text" id="rvname" maxlength="20" autocomplete="off" value="${esc(S.name||'')}"><button type="button" class="btn sm rvmode" aria-pressed="false">검수 모드 켜기</button><a class="btn ghost sm" href="#books" style="text-decoration:none">책 전체로 가기</a></div>
 <div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-label="검수 진행"><i id="rvbar" style="width:0"></i></div>
