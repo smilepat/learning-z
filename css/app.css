@@ -161,3 +161,4 @@ footer{border-top:1.5px solid var(--line);padding:24px 0 36px;font-size:14px;col
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{body{background:#fff;padding:0}body>*:not(#print){display:none!important}#print{display:block}#print h1{font:700 28px var(--read)}.pp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.pp>div{border:1.5px solid #64748B;border-radius:12px;padding:12px;break-inside:avoid}.pp .pics{border:0;padding:0}.pp .sp{width:90px}.pp p{font:600 20px/1.5 var(--read);text-align:center}.pq{margin-top:20px;break-inside:avoid}.pq li{margin:10px 0}}
 .ptext{font:600 clamp(20px,3vw,26px)/1.7 var(--read)}
+footer a{color:var(--blue-d);font-weight:700}
