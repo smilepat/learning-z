@@ -2,7 +2,7 @@
    작업이 끝나거나 계획이 바뀌면 이 파일만 고치면 된다. */
 window.RS_PROJECT={
 version:'v0.6',
-updated:'2026-11-18',
+updated:'2026-11-19',
 purpose:'초등 영어 학습자가 자기 단계의 영어책을 듣고, 읽고, 퀴즈로 확인하는 단계별 읽기 서비스를 만든다. 선생님은 숙제를 내고 결과를 보고, 학부모는 기록을 본다.',
 links:{site:'https://smilepat.github.io/learning-z/',repo:'https://github.com/smilepat/learning-z',issues:'https://github.com/smilepat/learning-z/issues',guide:'https://github.com/smilepat/learning-z/blob/main/docs/level-guide.md',review:'https://github.com/smilepat/learning-z/blob/main/docs/review-sheet.csv',rea:'https://github.com/smilepat/learning-z/blob/main/docs/REA_ANALYSIS.md',handoff:'https://github.com/smilepat/learning-z/blob/main/docs/HANDOFF.md'},
 done:[
@@ -20,12 +20,13 @@ done:[
 '기기 점검: 현황판에서 소리, 녹음, 기록 저장을 버튼으로 확인',
 'AI 검수 의견 중 사람이 판단할 9건 결정과 반영 (smile, 이슈 #1): 제안대로 6건, 그대로 둠 3건',
 '책 12권 추가(단계마다 5권, 총 30권), 그림 5종 추가, 2차 AI 검수 22건 중 16건 반영',
-'REA 방식 적용: 공개 관찰 기록, 가져오지 않은 것, 데이터 출처, 결정 기록(사용자 결정과 에이전트 가정 구분), 책별 검수 상태 표시, 우리 규칙의 근거, 독립성 점검'
+'REA 방식 적용: 공개 관찰 기록, 가져오지 않은 것, 데이터 출처, 결정 기록(사용자 결정과 에이전트 가정 구분), 책별 검수 상태 표시, 우리 규칙의 근거, 독립성 점검',
+'책 제목 대조: 참고 서비스의 공개 제목 2,037개와 비교해 같거나 거의 같은 제목 6개를 바꿈'
 ],
 next:[
-'사람 결정: 2차 AI 검수에서 남긴 "사람이 판단할 것" 7건을 현황판 검수 구역에서 결정',
+'사람 결정: 2차 AI 검수에서 남긴 "사람이 판단할 것" 6건을 현황판 검수 구역에서 결정',
 '사람 검수(줄별): 현황판에서 검수 모드를 켜고 검수 항목 401개(제목, 본문, 퀴즈, 단계 진단)를 판정한 뒤 결과를 보냄. 2026-11-18 기준 판정된 줄은 0줄. 모든 글은 AI가 쓴 초안',
-'REA 재확인 목록: 통과 기준의 공식 출처, 책 제목이 참고 서비스와 겹치는지, 약관의 법률 검토 (docs/REA_ANALYSIS.md 5절)',
+'REA 재확인 목록의 남은 것: 약관의 법률 검토, 개인정보 수집 항목, 앱 버전 기록 (docs/REA_ANALYSIS.md 5절)',
 '책 더 늘리기: 지금은 단계마다 5권. 더 늘릴지는 줄별 검수 뒤에 정함'
 ],
 later:[
@@ -37,6 +38,7 @@ later:[
 ],
 decisions:[
 '레포 이름: learning-z가 참고 서비스 이름과 닮음. 바꾸면 공개 주소도 바뀜',
+'단계 올라가기 규칙: "그 단계의 책 전부 + 퀴즈 80%"가 참고 서비스의 공식 규칙과 구조가 같음. 다르게 할지',
 '서비스 이름: ReadStep은 가칭',
 '목표 책 수: 단계마다 5권(총 30권)은 가정으로 진행함. 최종 목표는 미정',
 '단계 기준 확정: 지금 수치는 현재 책에서 잡은 잠정값. 3단계에 쉬운 정보 글을 넣는 것은 결정됨(이슈 #1)',
@@ -60,6 +62,7 @@ log:[
 {v:'v0.5',d:'2026-11-18',t:'사람 결정 9건 반영(smile, 이슈 #1): 사과 이야기를 "Who Ate My Apples?"로 다시 씀, 3단계 설명에 쉬운 정보 글 추가, 문장 4곳 수정'},
 {v:'v0.5',d:'2026-11-18',t:'소리 문제는 나중에 따로 해결하기로 함'},
 {v:'v0.6',d:'2026-11-18',t:'책 12권 추가(짧은 e, 짧은 o, 눈사람, 달, 학급 물고기, 버스, 비, 심장, 과학 발표회, 새끼 고양이). 두 AI 모델의 2차 검수 반영'},
-{v:'v0.6',d:'2026-11-18',t:'REA 방식 적용: docs에 REA_ANALYSIS, DATA_SOURCES, HANDOFF 추가, STATUS.md 추가, 책별 검수 상태 표시, 독립성 점검 지적 10건 반영'}
+{v:'v0.6',d:'2026-11-18',t:'REA 방식 적용: docs에 REA_ANALYSIS, DATA_SOURCES, HANDOFF 추가, STATUS.md 추가, 책별 검수 상태 표시, 독립성 점검 지적 10건 반영'},
+{v:'v0.6',d:'2026-11-19',t:'참고 서비스의 공개 제목 목록과 대조해 책 제목 6개 변경, 통과 기준의 공식 출처 확인, 눈 그림 추가'}
 ]
 };
