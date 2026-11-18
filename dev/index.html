@@ -122,13 +122,15 @@ const picUse={},glossUse={};
 Object.keys(SP).forEach(n=>picUse[n]=0);
 BOOKS.forEach(b=>{(b.cover||[]).forEach(n=>{if(n in picUse)picUse[n]++});b.pages.forEach(p=>{(p[1]||[]).forEach(n=>{if(n in picUse)picUse[n]++});new Set(words(p[0])).forEach(w=>{(glossUse[w]=glossUse[w]||new Set()).add(b.id)})})});
 const row=id=>C.rows.find(r=>r.id===id)||{};
+const HUMAN=new Set((D.REVIEWED||{}).human||[]),nHuman=BOOKS.filter(b=>HUMAN.has(b.id)).length;
+const rvChip=id=>HUMAN.has(id)?'<span class="chip done">사람 검수</span>':'<span class="chip help">AI 검수만</span>';
 
 /* 1. 현황 */
 const sStatus=`<section id="status"><div class="wrap">
 <h1>ReadStep (가칭) 개발 현황판</h1>
 <p class="lead">${esc(PJ.purpose||'')}</p>
 <p class="mut" style="margin-top:6px">버전 ${esc(PJ.version||'')} · 현황 기록일 ${esc(PJ.updated||'')} · 아래 수치와 책 내용은 지금 데이터 파일에서 바로 읽은 값입니다.</p>
-<div class="links"><a class="btn" href="../">사이트 열기</a><a class="btn ghost" href="../tools/check.html">책 검사 도구</a>${L.guide?`<a class="btn ghost" href="${esc(L.guide)}">단계 기준 문서</a>`:''}${L.review?`<a class="btn ghost" href="${esc(L.review)}">검수표</a>`:''}${L.repo?`<a class="btn ghost" href="${esc(L.repo)}">GitHub 레포</a>`:''}${L.issues?`<a class="btn ghost" href="${esc(L.issues)}">의견 남기기</a>`:''}</div>
+<div class="links"><a class="btn" href="../">사이트 열기</a><a class="btn ghost" href="../tools/check.html">책 검사 도구</a>${L.guide?`<a class="btn ghost" href="${esc(L.guide)}">단계 기준 문서</a>`:''}${L.review?`<a class="btn ghost" href="${esc(L.review)}">검수표</a>`:''}${L.rea?`<a class="btn ghost" href="${esc(L.rea)}">REA 분석</a>`:''}${L.handoff?`<a class="btn ghost" href="${esc(L.handoff)}">결정 기록</a>`:''}${L.repo?`<a class="btn ghost" href="${esc(L.repo)}">GitHub 레포</a>`:''}${L.issues?`<a class="btn ghost" href="${esc(L.issues)}">의견 남기기</a>`:''}</div>
 <div class="tiles"><div class="card"><p class="num">${C.books}</p><small>책</small></div><div class="card"><p class="num">${C.quiz}</p><small>퀴즈 문항</small></div><div class="card"><p class="num">${C.pictures}</p><small>그림</small></div><div class="card"><p class="num">${C.glossary}</p><small>낱말 풀이</small></div><div class="card ${C.errors.length?'bad':'good'}"><p class="num">${C.errors.length}</p><small>검사 오류</small></div><div class="card ${C.warnings.length?'bad':'good'}"><p class="num">${C.warnings.length}</p><small>확인할 점</small></div></div>
 ${C.errors.length?`<div class="card" style="border-color:var(--retry)"><h3 style="margin-top:0">검사 오류</h3>${list(C.errors)}</div>`:''}
 ${C.warnings.length?`<div class="card" style="margin-top:12px"><h3 style="margin-top:0">확인할 점</h3>${list(C.warnings)}</div>`:''}
@@ -137,11 +139,11 @@ ${C.warnings.length?`<div class="card" style="margin-top:12px"><h3 style="margin
 /* 2. 책 전체 */
 const bookCard=b=>{const r=row(b.id),text=(b.title+' '+b.ko+' '+b.id+' '+b.pages.map(p=>p[0]).join(' ')+' '+b.quiz.map(q=>q.q+' '+q.o.join(' ')).join(' ')).toLowerCase();
   return `<article class="card bk" id="b-${esc(b.id)}" data-step="${b.step}" data-text="${esc(text)}">
-  <div class="bkh"><div class="t" data-rk="${esc(b.id)}|t" data-rl="${esc(b.id)} 제목" data-rt="${esc(b.title+' / '+b.ko)}"><b lang="en">${esc(b.title)}</b> <span class="mut">${esc(b.ko)}</span></div><div class="chips"><span class="chip">${esc(b.id)}</span><span class="chip">${esc(b.type)}</span><span class="chip${r.inRange===false?' help':''}">낱말 ${r.words}</span><span class="chip${r.pgOk===false?' help':''}">${b.pages.length}쪽</span><span class="chip">풀이 ${r.gloss}%</span>${b.focus?`<span class="chip hw">${esc(b.focus.label)}</span>`:''}<a class="btn ghost sm" style="text-decoration:none" href="../#book/${esc(b.id)}">앱에서 열기</a></div></div>
+  <div class="bkh"><div class="t" data-rk="${esc(b.id)}|t" data-rl="${esc(b.id)} 제목" data-rt="${esc(b.title+' / '+b.ko)}"><b lang="en">${esc(b.title)}</b> <span class="mut">${esc(b.ko)}</span></div><div class="chips">${rvChip(b.id)}<span class="chip">${esc(b.id)}</span><span class="chip">${esc(b.type)}</span><span class="chip${r.inRange===false?' help':''}">낱말 ${r.words}</span><span class="chip${r.pgOk===false?' help':''}">${b.pages.length}쪽</span><span class="chip">풀이 ${r.gloss}%</span>${b.focus?`<span class="chip hw">${esc(b.focus.label)}</span>`:''}<a class="btn ghost sm" style="text-decoration:none" href="../#book/${esc(b.id)}">앱에서 열기</a></div></div>
   <div class="pgs">${b.pages.map((p,i)=>`<div class="pgc" data-rk="${esc(b.id)}|p|${i+1}" data-rl="${esc(b.id)} ${i+1}쪽" data-rt="${esc(p[0])}"><small>${i+1}쪽${p[2]?' · '+esc(p[2]):''}</small><div class="pics">${(p[1]||[]).map(svg).join('')}</div><p lang="en">${mark(p[0],b)}</p></div>`).join('')}</div>
   <h4>퀴즈 (✓ 표시가 정답)</h4><ol class="qz">${b.quiz.map((q,i)=>`<li data-rk="${esc(b.id)}|q|${i+1}" data-rl="${esc(b.id)} 퀴즈 ${i+1}" data-rt="${esc(qt(q))}"><span lang="${q.s==='vocab'?'ko':'en'}" style="font-weight:700">${esc(q.q)}</span> <span class="chip">${SK[q.s]||esc(q.s)}</span> <span class="mut" style="font-size:13px">근거 ${q.p}쪽</span><br>${opts(q)}</li>`).join('')}</ol></article>`};
 const sBooks=`<section id="books"><div class="wrap"><h2>책 전체</h2>
-<p class="lead">모든 책의 본문, 그림, 퀴즈입니다. 1단계 책은 이번에 배울 소리 글자를 보라색으로 표시했습니다.</p>
+<p class="lead">모든 책의 본문, 그림, 퀴즈입니다. 1단계 책은 이번에 배울 소리 글자를 보라색으로 표시했습니다. 검수 상태: 사람이 끝까지 검수한 책 ${nHuman}권, AI 검수만 거친 책 ${BOOKS.length-nHuman}권.</p>
 <div class="filters" role="group" aria-label="단계 고르기"><button data-f="0" aria-pressed="true">전체</button>${STEPS.map(s=>`<button data-f="${s.n}" aria-pressed="false">${s.n}단계</button>`).join('')}<input type="text" id="bq" placeholder="책, 본문, 퀴즈에서 찾기" aria-label="책 내용에서 찾기"><span class="mut" id="bcount"></span></div>
 ${STEPS.map(s=>{const bs=BOOKS.filter(b=>b.step===s.n);return `<div class="stepgrp" data-step="${s.n}"><h3>${s.n}단계 · ${esc(s.name)} <span class="mut" style="font-weight:400;font-size:15px">${esc(s.desc)} · ${bs.length}권</span></h3>${bs.map(bookCard).join('')||'<p class="none">아직 책이 없습니다.</p>'}</div>`}).join('')}
 </div></section>`;
@@ -213,7 +215,7 @@ $$('.filters button[data-f]').forEach(b=>b.onclick=()=>{fStep=+b.dataset.f;$$('.
 $('#bq').oninput=filterBooks;filterBooks();
 function filterGloss(){const q=$('#gq').value.trim().toLowerCase();let n=0;$$('#gbody tr').forEach(tr=>{const ok=!q||tr.dataset.text.includes(q);tr.hidden=!ok;if(ok)n++});$('#gcount').textContent=n+'개 표시'}
 $('#gq').oninput=filterGloss;filterGloss();
-window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,review:RV?{items:RV.items.length,applied:rvCount('applied'),human:rvCount('human'),rejected:rvCount('rejected')}:null,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
+window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,humanBooks:nHuman,review:RV?{items:RV.items.length,applied:rvCount('applied'),human:rvCount('human'),rejected:rvCount('rejected')}:null,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
 if(location.hash.length>1){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t)t.scrollIntoView()}
 })();
 </script>
