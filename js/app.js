@@ -1,5 +1,7 @@
 (()=>{
 const {SP,STEPS,BOOKS,G,PLACEMENT}=window.RS_DATA;
+const HUMAN=new Set((window.RS_DATA.REVIEWED||{}).human||[]);
+const rvChip=id=>HUMAN.has(id)?'<span class="chip done">사람 검수</span>':'<span class="chip help">AI 검수만</span>';
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -77,7 +79,7 @@ DRAW.library=function(){const rs=recStep();if(curStep==null)curStep=rs;
   <div class="steps" role="group" aria-label="단계 고르기">${STEPS.map(st=>`<button data-step="${st.n}" aria-pressed="${st.n===curStep}" ${st.ready?'':'disabled'}><b>${st.n}단계 · ${st.name}${st.n===rs?' (내 단계)':''}</b><span>${st.desc}</span></button>`).join('')}</div>
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><div class="prog" style="flex:1" role="progressbar" aria-valuemin="0" aria-valuemax="${list.length}" aria-valuenow="${done}" aria-label="이 단계 진행"><i style="width:${list.length?done/list.length*100:0}%"></i></div><span class="mut" style="font-size:14px">${done} / ${list.length}권 완료</span></div>
   <div class="books">${list.map(bookCard).join('')}</div>
-  <p class="note">한 단계의 책을 모두 읽고 퀴즈를 80% 이상으로 통과하면 다음 단계가 내 단계가 됩니다. 다른 단계의 책도 언제든 읽을 수 있습니다.</p></div>`;
+  <p class="note">한 단계의 책을 모두 읽고 퀴즈를 80% 이상으로 통과하면 다음 단계가 내 단계가 됩니다. 다른 단계의 책도 언제든 읽을 수 있습니다. 지금 책은 AI가 쓰고 AI가 검수한 초안입니다(사람이 검수한 책 ${BOOKS.filter(x=>HUMAN.has(x.id)).length}권).</p></div>`;
   $('#sendRec').onclick=sendRec;$('#getHw').onclick=getHw};
 
 /* ---------- 읽기 ---------- */
@@ -90,7 +92,7 @@ function wordsHtml(text,b,fx){let out='',re=/[A-Za-z']+/g,m,last=0;
   return out+esc(text.slice(last))}
 function drawReader(keep){const {b,i}=R,[text,pp]=b.pages[i],n=b.pages.length,last=i===n-1;let ch='';for(let k=i;k>=0;k--)if(b.pages[k][2]){ch=b.pages[k][2];break}
   $('#v-reader').innerHTML=`<div class="wrap narrow">
-  <div class="rhead"><button class="btn ghost sm" data-go="library">← 서재</button><div><h1 class="rt" lang="en">${esc(b.title)}</h1><p class="mut">${esc(b.ko)} · ${b.step}단계 ${STEPS[b.step-1].name}</p></div><span class="pg" aria-label="${n}쪽 중 ${i+1}쪽">${i+1} / ${n}</span></div>
+  <div class="rhead"><button class="btn ghost sm" data-go="library">← 서재</button><div><h1 class="rt" lang="en">${esc(b.title)}</h1><p class="mut">${esc(b.ko)} · ${b.step}단계 ${STEPS[b.step-1].name}${HUMAN.has(b.id)?'':' · AI 검수만'}</p></div><span class="pg" aria-label="${n}쪽 중 ${i+1}쪽">${i+1} / ${n}</span></div>
   <div class="dots" aria-hidden="true">${b.pages.map((_,k)=>`<i class="${k===i?'on':R.seen.has(k)?'seen':''}"></i>`).join('')}</div>
   ${ch?'<p class="ch" lang="en">'+esc(ch)+'</p>':''}${pics(pp)}
   <p class="rtext${text.length>70?' long':''}" lang="en" id="rtext">${wordsHtml(text,b,R.fx)}</p>
@@ -168,7 +170,7 @@ function drawPlace(){const it=PLACEMENT[P.s],q=it.q[P.q];P.pick=null;P.n++;
     if(P.ok===2&&P.s<PLACEMENT.length-1){P.s++;P.q=0;P.ok=0;drawPlace()}else endPlace(it.step)}}
 function ppick(el){P.pick=+el.dataset.k;$$('#v-place .opt').forEach(o=>o.setAttribute('aria-checked',o===el?'true':'false'));$('#pnext').disabled=false}
 function endPlace(step){S.place={step,t:Date.now()};save();curStep=null;const st=STEPS[step-1];
-  $('#v-place').innerHTML=`<div class="wrap narrow"><div class="card result"><h1 class="rt">내 단계를 찾았어요</h1><p class="num">${st.n}단계</p><p style="font-weight:700;font-size:19px">${st.name}</p><p class="mut" style="margin:6px 0 4px">${st.desc}</p><p class="mut">너무 쉽거나 어렵다면 언제든 다시 찾을 수 있어요.</p><div class="rctl"><button class="btn ghost" data-place="1">다시 하기</button><button class="btn" data-go="library" id="pdone">${st.n}단계 책 보러 가기</button></div></div></div>`;
+  $('#v-place').innerHTML=`<div class="wrap narrow"><div class="card result"><h1 class="rt">추천 단계예요</h1><p class="num">${st.n}단계</p><p style="font-weight:700;font-size:19px">${st.name}</p><p class="mut" style="margin:6px 0 4px">${st.desc}</p><p class="mut">짧은 글 몇 개로 고른 임시 추천이에요. 너무 쉽거나 어렵다면 다른 단계의 책을 읽거나 다시 찾을 수 있어요.</p><div class="rctl"><button class="btn ghost" data-place="1">다시 하기</button><button class="btn" data-go="library" id="pdone">${st.n}단계 책 보러 가기</button></div></div></div>`;
   $('#pdone').focus()}
 
 /* ---------- 선생님 ---------- */
@@ -186,19 +188,19 @@ DRAW.teacher=function(){const me=myStats(),real=Object.values(S.cls||{}).map(cls
   <tr class="me"><td>이 기기 학습자</td><td>${recStep()}단계</td><td>${me.read}권</td><td>${me.avg==null?'기록 없음':me.avg+'%'}</td><td>${Math.round((S.secs||0)/60)}분</td><td>${me.avg!=null&&me.avg<70?`<span class="chip help">${IC.replay}도움 필요</span>`:''}</td></tr>
   ${rows.map(r=>`<tr><td>${esc(r.n)}${r.t?'<br><span class="mut" style="font-size:12px">'+fmtD(r.t)+' 기록</span>':''}</td><td>${r.st}단계</td><td>${r.rd}권</td><td>${r.av==null?'기록 없음':r.av+'%'}</td><td>${r.mn}분</td><td>${r.real?'<button class="btn ghost sm" data-del="'+esc(r.n)+'">빼기</button> ':''}${r.av!=null&&r.av<70?`<span class="chip help">${IC.replay}도움 필요</span>`:''}</td></tr>`).join('')}</tbody></table></div>
   <div class="two" style="margin-top:16px"><div class="card"><h2 style="font-size:20px;margin-bottom:12px">문제 유형별 정답률 (이 기기)</h2><div class="skills">${Object.entries(SK).map(([s,l])=>{const k=S.skills[s];const p=k&&k.t?Math.round(k.c/k.t*100):0;return `<div><span>${l}</span><span class="prog" role="img" aria-label="${l} ${k&&k.t?p+'%':'기록 없음'}"><i style="width:${p}%"></i></span><span>${k&&k.t?p+'% ('+k.c+'/'+k.t+')':'기록 없음'}</span></div>`}).join('')}</div><p class="note">첫 번째 시도에서 맞힌 것만 정답으로 셉니다.</p></div>
-  <div class="card"><h2 style="font-size:20px;margin-bottom:8px">살펴볼 점</h2><ul class="list"><li>퀴즈 평균이 70% 아래인 학생에게 "도움 필요" 표시가 붙습니다. 70%는 임시 기준이며 바꿀 수 있습니다.</li><li>숙제로 지정한 책은 학생의 서재 맨 위에 나옵니다.</li><li>서버가 없어서, 학생이 "선생님께 기록 보내기"로 만든 코드를 받아 "학생 기록 가져오기"에 붙여 넣는 방식입니다. 같은 이름으로 다시 가져오면 새 기록으로 바뀝니다.</li><li>읽은 시간은 책을 연 동안의 시간이며, 한 번에 최대 10분까지만 셉니다(자리를 비운 시간을 줄이기 위한 임시 기준).</li></ul></div></div>
+  <div class="card"><h2 style="font-size:20px;margin-bottom:8px">살펴볼 점</h2><ul class="list"><li>퀴즈 평균이 70% 아래인 학생에게 "도움 필요" 표시가 붙습니다. 70%는 임시 기준이며 바꿀 수 있습니다.</li><li>숙제로 지정한 책은 학생의 서재 맨 위에 나옵니다.</li><li>책 관리 표의 "검수" 칸은 그 책을 사람이 끝까지 검수했는지 보여 줍니다. 지금은 ${BOOKS.length}권 중 ${BOOKS.filter(b=>HUMAN.has(b.id)).length}권입니다.</li><li>통과 기준(5문항 중 4문항), 단계 기준, 단계 진단 규칙은 이 서비스가 스스로 정한 잠정 기준입니다.</li><li>서버가 없어서, 학생이 "선생님께 기록 보내기"로 만든 코드를 받아 "학생 기록 가져오기"에 붙여 넣는 방식입니다. 같은 이름으로 다시 가져오면 새 기록으로 바뀝니다.</li><li>읽은 시간은 책을 연 동안의 시간이며, 한 번에 최대 10분까지만 셉니다(자리를 비운 시간을 줄이기 위한 임시 기준).</li></ul></div></div>
   <h2 class="sec">책 관리</h2>
-  <div class="card tablebox"><table><thead><tr><th scope="col">책</th><th scope="col">단계</th><th scope="col">낱말 수</th><th scope="col">배울 것</th><th scope="col">할 일</th></tr></thead><tbody>
-  ${BOOKS.map(b=>{const on=S.assigned.includes(b.id);return `<tr><td><b lang="en" style="font-family:var(--read)">${esc(b.title)}</b><br><span class="mut" style="font-size:13px">${esc(b.ko)}</span></td><td>${b.step}단계</td><td>${wc(b)}</td><td>${b.focus?esc(b.focus.label):b.type}</td><td><button class="btn sm ${on?'':'ghost'}" data-assign="${b.id}" aria-pressed="${on}">${on?'숙제 취소':'숙제 지정'}</button><button class="btn sm ghost" data-plan="${b.id}">수업안</button><button class="btn sm ghost" data-print="${b.id}">인쇄용 책</button></td></tr>`}).join('')}</tbody></table></div></div>`;
+  <div class="card tablebox"><table><thead><tr><th scope="col">책</th><th scope="col">단계</th><th scope="col">낱말 수</th><th scope="col">배울 것</th><th scope="col">검수</th><th scope="col">할 일</th></tr></thead><tbody>
+  ${BOOKS.map(b=>{const on=S.assigned.includes(b.id);return `<tr><td><b lang="en" style="font-family:var(--read)">${esc(b.title)}</b><br><span class="mut" style="font-size:13px">${esc(b.ko)}</span></td><td>${b.step}단계</td><td>${wc(b)}</td><td>${b.focus?esc(b.focus.label):b.type}</td><td>${rvChip(b.id)}</td><td><button class="btn sm ${on?'':'ghost'}" data-assign="${b.id}" aria-pressed="${on}">${on?'숙제 취소':'숙제 지정'}</button><button class="btn sm ghost" data-plan="${b.id}">수업안</button><button class="btn sm ghost" data-print="${b.id}">인쇄용 책</button></td></tr>`}).join('')}</tbody></table></div></div>`;
   $('#addRec').onclick=addRec;$('#mkHw').onclick=mkHw};
 function plan(id){const b=byId(id),words=[...new Set(b.pages.flatMap(p=>p[0].toLowerCase().match(/[a-z']+/g)))].filter(w=>G[w]).slice(0,8);
-  $('#dlgBody').innerHTML=`<h2 id="dlgT">수업안 · <span lang="en">${esc(b.title)}</span></h2><p class="mut">${b.step}단계 ${STEPS[b.step-1].name} · ${wc(b)}낱말 · 시간은 권장값이며 조정할 수 있습니다.</p>
+  $('#dlgBody').innerHTML=`<h2 id="dlgT">수업안 · <span lang="en">${esc(b.title)}</span></h2><p class="mut">${b.step}단계 ${STEPS[b.step-1].name} · ${wc(b)}낱말 · 시간은 권장값이며 조정할 수 있습니다. 이 책은 ${HUMAN.has(b.id)?'사람이 검수했습니다':'AI 검수만 거쳤고 사람 검수 전입니다'}.</p>
   <h3>읽기 전 (약 5분)</h3><ul class="list"><li>표지 그림을 보고 무엇이 나올지 말해 봅니다.</li><li>핵심 낱말: ${words.map(w=>`<b lang="en">${w}</b>(${esc(G[w])})`).join(', ')}</li></ul>
   <h3>읽는 중 (약 10분)</h3><ul class="list"><li>처음부터 끝까지 한 번 듣습니다.</li><li>한 쪽씩 듣고 따라 읽습니다.</li>${b.focus?`<li>${esc(b.focus.label)}가 들어간 낱말을 찾습니다: <span lang="en">${b.focus.words.join(', ')}</span></li>`:'<li>모르는 낱말을 눌러 뜻을 확인하고 표시해 둡니다.</li>'}</ul>
   <h3>읽은 후 (약 10분)</h3><ul class="list">${b.quiz.filter(q=>q.s!=='vocab').slice(0,3).map(q=>`<li lang="en">${esc(q.q)}</li>`).join('')}<li>문장 카드를 섞어 놓고 이야기 순서대로 다시 놓습니다.</li></ul>`;
   $('#dlg').showModal()}
 function printBook(id){const b=byId(id);
-  $('#print').innerHTML=`<h1 lang="en">${esc(b.title)}</h1><p>${esc(b.ko)} · ${b.step}단계 ${STEPS[b.step-1].name} · 이름: ____________</p><div class="pp">${b.pages.map((p,k)=>`<div>${p[2]?'<b lang="en">'+esc(p[2])+'</b>':''}${pics(p[1])}<p lang="en">${esc(p[0])}</p><small>${k+1}</small></div>`).join('')}</div><div class="pq"><h2>읽고 답해요</h2><ol>${b.quiz.map(q=>`<li><span lang="${q.s==='vocab'?'ko':'en'}">${esc(q.q)}</span><br>${q.o.map((o,k)=>'('+(k+1)+') '+esc(o)).join('&nbsp;&nbsp;&nbsp;')}</li>`).join('')}</ol></div>`;
+  $('#print').innerHTML=`<h1 lang="en">${esc(b.title)}</h1><p>${esc(b.ko)} · ${b.step}단계 ${STEPS[b.step-1].name} · 이름: ____________</p><p style="font-size:12px">ReadStep 시제품 · ${HUMAN.has(b.id)?'사람 검수를 마친 책':'AI 검수만 거친 초안'}</p><div class="pp">${b.pages.map((p,k)=>`<div>${p[2]?'<b lang="en">'+esc(p[2])+'</b>':''}${pics(p[1])}<p lang="en">${esc(p[0])}</p><small>${k+1}</small></div>`).join('')}</div><div class="pq"><h2>읽고 답해요</h2><ol>${b.quiz.map(q=>`<li><span lang="${q.s==='vocab'?'ko':'en'}">${esc(q.q)}</span><br>${q.o.map((o,k)=>'('+(k+1)+') '+esc(o)).join('&nbsp;&nbsp;&nbsp;')}</li>`).join('')}</ol></div>`;
   window.print()}
 
 /* ---------- 기록 코드와 숙제 코드: 서버 없이 기기 사이에 전달 ---------- */
@@ -210,7 +212,7 @@ function clsRow(p){const bs=Object.entries(p.b||{}).map(([id,r])=>[byId(id),r]).
 function dlg(html){$('#dlgBody').innerHTML=html;const d=$('#dlg');if(!d.open)d.showModal()}
 function copyBtn(){const b=$('#copy');if(!b)return;b.onclick=async()=>{const t=$('#codeOut'),m=$('#cmsg');try{await navigator.clipboard.writeText(t.value);m.textContent='복사했어요.'}catch(e){t.focus();t.select();m.textContent='코드를 선택했어요. Ctrl+C로 복사하세요.'}}}
 function recCode(){return'RS1.'+enc({n:S.name||'이름 없음',st:recStep(),s:S.stars,sec:S.secs||0,pl:S.place?S.place.step:0,b:Object.fromEntries(Object.entries(S.books).map(([id,r])=>[id,[+r.listen,+r.read,r.best,r.tries]])),t:Date.now()})}
-function sendRec(){dlg(`<h2 id="dlgT">선생님께 기록 보내기</h2><p class="mut">이름을 적으면 기록 코드가 만들어집니다. 코드를 복사해 선생님께 보내세요. 별명을 써도 됩니다.</p><h3><label for="nm">내 이름</label></h3><input type="text" id="nm" maxlength="12" value="${esc(S.name||'')}" autocomplete="off"><h3><label for="codeOut">기록 코드</label></h3><textarea id="codeOut" rows="5" readonly></textarea><p class="tools" style="margin-top:10px"><button class="btn sm" id="copy" type="button">코드 복사</button></p><p class="msg ok" id="cmsg" aria-live="polite"></p>`);
+function sendRec(){dlg(`<h2 id="dlgT">선생님께 기록 보내기</h2><p class="mut">이름을 적으면 기록 코드가 만들어집니다. 코드를 복사해 선생님께 보내세요. 별명을 써도 됩니다.</p><h3><label for="nm">이름 또는 별명</label></h3><input type="text" id="nm" maxlength="12" value="${esc(S.name||'')}" autocomplete="off"><h3><label for="codeOut">기록 코드</label></h3><textarea id="codeOut" rows="5" readonly></textarea><p class="tools" style="margin-top:10px"><button class="btn sm" id="copy" type="button">코드 복사</button></p><p class="msg ok" id="cmsg" aria-live="polite"></p>`);
   const up=()=>{$('#codeOut').value=recCode()};$('#nm').oninput=e=>{S.name=e.target.value.trim();save();up()};up();copyBtn()}
 function getHw(){dlg(`<h2 id="dlgT">숙제 코드 넣기</h2><p class="mut">선생님께 받은 숙제 코드를 붙여 넣으세요.</p><textarea id="codeIn" rows="4" aria-label="숙제 코드"></textarea><p class="tools" style="margin-top:10px"><button class="btn sm" id="doIn" type="button">숙제 받기</button></p><p class="msg" id="cmsg" aria-live="polite"></p>`);
   $('#doIn').onclick=()=>{const m=$('#cmsg');try{const v=$('#codeIn').value.trim();if(!v.startsWith('RSH1.'))throw 0;const h=dec(v.slice(5)).h;if(!Array.isArray(h))throw 0;S.assigned=[...new Set(h.filter(byId))];save();m.className='msg ok';m.textContent='숙제 '+S.assigned.length+'권을 받았어요.';DRAW.library()}catch(e){m.className='msg no';m.textContent='코드를 읽을 수 없어요. 처음부터 끝까지 복사했는지 확인해 주세요.'}}}
@@ -225,7 +227,7 @@ DRAW.parent=function(){const me=myStats(),fmt=t=>new Date(t).toLocaleString('ko-
   <div class="thead"><p class="eyebrow">학부모</p><h1>우리 아이 읽기 기록</h1><p class="mut">이 기기에서 읽은 기록입니다.</p></div>
   <div class="tiles"><div class="card"><p class="num">${me.read}</p><small>끝까지 읽은 책</small></div><div class="card"><p class="num">${S.stars}</p><small>모은 별</small></div><div class="card"><p class="num">${me.words}</p><small>만난 낱말 (읽은 책의 서로 다른 낱말)</small></div><div class="card"><p class="num">${me.avg==null?'-':me.avg+'%'}</p><small>퀴즈 평균</small></div></div>
   <div class="two"><div class="card"><h2 style="font-size:20px;margin-bottom:8px">최근 활동</h2>${S.log.length?`<ul class="list">${S.log.slice(0,8).map(l=>{const b=byId(l.id);return `<li>${fmt(l.t)} · <span lang="en">${b?esc(b.title):''}</span> · ${esc(l.why)}${l.n?' (별 '+l.n+')':''}</li>`}).join('')}</ul>`:'<p class="mut">아직 기록이 없습니다. 서재에서 첫 책을 읽어 보세요.</p>'}</div>
-  <div class="card"><h2 style="font-size:20px;margin-bottom:8px">집에서 이렇게 도와주세요</h2><ul class="list"><li>하루 한 권, 10분이면 충분합니다. 먼저 듣고, 그다음 소리 내어 읽게 해 주세요.</li><li>틀린 발음을 바로 고치기보다 "듣기"를 한 번 더 눌러 스스로 비교하게 해 주세요.</li><li>퀴즈가 어렵다면 단계를 내려도 괜찮습니다. 쉽게 읽히는 책을 많이 읽는 것이 먼저입니다.</li></ul></div></div>
+  <div class="card"><h2 style="font-size:20px;margin-bottom:8px">집에서 이렇게 도와주세요</h2><ul class="list"><li>하루 한 권, 10분부터 시작해 보세요. 먼저 듣고, 그다음 소리 내어 읽게 해 주세요.</li><li>틀린 발음을 바로 고치기보다 "듣기"를 한 번 더 눌러 스스로 비교하게 해 주세요.</li><li>퀴즈가 어렵다면 단계를 내려도 괜찮습니다. 쉽게 읽히는 책을 많이 읽는 것이 먼저입니다.</li></ul></div></div>
   <p style="margin-top:24px"><button class="btn ghost sm" id="reset">이 기기의 기록 지우기</button></p></div>`;
   $('#reset').onclick=()=>{if(confirm('이 기기의 읽기 기록과 별을 모두 지울까요? 되돌릴 수 없습니다.')){S=blank();save();curStep=null;drawStars();DRAW.parent()}}};
 
@@ -243,6 +245,7 @@ const s0=BOOKS[0];
 $('#sample').innerHTML=pics(s0.pages[1][1])+`<p class="rtext" lang="en">${wordsHtml(s0.pages[1][0],s0,true)}</p>`;
 $('#nBooks').textContent=BOOKS.length+'권';
 $('#nDesc').textContent=`${STEPS.filter(s=>s.ready).length}개 단계, 퀴즈 ${BOOKS.reduce((n,b)=>n+b.quiz.length,0)}문항. 책은 계속 늘어납니다.`;
+if($('#rvNote'))$('#rvNote').textContent=` 책 ${BOOKS.length}권은 모두 AI가 쓰고 AI가 검수한 초안이며, 사람이 끝까지 검수한 책은 ${BOOKS.filter(b=>HUMAN.has(b.id)).length}권입니다.`;
 $('.nav button').setAttribute('aria-current','page');
 function route(){const [v,id]=decodeURIComponent(location.hash.slice(1)).split('/');
   if(v==='book'&&byId(id))openBook(id);else if(v==='quiz'&&byId(id))startQuiz(byId(id));else if(v==='place')startPlace();else if(v==='library'||v==='teacher'||v==='parent')go(v);else if(!v&&$('#v-home').hidden)go('home')}
