@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ReadStep 개발 현황판</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23172554'/%3E%3Ctext x='16' y='23' font-size='20' font-weight='700' text-anchor='middle' fill='white' font-family='Arial'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/app.css">
+<style>
+.dtop{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1.5px solid var(--line)}
+.dtop .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;padding-top:8px;padding-bottom:8px}
+.dtop b{font-size:18px;white-space:nowrap}
+.dnav{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0}
+.dnav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:10px;font-weight:700;font-size:15px;color:var(--mut);text-decoration:none;white-space:nowrap}
+.dnav a:hover{background:var(--blue-s);color:var(--ink)}
+section{padding:30px 0 6px;scroll-margin-top:68px}
+h1{font-size:30px;letter-spacing:-.02em}
+h2{font-size:25px;letter-spacing:-.02em;margin-bottom:8px}
+h3{font-size:19px;margin:24px 0 10px}
+h4{font-size:15px;margin:14px 0 4px;color:var(--mut)}
+a{color:var(--blue-d);font-weight:700}
+.lead{color:var(--mut);max-width:760px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.links a.btn{text-decoration:none}
+.links a.btn.ghost{color:var(--blue-d)}
+.links a.btn:not(.ghost){color:#fff}
+.tiles{grid-template-columns:repeat(6,1fr)}
+.tiles .card{padding:16px}
+.tiles .num{font-size:30px}
+.tiles .bad .num{color:var(--retry)}
+.tiles .good .num{color:var(--ok)}
+.bk{margin-bottom:16px;padding:18px}
+.bkh{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.bkh .t b{font:700 22px var(--read)}
+.bkh .chips{margin:0}
+.pgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:14px 0 6px}
+.pgc{border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;background:#fff}
+.pgc .pics{border:0;padding:0;justify-content:flex-start;gap:6px;min-height:54px}
+.pgc .sp{width:52px}
+.pgc p{font:600 16px/1.5 var(--read);margin-top:6px}
+.pgc small{display:block;color:var(--mut);font-size:12px;font-weight:700}
+.qz{margin:0;padding-left:22px}
+.qz li{margin:10px 0}
+.qz .o{display:inline-block;margin:2px 16px 0 0}
+.qz .ans{color:var(--ok);font-weight:800}
+.pict{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+.pict div{text-align:center;border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:8px 6px;font-size:13px}
+.pict .sp{width:68px}
+.pict b{display:block;font-family:var(--read)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 16px}
+.filters button{min-height:44px;padding:0 16px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font-weight:700}
+.filters button[aria-pressed=true]{border-color:var(--blue);background:var(--blue-s);color:var(--blue-d);box-shadow:inset 0 0 0 1px var(--blue)}
+.filters input{max-width:300px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cols .card h3{margin-top:0}
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin:6px 0}
+.fx{color:var(--fx)}
+.none{color:var(--mut);padding:10px 0}
+footer{margin-top:40px}
+@media(max-width:900px){.tiles{grid-template-columns:repeat(3,1fr)}.cols{grid-template-columns:1fr}}
+@media(max-width:720px){body{padding-bottom:0}.tiles{grid-template-columns:repeat(2,1fr)}}
+@media print{body>*:not(#print){display:block!important}body>.dtop:not(#print){display:none!important}.filters,.links{display:none}.bk{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="dtop"><div class="wrap">
+  <b>ReadStep 개발 현황판</b>
+  <nav class="dnav" aria-label="현황판 메뉴">
+    <a href="#status">현황</a><a href="#books">책 전체</a><a href="#steps">단계 기준</a><a href="#placement">단계 진단</a><a href="#pictures">그림</a><a href="#glossary">낱말 풀이</a><a href="#screens">화면</a><a href="#plan">할 일</a>
+  </nav>
+</div></header>
+<main id="root"><div class="wrap"><p style="padding:30px 0">불러오는 중...</p></div></main>
+<footer><div class="wrap">이 화면은 data/books.js, data/pictures.js, data/project.js 를 읽어 자동으로 만들어집니다. 개발 단계용이며 퀴즈 정답이 보입니다.</div></footer>
+<script src="../data/pictures.js"></script>
+<script src="../data/books.js"></script>
+<script src="../data/project.js"></script>
+<script src="../js/check.js"></script>
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const D=window.RS_DATA||{},PJ=window.RS_PROJECT||{},root=$('#root');
+if(!D.BOOKS||!D.SP||!D.STEPS||!D.G||!window.RS_CHECK){root.innerHTML='<div class="wrap"><p class="msg no" style="padding:30px 0">데이터 파일을 읽지 못했습니다. data/books.js 의 문법 오류(따옴표, 쉼표, 괄호)를 확인하세요.</p></div>';window.__dev={fatal:true};return}
+const {BOOKS,STEPS,SP,G}=D,PL=D.PLACEMENT||[],C=window.RS_CHECK(D),L=PJ.links||{};
+const SK={detail:'세부 내용',vocab:'낱말',main:'중심 생각',seq:'순서',infer:'미루어 알기'};
+const words=t=>t.toLowerCase().match(/[a-z']+/g)||[];
+const svg=n=>SP[n]?`<svg class="sp" viewBox="0 0 100 100" role="img" aria-label="${esc(n)}"><g stroke="#334155" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">${SP[n]}</g></svg>`:`<span class="chip help">${esc(n)} 없음</span>`;
+const mark=(text,b)=>{if(!b.focus)return esc(text);let out='',re=/[A-Za-z']+/g,m,last=0;
+  while((m=re.exec(text))){out+=esc(text.slice(last,m.index));const w=m[0],lw=w.toLowerCase(),k=b.focus.words.includes(lw)?lw.indexOf(b.focus.letter):-1,n=b.focus.letter.length;
+    out+=k>=0?esc(w.slice(0,k))+'<span class="fx">'+esc(w.slice(k,k+n))+'</span>'+esc(w.slice(k+n)):esc(w);last=m.index+w.length}
+  return out+esc(text.slice(last))};
+const list=a=>a&&a.length?`<ul class="plain">${a.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul>`:'<p class="none">없음</p>';
+const opts=q=>q.o.map((o,k)=>`<span class="o${k===q.a?' ans':''}">${k===q.a?'✓ ':''}(${k+1}) ${esc(o)}${k===q.a?' (정답)':''}</span>`).join('');
+
+/* 쓰임 집계 */
+const picUse={},glossUse={};
+Object.keys(SP).forEach(n=>picUse[n]=0);
+BOOKS.forEach(b=>{(b.cover||[]).forEach(n=>{if(n in picUse)picUse[n]++});b.pages.forEach(p=>{(p[1]||[]).forEach(n=>{if(n in picUse)picUse[n]++});new Set(words(p[0])).forEach(w=>{(glossUse[w]=glossUse[w]||new Set()).add(b.id)})})});
+const row=id=>C.rows.find(r=>r.id===id)||{};
+
+/* 1. 현황 */
+const sStatus=`<section id="status"><div class="wrap">
+<h1>ReadStep (가칭) 개발 현황판</h1>
+<p class="lead">${esc(PJ.purpose||'')}</p>
+<p class="mut" style="margin-top:6px">버전 ${esc(PJ.version||'')} · 현황 기록일 ${esc(PJ.updated||'')} · 아래 수치와 책 내용은 지금 데이터 파일에서 바로 읽은 값입니다.</p>
+<div class="links"><a class="btn" href="../">사이트 열기</a><a class="btn ghost" href="../tools/check.html">책 검사 도구</a>${L.guide?`<a class="btn ghost" href="${esc(L.guide)}">단계 기준 문서</a>`:''}${L.review?`<a class="btn ghost" href="${esc(L.review)}">검수표</a>`:''}${L.repo?`<a class="btn ghost" href="${esc(L.repo)}">GitHub 레포</a>`:''}${L.issues?`<a class="btn ghost" href="${esc(L.issues)}">의견 남기기</a>`:''}</div>
+<div class="tiles"><div class="card"><p class="num">${C.books}</p><small>책</small></div><div class="card"><p class="num">${C.quiz}</p><small>퀴즈 문항</small></div><div class="card"><p class="num">${C.pictures}</p><small>그림</small></div><div class="card"><p class="num">${C.glossary}</p><small>낱말 풀이</small></div><div class="card ${C.errors.length?'bad':'good'}"><p class="num">${C.errors.length}</p><small>검사 오류</small></div><div class="card ${C.warnings.length?'bad':'good'}"><p class="num">${C.warnings.length}</p><small>확인할 점</small></div></div>
+${C.errors.length?`<div class="card" style="border-color:var(--retry)"><h3 style="margin-top:0">검사 오류</h3>${list(C.errors)}</div>`:''}
+${C.warnings.length?`<div class="card" style="margin-top:12px"><h3 style="margin-top:0">확인할 점</h3>${list(C.warnings)}</div>`:''}
+</div></section>`;
+
+/* 2. 책 전체 */
+const bookCard=b=>{const r=row(b.id),text=(b.title+' '+b.ko+' '+b.id+' '+b.pages.map(p=>p[0]).join(' ')+' '+b.quiz.map(q=>q.q+' '+q.o.join(' ')).join(' ')).toLowerCase();
+  return `<article class="card bk" id="b-${esc(b.id)}" data-step="${b.step}" data-text="${esc(text)}">
+  <div class="bkh"><div class="t"><b lang="en">${esc(b.title)}</b> <span class="mut">${esc(b.ko)}</span></div><div class="chips"><span class="chip">${esc(b.id)}</span><span class="chip">${esc(b.type)}</span><span class="chip${r.inRange===false?' help':''}">낱말 ${r.words}</span><span class="chip${r.pgOk===false?' help':''}">${b.pages.length}쪽</span><span class="chip">풀이 ${r.gloss}%</span>${b.focus?`<span class="chip hw">${esc(b.focus.label)}</span>`:''}<a class="btn ghost sm" style="text-decoration:none" href="../#book/${esc(b.id)}">앱에서 열기</a></div></div>
+  <div class="pgs">${b.pages.map((p,i)=>`<div class="pgc"><small>${i+1}쪽${p[2]?' · '+esc(p[2]):''}</small><div class="pics">${(p[1]||[]).map(svg).join('')}</div><p lang="en">${mark(p[0],b)}</p></div>`).join('')}</div>
+  <h4>퀴즈 (✓ 표시가 정답)</h4><ol class="qz">${b.quiz.map(q=>`<li><span lang="${q.s==='vocab'?'ko':'en'}" style="font-weight:700">${esc(q.q)}</span> <span class="chip">${SK[q.s]||esc(q.s)}</span> <span class="mut" style="font-size:13px">근거 ${q.p}쪽</span><br>${opts(q)}</li>`).join('')}</ol></article>`};
+const sBooks=`<section id="books"><div class="wrap"><h2>책 전체</h2>
+<p class="lead">모든 책의 본문, 그림, 퀴즈입니다. 1단계 책은 이번에 배울 소리 글자를 보라색으로 표시했습니다.</p>
+<div class="filters" role="group" aria-label="단계 고르기"><button data-f="0" aria-pressed="true">전체</button>${STEPS.map(s=>`<button data-f="${s.n}" aria-pressed="false">${s.n}단계</button>`).join('')}<input type="text" id="bq" placeholder="책, 본문, 퀴즈에서 찾기" aria-label="책 내용에서 찾기"><span class="mut" id="bcount"></span></div>
+${STEPS.map(s=>{const bs=BOOKS.filter(b=>b.step===s.n);return `<div class="stepgrp" data-step="${s.n}"><h3>${s.n}단계 · ${esc(s.name)} <span class="mut" style="font-weight:400;font-size:15px">${esc(s.desc)} · ${bs.length}권</span></h3>${bs.map(bookCard).join('')||'<p class="none">아직 책이 없습니다.</p>'}</div>`}).join('')}
+</div></section>`;
+
+/* 3. 단계 기준 */
+const sSteps=`<section id="steps"><div class="wrap"><h2>단계 기준</h2>
+<p class="lead">기준 수치는 잠정값입니다. "실제"는 지금 들어 있는 책에서 센 값입니다.</p>
+<div class="card tablebox" style="margin-top:12px"><table><thead><tr><th scope="col">단계</th><th scope="col">이름</th><th scope="col">설명</th><th scope="col">책 수</th><th scope="col">낱말 수 기준</th><th scope="col">실제 낱말 수</th><th scope="col">쪽 수 기준</th><th scope="col">실제 쪽 수</th></tr></thead><tbody>
+${STEPS.map(s=>{const rs=C.rows.filter(r=>r.step===s.n),w=rs.map(r=>r.words),p=rs.map(r=>r.pages);return `<tr><td>${s.n}</td><td>${esc(s.name)}</td><td>${esc(s.desc)}</td><td>${rs.length}권</td><td>${s.min}~${s.max}</td><td>${rs.length?Math.min(...w)+'~'+Math.max(...w):'-'}</td><td>${s.pages?s.pages[0]+'~'+s.pages[1]:'-'}</td><td>${rs.length?Math.min(...p)+'~'+Math.max(...p):'-'}</td></tr>`}).join('')}</tbody></table></div>
+<p class="mut" style="margin-top:10px">퀴즈는 책마다 5문항, 보기 3개, 4문항 이상 맞으면 통과입니다. 자세한 규칙은 ${L.guide?`<a href="${esc(L.guide)}">단계 기준 문서</a>`:'단계 기준 문서'}에 있습니다.</p>
+</div></section>`;
+
+/* 4. 단계 진단 */
+const sPlace=`<section id="placement"><div class="wrap"><h2>단계 진단</h2>
+<p class="lead">1단계 글부터 읽고, 두 문제를 모두 맞히면 다음 단계 글로 넘어갑니다. 하나라도 틀린 단계가 시작 단계가 됩니다.</p>
+${PL.length?PL.map(it=>`<div class="card bk"><div class="bkh"><div class="t"><b>${it.step}단계 글</b></div><span class="chip">낱말 ${words(it.text).length}</span></div><p lang="en" style="font:600 18px/1.6 var(--read);margin:10px 0">${esc(it.text)}</p><ol class="qz">${it.q.map(q=>`<li><span lang="en" style="font-weight:700">${esc(q.q)}</span><br>${opts(q)}</li>`).join('')}</ol></div>`).join(''):'<p class="none">단계 진단 글이 없습니다.</p>'}
+</div></section>`;
+
+/* 5. 그림 */
+const unusedPics=Object.keys(picUse).filter(n=>!picUse[n]);
+const sPics=`<section id="pictures"><div class="wrap"><h2>그림</h2>
+<p class="lead">그림 ${Object.keys(SP).length}종입니다. 숫자는 책에서 쓰인 횟수(표지 포함)입니다.${unusedPics.length?' 쓰이지 않은 그림: '+esc(unusedPics.join(', ')):''}</p>
+<div class="pict" style="margin-top:12px">${Object.keys(SP).map(n=>`<div>${svg(n)}<b>${esc(n)}</b><span class="mut">${picUse[n]}번</span></div>`).join('')}</div>
+</div></section>`;
+
+/* 6. 낱말 풀이 */
+const gKeys=Object.keys(G).sort(),unusedG=gKeys.filter(w=>!glossUse[w]);
+const sGloss=`<section id="glossary"><div class="wrap"><h2>낱말 풀이</h2>
+<p class="lead">학생이 낱말을 누르면 나오는 우리말 뜻입니다. 모두 ${gKeys.length}개이고, 책에 쓰이지 않는 풀이는 ${unusedG.length}개입니다.</p>
+<div class="filters"><input type="text" id="gq" placeholder="낱말이나 뜻으로 찾기" aria-label="낱말 풀이에서 찾기"><span class="mut" id="gcount"></span></div>
+<div class="card tablebox"><table><thead><tr><th scope="col">낱말</th><th scope="col">뜻</th><th scope="col">쓰인 책</th></tr></thead><tbody id="gbody">
+${gKeys.map(w=>{const u=glossUse[w]?[...glossUse[w]]:[];return `<tr data-text="${esc((w+' '+G[w]).toLowerCase())}"><td lang="en" style="font-family:var(--read);font-weight:700">${esc(w)}</td><td>${esc(G[w])}</td><td>${u.length?u.length+'권 <span class="mut" style="font-size:12px">'+esc(u.join(', '))+'</span>':'<span class="chip help">안 쓰임</span>'}</td></tr>`}).join('')}</tbody></table></div>
+</div></section>`;
+
+/* 7. 화면 */
+const first=BOOKS[0]?BOOKS[0].id:'';
+const screens=[['소개','../','서비스 소개와 역할별 입구'],['내 서재','../#library','단계별 책, 오늘의 추천, 숙제, 기록 보내기'],['단계 진단','../#place','시작 단계 찾기'],['책 읽기','../#book/'+first,'듣기, 낱말 뜻, 녹음, 소리 글자 표시'],['퀴즈','../#quiz/'+first,'5문항, 틀리면 다시 듣기'],['선생님','../#teacher','학급 현황, 숙제 지정, 수업안, 인쇄용 책'],['학부모','../#parent','읽기 기록, 집에서 돕는 방법'],['책 검사 도구','../tools/check.html','책 데이터 오류 검사']];
+const sScreens=`<section id="screens"><div class="wrap"><h2>화면</h2>
+<p class="lead">화면마다 바로 들어가는 주소입니다. 책 읽기와 퀴즈는 주소 끝의 책 ID를 바꾸면 다른 책이 열립니다.</p>
+<div class="card tablebox" style="margin-top:12px"><table><thead><tr><th scope="col">화면</th><th scope="col">들어 있는 것</th><th scope="col">주소</th></tr></thead><tbody>${screens.map(s=>`<tr><td><b>${s[0]}</b></td><td>${s[2]}</td><td><a href="${esc(s[1])}">${esc(s[1].replace('../','/'))}</a></td></tr>`).join('')}</tbody></table></div>
+</div></section>`;
+
+/* 8. 할 일 */
+const sPlan=`<section id="plan"><div class="wrap"><h2>할 일과 정할 것</h2>
+<div class="cols"><div class="card"><h3>다음에 할 일</h3>${list(PJ.next)}</div><div class="card"><h3>정해야 할 것</h3>${list(PJ.decisions)}</div><div class="card"><h3>나중에 하기로 한 것</h3>${list(PJ.later)}</div><div class="card"><h3>알려진 한계</h3>${list(PJ.limits)}</div><div class="card"><h3>끝낸 것</h3>${list(PJ.done)}</div><div class="card"><h3>변경 기록</h3>${(PJ.log||[]).length?`<ul class="plain">${PJ.log.slice().reverse().map(l=>`<li><b>${esc(l.v)}</b> <span class="mut">${esc(l.d)}</span> ${esc(l.t)}</li>`).join('')}</ul>`:'<p class="none">없음</p>'}</div></div>
+</div></section>`;
+
+root.innerHTML=sStatus+sBooks+sSteps+sPlace+sPics+sGloss+sScreens+sPlan;
+
+/* 찾기와 고르기 */
+let fStep=0;
+function filterBooks(){const q=$('#bq').value.trim().toLowerCase();let n=0;
+  $$('.bk[data-step]').forEach(el=>{const ok=(!fStep||+el.dataset.step===fStep)&&(!q||el.dataset.text.includes(q));el.hidden=!ok;if(ok)n++});
+  $$('.stepgrp').forEach(g=>{g.hidden=!!fStep&&+g.dataset.step!==fStep||(!!q&&!$$('.bk:not([hidden])',g).length)});
+  $('#bcount').textContent=n+'권 표시'}
+$$('.filters button[data-f]').forEach(b=>b.onclick=()=>{fStep=+b.dataset.f;$$('.filters button[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===b));filterBooks()});
+$('#bq').oninput=filterBooks;filterBooks();
+function filterGloss(){const q=$('#gq').value.trim().toLowerCase();let n=0;$$('#gbody tr').forEach(tr=>{const ok=!q||tr.dataset.text.includes(q);tr.hidden=!ok;if(ok)n++});$('#gcount').textContent=n+'개 표시'}
+$('#gq').oninput=filterGloss;filterGloss();
+window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
+if(location.hash.length>1){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t)t.scrollIntoView()}
+})();
+</script>
+</body>
+</html>
