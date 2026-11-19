@@ -53,7 +53,8 @@ ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.8
 | `data/review.js` | 검수 기록 (지적, 처리 결과, 사람이 판단할 것) |
 | `dev/index.html` | 개발 현황판 |
 | `data/books.js` | 단계 기준, 책, 퀴즈, 낱말 풀이, 단계 진단 글 |
-| `data/words-ko.js`, `data/chunks-ko.js` | 한국어 묶음(선택 언어): 낱말 뜻, 책 제목, 덩어리 뜻 시범 3권. 기본 화면은 영어만 쓰고 주소에 `?l1=ko`를 붙였을 때만 읽음 |
+| `data/words-zh.js`, `data/chunks-zh.js` | 중국어 묶음(선택 언어, 간체): 낱말 뜻, 책 제목, 덩어리 뜻 시범 3권. AI 초안 |
+| `data/words-ko.js`, `data/chunks-ko.js` | 한국어 묶음(선택 언어). 기본 화면은 영어만 쓰고, 화면 아래 "Word help"에서 고르거나 주소에 `?l1=zh`, `?l1=ko`를 붙였을 때만 읽음 |
 | `data/pictures.js` | 낱말 그림 |
 | `tools/check.html` | 책 검사 도구 |
 | `docs/level-guide.md` | 단계 기준과 책 만드는 법 |

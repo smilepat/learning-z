@@ -38,7 +38,7 @@
   <div class="bento">
     <div class="card s4 sample"><h3>Read one now</h3><div id="sample"></div><button class="btn" data-book="cat-mat">Read this book</button></div>
     <div class="card s2"><p class="num" id="nBooks"></p><h3>A library in steps</h3><p id="nDesc"></p></div>
-    <div class="card s2"><h3>Listening and word meanings</h3><p>When a sentence is read aloud, the word being read is marked. Tap a word to hear it and see a simple English meaning.</p></div>
+    <div class="card s2"><h3>Listening and word meanings</h3><p>When a sentence is read aloud, the word being read is marked. Tap a word to hear it and see a simple English meaning. With "Word help" at the bottom of the page, the meaning also shows in Chinese or Korean.</p></div>
     <div class="card s2"><h3>Rebuild the sentence</h3><p>Sentences from the book are cut into meaning chunks and mixed up, and the child puts them back in order. While reading, "Chunk reading" shows the chunks first.</p></div>
     <div class="card s2"><h3>Lesson plans and print books</h3><p>Each book comes with activities for before, while and after reading, and can be printed as a paper book.</p></div>
     <div class="card s3"><h3>Reading stamp card</h3><p>There are no points to collect. Each book has four stamps (Listen, Read, Rebuild, Check), and four finished books in a step take you to the next step. The other books stay open.</p></div>
@@ -58,15 +58,15 @@
 <section id="v-parent" hidden></section>
 </main>
 
-<footer><div class="wrap">ReadStep (working title) prototype v0.8 · Stories and pictures were made for this prototype · Reading records stay on this device. · <a href="dev/">For contributors: see all content</a></div></footer>
+<footer><div class="wrap">ReadStep (working title) prototype v0.8 · Stories and pictures were made for this prototype · Reading records stay on this device. · <label class="l1">Word help: <select id="l1sel"><option value="">English only</option><option value="zh" lang="zh">中文</option><option value="ko" lang="ko">한국어</option></select></label> · <a href="dev/">For contributors: see all content</a></div></footer>
 <dialog id="dlg" aria-labelledby="dlgT"><div id="dlgBody"></div><form method="dialog" style="margin-top:20px;text-align:right"><button class="btn">Close</button></form></dialog>
 <div id="print"></div>
 
 <script src="data/pictures.js"></script>
 <script src="data/books.js"></script>
 <script src="js/chunk.js"></script>
-<!-- Optional home-language pack. English only by default; add ?l1=ko to the address to load the Korean pack. -->
-<script>(function(){var m=/[?&]l1=([a-z]{2})\b/.exec(location.search);if(m&&m[1]==='ko')document.write('<script src="data/words-ko.js"><\/script><script src="data/chunks-ko.js"><\/script>')})();</script>
+<!-- Optional home-language pack. English only by default. Chosen with "Word help" in the footer, or with ?l1=zh / ?l1=ko in the address (?l1=en turns it off). -->
+<script>(function(){var ok=["zh","ko"],m=/[?&]l1=([a-z]{2})\b/.exec(location.search),c=m?m[1]:null;try{if(m){if(ok.indexOf(c)<0)c="";localStorage.setItem("rs_l1",c)}else c=localStorage.getItem("rs_l1")}catch(e){}if(ok.indexOf(c)<0)return;window.RS_L1CODE=c;document.write('<script src="data/words-'+c+'.js"><\/script><script src="data/chunks-'+c+'.js"><\/script>')})();</script>
 <script src="js/app.js"></script>
 </body>
 </html>
