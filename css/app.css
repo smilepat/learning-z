@@ -179,3 +179,12 @@ footer a{color:var(--blue-d);font-weight:700}
 .endp{font:600 22px var(--read)}
 .wbtn{font:700 19px var(--read);min-height:44px;padding:0 8px;border-radius:8px;color:var(--ink)}
 .wbtn:hover{background:var(--blue-s)}
+
+/* 세부 레벨과 주제 고르기 (v0.9) */
+.lvbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 14px}
+.lvbar button{min-height:44px;padding:0 14px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:14px}
+.lvbar button small{font-weight:400;color:var(--mut);margin-left:2px}
+.lvbar button[aria-pressed=true]{border-color:var(--blue);background:var(--blue-s);box-shadow:inset 0 0 0 1.5px var(--blue)}
+.lvbar button[disabled]{opacity:.45;cursor:not-allowed}
+.lvbar .tpsel{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-weight:700;font-size:14px}
+.lvbar select{min-height:44px;border-radius:10px;border:1.5px solid var(--line);padding:0 10px;font:inherit;background:#fff}
