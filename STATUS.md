@@ -2,13 +2,15 @@
 project: learning-z
 status: active
 progress: 40
-updated: 2026-11-19
+updated: 2026-11-20
 pc: DESKTOP-J5NGRMC
 ---
 
 # learning-z — STATUS
 
 ## 🎯 한 줄 상태
+**v0.9 (2026-11-20)**: 1,500권 라이브러리 0단계(기반) 완료. 6단계 새 이름과 세부 레벨 20개, 낱말 목록, 파닉스 P1~P5, 배분 지도, 시리즈 설정, 검사기 v2. 다음은 시범 150권. 기획: `docs/LIBRARY_PLAN.md`. 장면 그림 저장소: smilepat/readstep-art(비공개).
+
 ReadStep(가칭) v0.8(2026-11-19에 GitHub와 공개 사이트에 올림). 대상은 중국 학습자를 위한 영어 읽기이고 아시아 영어 교육 시장에서 두루 쓸 제품이다(사용자, 2026-11-19). v0.8에서 화면과 책에 딸린 글을 모두 영어로 바꾸고 등장인물 이름을 영어 이름으로 바꿨다. 책 30권은 AI가 쓰고 AI가 검수한 초안이며, 사람의 줄별 검수는 아직 0줄이다.
 
 - 사이트: https://smilepat.github.io/learning-z/
