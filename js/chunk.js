@@ -63,7 +63,7 @@ function loose(s){const g=chunks(s),f=a=>a[0].w.toLowerCase();
    3단계까지: 낱말 네 개 이상인 문장 > 나머지. 같은 묶음 안에서는 책의 앞, 가운데, 끝에서 고른다. */
 function pick(book){const c=[];
   book.pages.forEach((p,pi)=>sentences(p[0]).forEach(s=>{if(s.talk)return;const u=units(p[0],s),ck=s.words.length>6;if(u.length>=3&&u.length<=7&&new Set(u).size>1)c.push({n:c.length,page:pi+1,chunked:ck,loose:ck&&loose(s),units:u,end:(p[0].slice(s.end).match(/^[.!?]+/)||['.'])[0],pics:p[1]})}));
-  const tier=x=>book.step>=4?(x.chunked&&!x.loose?0:!x.chunked&&x.units.length>=5?1:x.chunked?2:3):(x.units.length>=4&&!x.loose?0:1);
+  const tier=x=>(book.lv?book.lv>='2-4':book.step>=4)?(x.chunked&&!x.loose?0:!x.chunked&&x.units.length>=5?1:x.chunked?2:3):(x.units.length>=4&&!x.loose?0:1);
   const out=[];for(let t=0;t<4&&out.length<3;t++){const g=c.filter(x=>tier(x)===t),need=3-out.length;
     if(g.length<=need)out.push(...g);else if(need===1)out.push(g[Math.floor(g.length/2)]);else if(need===2)out.push(g[0],g[g.length-1]);else out.push(g[0],g[Math.floor(g.length/2)],g[g.length-1])}
   return out.sort((a,b)=>a.n-b.n)}

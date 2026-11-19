@@ -43,7 +43,7 @@ const stepDone=n=>BOOKS.filter(b=>b.step===n&&bookDone(b)).length>=needOf(n);
 const stamps=()=>BOOKS.reduce((n,b)=>{const r=S.books[b.id];return r?n+(r.listen?1:0)+(r.read?1:0)+(r.build?1:0)+(passed(b)?1:0):n},0);
 /* 막힌 곳 기록: 어느 책 어느 쪽에서 멈췄는지(확인 문제 첫 시도 오답, 다시 세우기 실수) */
 function stuck(id,p,s){S.stuck=S.stuck||[];S.stuck.unshift({id,p,s,t:Date.now()});S.stuck=S.stuck.slice(0,60);save()}
-function recStep(){const start=Math.min(STEPS.length,Math.max(1,(S.place&&+S.place.step)||1));let last=start;for(const st of STEPS){if(st.n<start)continue;if(!st.ready)break;last=st.n;if(!stepDone(st.n))return st.n}return last}
+function recStep(){const top=Math.max(1,...STEPS.filter(s=>s.ready).map(s=>s.n)),start=Math.min(top,Math.max(1,(S.place&&+S.place.step)||1));let last=start;for(const st of STEPS){if(st.n<start)continue;if(!st.ready)break;last=st.n;if(!stepDone(st.n))return st.n}return last}
 function drawStars(pop){const el=$('#starbox');el.innerHTML=IC.stamp+'<b>'+stamps()+'</b>';if(pop){el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop')}}
 function gain(why,id){S.log.unshift({t:Date.now(),why,id});S.log=S.log.slice(0,40);save();drawStars(true)}
 function mark(id,what){const r=rec(id);if(r[what])return;r[what]=true;gain(what==='listen'?'Listening stamp':'Reading stamp',id)}
@@ -72,12 +72,16 @@ function go(v){stopSpeak();stopRec();
   if(DRAW[v])DRAW[v]();window.scrollTo(0,0);setHash(v==='home'?'':(v==='library'||v==='teacher'||v==='parent'||v==='words')?v:null)}
 
 /* ---------- 서재 ---------- */
-let curStep=null;
+let curStep=null,curLv='',curTopic='';
+/* 세부 레벨 이름: "Level 1-3 · Word Spotter" (data/levels.js) */
+const lvName=b=>`Level ${b.lv||b.step} · ${STEPS[b.step-1].name}`;
 const chip=(on,t)=>`<span class="chip${on?' done':''}">${on?IC.ok:''}${t}</span>`;
 function bookCard(b){const r=S.books[b.id]||{},hw=S.assigned.includes(b.id);
-  return `<button class="card book" data-book="${b.id}"><span class="cover">${b.cover.map(svg).join('')}</span><span class="bt" lang="en">${esc(b.title)}</span><span class="meta">${b.type} · ${wc(b)} words</span><span class="chips">${hw?'<span class="chip hw">Homework</span>':''}${chip(r.listen,'Listen')}${chip(r.read,'Read')}${chip(r.build,'Rebuild')}${chip(passed(b),'Check')}</span></button>`}
+  return `<button class="card book" data-book="${b.id}"><span class="cover">${b.cover.map(svg).join('')}</span><span class="bt" lang="en">${esc(b.title)}</span><span class="meta">Level ${esc(b.lv||String(b.step))} · ${b.type} · ${wc(b)} words</span><span class="chips">${hw?'<span class="chip hw">Homework</span>':''}${chip(r.listen,'Listen')}${chip(r.read,'Read')}${chip(r.build,'Rebuild')}${chip(passed(b),'Check')}</span></button>`}
 DRAW.library=function(){const rs=recStep();if(curStep==null)curStep=rs;
-  const list=BOOKS.filter(b=>b.step===curStep),done=list.filter(bookDone).length,need=needOf(curStep),nTap=Object.keys(S.taps||{}).length;
+  const all=BOOKS.filter(b=>b.step===curStep),done=all.filter(bookDone).length,LVS=(window.RS_DATA.LEVELS||[]).filter(l=>l.step===curStep),tps=[...new Set(all.map(b=>b.topic).filter(Boolean))].sort();
+  if(curLv&&!LVS.some(l=>l.id===curLv))curLv='';if(curTopic&&!tps.includes(curTopic))curTopic='';
+  const list=all.filter(b=>(!curLv||b.lv===curLv)&&(!curTopic||b.topic===curTopic)).sort((x,y)=>String(x.lv).localeCompare(String(y.lv))),need=needOf(curStep),nTap=Object.keys(S.taps||{}).length;
   const next=BOOKS.filter(b=>b.step===rs).find(b=>!bookDone(b))||BOOKS.find(b=>b.step===rs);
   const weak=Object.entries(S.skills).filter(([,k])=>k.t>=2&&k.c/k.t<.6).map(([s])=>SK[s]);
   const hw=S.assigned.map(byId).filter(Boolean);
@@ -88,10 +92,11 @@ DRAW.library=function(){const rs=recStep();if(curStep==null)curStep=rs;
   <div class="card reco"><div><small>Today's book (picked by a simple rule: the first book in your step that you have not finished)</small><b lang="en" style="font:700 22px var(--read)">${esc(next.title)}</b> <span class="mut">· Step ${STEPS[rs-1].n} ${STEPS[rs-1].name}</span>${weak.length?`<small style="margin-top:4px">Practice more: ${weak.join(', ')}. When you read, tap words to check what they mean.</small>`:''}</div><button class="btn" data-book="${next.id}">Read it</button></div>
   ${hw.length?`<h2 class="sec" style="margin-top:20px">Homework from your teacher</h2><div class="books">${hw.map(bookCard).join('')}</div>`:''}
   <div class="steps" role="group" aria-label="Choose a step">${STEPS.map(st=>`<button data-step="${st.n}" aria-pressed="${st.n===curStep}" ${st.ready?'':'disabled'}><b>Step ${st.n} · ${st.name}${st.n===rs?' (my step)':''}</b><span>${st.desc}</span></button>`).join('')}</div>
+  ${LVS.length>1?`<div class="lvbar" role="group" aria-label="Choose a level in this step"><button data-lv="" aria-pressed="${!curLv}">All levels <small>${all.length}</small></button>${LVS.map(l=>{const n=all.filter(b=>b.lv===l.id).length;return `<button data-lv="${l.id}" aria-pressed="${curLv===l.id}" ${n?'':'disabled'}>${l.id} <small>${n}</small></button>`}).join('')}${tps.length>1?`<label class="tpsel">Topic <select id="tpSel"><option value="">All topics</option>${tps.map(t=>`<option ${t===curTopic?'selected':''}>${esc(t)}</option>`).join('')}</select></label>`:''}</div>`:''}
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><div class="prog" style="flex:1" role="progressbar" aria-valuemin="0" aria-valuemax="${need}" aria-valuenow="${Math.min(done,need)}" aria-label="Progress in this step"><i style="width:${need?Math.min(100,done/need*100):0}%"></i></div><span class="mut" style="font-size:14px">${done} finished · finish ${need} to move up</span></div>
-  <div class="books">${list.map(bookCard).join('')}</div>
+  <div class="books">${list.length?list.map(bookCard).join(''):'<p class="mut">No books here yet.</p>'}</div>
   <p class="note">Finish ${need} books in a step (read to the end and pass the Check) and the next step becomes your step. You can still read the other books, and books in any step, at any time. These books are drafts written and checked by AI (books fully checked by a person: ${BOOKS.filter(x=>HUMAN.has(x.id)).length}).</p></div>`;
-  $('#sendRec').onclick=sendRec;$('#getHw').onclick=getHw};
+  $('#sendRec').onclick=sendRec;$('#getHw').onclick=getHw;const ts=$('#tpSel');if(ts)ts.onchange=()=>{curTopic=ts.value;DRAW.library();const n=$('#tpSel');if(n)n.focus()}};
 
 /* ---------- 읽기 ---------- */
 let R=null;
@@ -106,7 +111,7 @@ function wordsHtml(text,b,fx,ck){const st=ck&&CH?CH.starts(text):null;let out=''
   return out+esc(text.slice(last))}
 function drawReader(keep){const {b,i}=R,[text,pp]=b.pages[i],n=b.pages.length,last=i===n-1;let ch='';for(let k=i;k>=0;k--)if(b.pages[k][2]){ch=b.pages[k][2];break}
   $('#v-reader').innerHTML=`<div class="wrap narrow">
-  <div class="rhead"><button class="btn ghost sm" data-go="library">← Library</button><div><h1 class="rt" lang="en">${esc(b.title)}</h1><p class="mut">Step ${b.step} ${STEPS[b.step-1].name}${HUMAN.has(b.id)?'':' · AI-reviewed only'}</p></div><span class="pg" aria-label="Page ${i+1} of ${n}">${i+1} / ${n}</span></div>
+  <div class="rhead"><button class="btn ghost sm" data-go="library">← Library</button><div><h1 class="rt" lang="en">${esc(b.title)}</h1><p class="mut">${lvName(b)}${HUMAN.has(b.id)?'':' · AI-reviewed only'}</p></div><span class="pg" aria-label="Page ${i+1} of ${n}">${i+1} / ${n}</span></div>
   <div class="dots" aria-hidden="true">${b.pages.map((_,k)=>`<i class="${k===i?'on':R.seen.has(k)?'seen':''}"></i>`).join('')}</div>
   ${ch?'<p class="ch" lang="en">'+esc(ch)+'</p>':''}${pics(pp)}
   <p class="rtext${text.length>70?' long':''}" lang="en" id="rtext">${wordsHtml(text,b,R.fx,S.chunk)}</p>
@@ -257,17 +262,17 @@ DRAW.teacher=function(){const me=myStats(),real=Object.values(S.cls||{}).map(cls
   <div class="card">${evHtml()}</div>
   <div class="card"><h2 style="font-size:20px;margin-bottom:8px">Good to know</h2><ul class="list"><li>Students with a Check average below 70% get a "Needs help" mark. 70% is a temporary value and can be changed.</li><li>Books you set as homework appear at the top of the student's library.</li><li>The "Review" column in the book table shows whether a person has checked the whole book. Right now it is ${BOOKS.filter(b=>HUMAN.has(b.id)).length} of ${BOOKS.length} books.</li><li>The pass mark (4 of 5 questions), moving up (4 books in a step), the step levels and the step-finder rule are temporary rules that this service set for itself.</li><li>Rebuild sentences and chunk marks are made by a rule. No person has edited them.</li><li>There is no server. A student makes a code with "Send my record", and you paste it into "Import student records". Importing the same name again replaces the old record.</li><li>Reading time is the time a book is open, counted up to 10 minutes at a time (a temporary rule so that time away is not counted).</li></ul></div></div>
   <h2 class="sec">Books</h2>
-  <div class="card tablebox"><table><thead><tr><th scope="col">Book</th><th scope="col">Step</th><th scope="col">Words</th><th scope="col">Focus</th><th scope="col">Review</th><th scope="col">Actions</th></tr></thead><tbody>
-  ${BOOKS.map(b=>{const on=S.assigned.includes(b.id);return `<tr><td><b lang="en" style="font-family:var(--read)">${esc(b.title)}</b></td><td>Step ${b.step}</td><td>${wc(b)}</td><td>${b.focus?esc(b.focus.label):b.type}</td><td>${rvChip(b.id)}</td><td><button class="btn sm ${on?'':'ghost'}" data-assign="${b.id}" aria-pressed="${on}">${on?'Remove homework':'Set as homework'}</button><button class="btn sm ghost" data-plan="${b.id}">Lesson plan</button><button class="btn sm ghost" data-print="${b.id}">Print book</button></td></tr>`}).join('')}</tbody></table></div></div>`;
+  <div class="card tablebox"><table><thead><tr><th scope="col">Book</th><th scope="col">Level</th><th scope="col">Words</th><th scope="col">Focus</th><th scope="col">Review</th><th scope="col">Actions</th></tr></thead><tbody>
+  ${BOOKS.map(b=>{const on=S.assigned.includes(b.id);return `<tr><td><b lang="en" style="font-family:var(--read)">${esc(b.title)}</b></td><td>${esc(b.lv||String(b.step))}</td><td>${wc(b)}</td><td>${b.focus?esc(b.focus.label):b.type}</td><td>${rvChip(b.id)}</td><td><button class="btn sm ${on?'':'ghost'}" data-assign="${b.id}" aria-pressed="${on}">${on?'Remove homework':'Set as homework'}</button><button class="btn sm ghost" data-plan="${b.id}">Lesson plan</button><button class="btn sm ghost" data-print="${b.id}">Print book</button></td></tr>`}).join('')}</tbody></table></div></div>`;
   $('#addRec').onclick=addRec;$('#mkHw').onclick=mkHw};
 function plan(id){const b=byId(id),words=[...new Set(b.pages.flatMap(p=>p[0].toLowerCase().match(/[a-z']+/g)))].filter(w=>G[w]).slice(0,8);
-  $('#dlgBody').innerHTML=`<h2 id="dlgT">Lesson plan · <span lang="en">${esc(b.title)}</span></h2><p class="mut">Step ${b.step} ${STEPS[b.step-1].name} · ${wc(b)} words · Times are suggestions and can be changed. This book ${HUMAN.has(b.id)?'has been checked by a person':'has only been checked by AI, not yet by a person'}.</p>
+  $('#dlgBody').innerHTML=`<h2 id="dlgT">Lesson plan · <span lang="en">${esc(b.title)}</span></h2><p class="mut">${lvName(b)} · ${wc(b)} words · Times are suggestions and can be changed. This book ${HUMAN.has(b.id)?'has been checked by a person':'has only been checked by AI, not yet by a person'}.</p>
   <h3>Before reading (about 5 min)</h3><ul class="list"><li>Look at the cover pictures and say what the book may be about.</li><li>Key words: ${words.map(w=>`<b>${w}</b> (${esc(G[w])})`).join('; ')}</li></ul>
   <h3>While reading (about 10 min)</h3><ul class="list"><li>Listen to the whole book once.</li><li>Listen to one page at a time and read after it.</li>${b.focus?`<li>Find the words with the ${esc(b.focus.label)}: <span lang="en">${b.focus.words.join(', ')}</span></li>`:'<li>Tap new words to check what they mean, and make a note of them.</li>'}</ul>
   <h3>After reading (about 10 min)</h3><ul class="list">${b.quiz.filter(q=>q.s!=='vocab').slice(0,3).map(q=>`<li lang="en">${esc(q.q)}</li>`).join('')}<li>Mix up sentence cards and put them back in the order of the book.</li></ul>`;
   $('#dlg').showModal()}
 function printBook(id){const b=byId(id);
-  $('#print').innerHTML=`<h1 lang="en">${esc(b.title)}</h1><p>Step ${b.step} ${STEPS[b.step-1].name} · Name: ____________</p><p style="font-size:12px">ReadStep prototype · ${HUMAN.has(b.id)?'Checked by a person':'Draft, checked by AI only'}</p><div class="pp">${b.pages.map((p,k)=>`<div>${p[2]?'<b lang="en">'+esc(p[2])+'</b>':''}${pics(p[1])}<p lang="en">${esc(p[0])}</p><small>${k+1}</small></div>`).join('')}</div><div class="pq"><h2>Read and answer</h2><ol>${b.quiz.map(q=>`<li><span lang="en">${esc(q.q)}</span><br>${q.o.map((o,k)=>'('+(k+1)+') '+esc(o)).join('&nbsp;&nbsp;&nbsp;')}</li>`).join('')}</ol></div>`;
+  $('#print').innerHTML=`<h1 lang="en">${esc(b.title)}</h1><p>${lvName(b)} · Name: ____________</p><p style="font-size:12px">ReadStep prototype · ${HUMAN.has(b.id)?'Checked by a person':'Draft, checked by AI only'}</p><div class="pp">${b.pages.map((p,k)=>`<div>${p[2]?'<b lang="en">'+esc(p[2])+'</b>':''}${pics(p[1])}<p lang="en">${esc(p[0])}</p><small>${k+1}</small></div>`).join('')}</div><div class="pq"><h2>Read and answer</h2><ol>${b.quiz.map(q=>`<li><span lang="en">${esc(q.q)}</span><br>${q.o.map((o,k)=>'('+(k+1)+') '+esc(o)).join('&nbsp;&nbsp;&nbsp;')}</li>`).join('')}</ol></div>`;
   window.print()}
 
 /* ---------- 기록 코드와 숙제 코드: 서버 없이 기기 사이에 전달 ---------- */
@@ -300,8 +305,8 @@ DRAW.parent=function(){const me=myStats(),fmt=t=>new Date(t).toLocaleString('en-
   $('#reset').onclick=()=>{if(confirm('Erase all reading records, stamps and the word book on this device? This cannot be undone.')){S=blank();save();curStep=null;drawStars();DRAW.parent()}}};
 
 /* ---------- 이벤트 ---------- */
-document.addEventListener('click',e=>{const t=e.target.closest('[data-go],[data-book],[data-step],[data-assign],[data-plan],[data-print],[data-del],[data-place],[data-in],[data-out],[data-say],[data-show],.w,.opt');if(!t)return;const d=t.dataset;
-  if(d.in!=null)moveUnit(+d.in,true);else if(d.out!=null)moveUnit(+d.out,false);else if(d.say)speak(d.say,{rate:.75});else if(d.show)showKo(t);else if(d.go)go(d.go);else if(d.book)openBook(d.book);else if(d.step){curStep=+d.step;DRAW.library()}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-go],[data-book],[data-step],[data-lv],[data-assign],[data-plan],[data-print],[data-del],[data-place],[data-in],[data-out],[data-say],[data-show],.w,.opt');if(!t)return;const d=t.dataset;
+  if(d.in!=null)moveUnit(+d.in,true);else if(d.out!=null)moveUnit(+d.out,false);else if(d.say)speak(d.say,{rate:.75});else if(d.show)showKo(t);else if(d.go)go(d.go);else if(d.book)openBook(d.book);else if(d.step){curStep=+d.step;curLv='';curTopic='';DRAW.library()}else if(d.lv!=null&&t.matches('.lvbar button')){curLv=d.lv;DRAW.library();const f=$(`.lvbar [data-lv="${curLv}"]`);if(f)f.focus()}
   else if(d.assign){const k=S.assigned.indexOf(d.assign);k<0?S.assigned.push(d.assign):S.assigned.splice(k,1);save();DRAW.teacher();const b=$(`[data-assign="${d.assign}"]`);if(b)b.focus()}
   else if(d.del){delete S.cls[d.del];save();DRAW.teacher()}else if(d.place)startPlace();else if(d.plan)plan(d.plan);else if(d.print)printBook(d.print);else if(t.classList.contains('w'))tapWord(t);else if(t.classList.contains('opt'))(t.classList.contains('popt')?ppick:pick)(t)});
 document.addEventListener('keydown',e=>{const t=e.target;
