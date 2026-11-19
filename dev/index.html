@@ -98,6 +98,8 @@ footer{margin-top:40px}
 <script src="../data/books.js"></script>
 <script src="../data/project.js"></script>
 <script src="../data/review.js"></script>
+<script src="../js/chunk.js"></script>
+<script src="../data/chunks-ko.js"></script>
 <script src="../js/check.js"></script>
 <script>
 (()=>{
@@ -141,7 +143,7 @@ const bookCard=b=>{const r=row(b.id),text=(b.title+' '+b.ko+' '+b.id+' '+b.pages
   return `<article class="card bk" id="b-${esc(b.id)}" data-step="${b.step}" data-text="${esc(text)}">
   <div class="bkh"><div class="t" data-rk="${esc(b.id)}|t" data-rl="${esc(b.id)} 제목" data-rt="${esc(b.title+' / '+b.ko)}"><b lang="en">${esc(b.title)}</b> <span class="mut">${esc(b.ko)}</span></div><div class="chips">${rvChip(b.id)}<span class="chip">${esc(b.id)}</span><span class="chip">${esc(b.type)}</span><span class="chip${r.inRange===false?' help':''}">낱말 ${r.words}</span><span class="chip${r.pgOk===false?' help':''}">${b.pages.length}쪽</span><span class="chip">풀이 ${r.gloss}%</span>${b.focus?`<span class="chip hw">${esc(b.focus.label)}</span>`:''}<a class="btn ghost sm" style="text-decoration:none" href="../#book/${esc(b.id)}">앱에서 열기</a></div></div>
   <div class="pgs">${b.pages.map((p,i)=>`<div class="pgc" data-rk="${esc(b.id)}|p|${i+1}" data-rl="${esc(b.id)} ${i+1}쪽" data-rt="${esc(p[0])}"><small>${i+1}쪽${p[2]?' · '+esc(p[2]):''}</small><div class="pics">${(p[1]||[]).map(svg).join('')}</div><p lang="en">${mark(p[0],b)}</p></div>`).join('')}</div>
-  <h4>퀴즈 (✓ 표시가 정답)</h4><ol class="qz">${b.quiz.map((q,i)=>`<li data-rk="${esc(b.id)}|q|${i+1}" data-rl="${esc(b.id)} 퀴즈 ${i+1}" data-rt="${esc(qt(q))}"><span lang="${q.s==='vocab'?'ko':'en'}" style="font-weight:700">${esc(q.q)}</span> <span class="chip">${SK[q.s]||esc(q.s)}</span> <span class="mut" style="font-size:13px">근거 ${q.p}쪽</span><br>${opts(q)}</li>`).join('')}</ol></article>`};
+  <h4>퀴즈 (✓ 표시가 정답)</h4><ol class="qz">${b.quiz.map((q,i)=>`<li data-rk="${esc(b.id)}|q|${i+1}" data-rl="${esc(b.id)} 퀴즈 ${i+1}" data-rt="${esc(qt(q))}"><span lang="${q.s==='vocab'?'ko':'en'}" style="font-weight:700">${esc(q.q)}</span> <span class="chip">${SK[q.s]||esc(q.s)}</span> <span class="mut" style="font-size:13px">근거 ${q.p}쪽</span><br>${opts(q)}</li>`).join('')}</ol>${window.RS_CHUNK?`<h4>다시 세우기 문장 (규칙으로 자동 선택, / 는 조각 경계)</h4><ul class="plain">${window.RS_CHUNK.pick(b).map(x=>`<li lang="en" style="font-family:var(--read)">${x.page}쪽: ${x.units.map(esc).join(' <span class="mut">/</span> ')}${esc(x.end)}</li>`).join('')||'<li class="mut">고를 문장이 없음</li>'}</ul>`:''}${window.RS_CHUNK&&window.RS_KO&&window.RS_KO.books[b.id]?`<h4>덩어리별 우리말 뜻 (시범, AI 초안${window.RS_KO.reviewed.includes(b.id)?', 사람 검수함':', 사람 검수 전'})</h4><ul class="plain">${b.pages.map((p,pi)=>`<li>${pi+1}쪽: ${window.RS_CHUNK.lines(p[0]).map(c=>`<span lang="en" style="font-family:var(--read)">${esc(c.t)}</span> <span class="mut">(${esc(window.RS_KO.books[b.id][c.k]||'풀이 없음')})</span>`).join(' / ')}</li>`).join('')}</ul>`:''}</article>`};
 const sBooks=`<section id="books"><div class="wrap"><h2>책 전체</h2>
 <p class="lead">모든 책의 본문, 그림, 퀴즈입니다. 1단계 책은 이번에 배울 소리 글자를 보라색으로 표시했습니다. 검수 상태: 사람이 끝까지 검수한 책 ${nHuman}권, AI 검수만 거친 책 ${BOOKS.length-nHuman}권.</p>
 <div class="filters" role="group" aria-label="단계 고르기"><button data-f="0" aria-pressed="true">전체</button>${STEPS.map(s=>`<button data-f="${s.n}" aria-pressed="false">${s.n}단계</button>`).join('')}<input type="text" id="bq" placeholder="책, 본문, 퀴즈에서 찾기" aria-label="책 내용에서 찾기"><span class="mut" id="bcount"></span></div>
@@ -180,7 +182,7 @@ ${gKeys.map(w=>{const u=glossUse[w]?[...glossUse[w]]:[];return `<tr data-text="$
 
 /* 7. 화면 */
 const first=BOOKS[0]?BOOKS[0].id:'';
-const screens=[['소개','../','서비스 소개와 역할별 입구'],['내 서재','../#library','단계별 책, 오늘의 추천, 숙제, 기록 보내기'],['단계 진단','../#place','시작 단계 찾기'],['책 읽기','../#book/'+first,'듣기, 낱말 뜻, 녹음, 소리 글자 표시'],['퀴즈','../#quiz/'+first,'5문항, 틀리면 다시 듣기'],['선생님','../#teacher','학급 현황, 숙제 지정, 수업안, 인쇄용 책'],['학부모','../#parent','읽기 기록, 집에서 돕는 방법'],['책 검사 도구','../tools/check.html','책 데이터 오류 검사']];
+const screens=[['소개','../','서비스 소개와 역할별 입구'],['내 서재','../#library','단계별 책, 오늘의 추천, 숙제, 기록 보내기'],['단계 진단','../#place','시작 단계 찾기'],['책 읽기','../#book/'+first,'듣기, 낱말 뜻, 끊어 읽기, 녹음, 소리 글자 표시'],['다시 세우기','../#build/'+first,'읽은 문장을 조각으로 다시 세움'],['확인 문제','../#quiz/'+first,'5문항, 틀리면 그 쪽을 다시 봄'],['내 낱말장','../#words','읽다가 눌러 본 낱말'],['선생님','../#teacher','학급 현황, 숙제 지정, 수업안, 인쇄용 책'],['학부모','../#parent','읽기 기록, 집에서 돕는 방법'],['책 검사 도구','../tools/check.html','책 데이터 오류 검사']];
 const sScreens=`<section id="screens"><div class="wrap"><h2>화면</h2>
 <p class="lead">화면마다 바로 들어가는 주소입니다. 책 읽기와 퀴즈는 주소 끝의 책 ID를 바꾸면 다른 책이 열립니다.</p>
 <div class="card tablebox" style="margin-top:12px"><table><thead><tr><th scope="col">화면</th><th scope="col">들어 있는 것</th><th scope="col">주소</th></tr></thead><tbody>${screens.map(s=>`<tr><td><b>${s[0]}</b></td><td>${s[2]}</td><td><a href="${esc(s[1])}">${esc(s[1].replace('../','/'))}</a></td></tr>`).join('')}</tbody></table></div>
@@ -215,7 +217,7 @@ $$('.filters button[data-f]').forEach(b=>b.onclick=()=>{fStep=+b.dataset.f;$$('.
 $('#bq').oninput=filterBooks;filterBooks();
 function filterGloss(){const q=$('#gq').value.trim().toLowerCase();let n=0;$$('#gbody tr').forEach(tr=>{const ok=!q||tr.dataset.text.includes(q);tr.hidden=!ok;if(ok)n++});$('#gcount').textContent=n+'개 표시'}
 $('#gq').oninput=filterGloss;filterGloss();
-window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,humanBooks:nHuman,review:RV?{items:RV.items.length,applied:rvCount('applied'),human:rvCount('human'),rejected:rvCount('rejected')}:null,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
+window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,builds:window.RS_CHUNK?BOOKS.map(b=>window.RS_CHUNK.pick(b).length):null,koBooks:window.RS_KO?Object.keys(window.RS_KO.books).length:0,koChunks:window.RS_KO?Object.values(window.RS_KO.books).reduce((n,o)=>n+Object.keys(o).length,0):0,humanBooks:nHuman,review:RV?{items:RV.items.length,applied:rvCount('applied'),human:rvCount('human'),rejected:rvCount('rejected')}:null,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
 if(location.hash.length>1){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t)t.scrollIntoView()}
 })();
 </script>
