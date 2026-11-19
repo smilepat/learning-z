@@ -99,6 +99,8 @@ footer{margin-top:40px}
 <script src="../data/project.js"></script>
 <script src="../data/review.js"></script>
 <script src="../js/chunk.js"></script>
+<script src="../data/words-zh.js"></script>
+<script src="../data/chunks-zh.js"></script>
 <script src="../data/words-ko.js"></script>
 <script src="../data/chunks-ko.js"></script>
 <script src="../js/check.js"></script>
@@ -140,12 +142,13 @@ ${C.warnings.length?`<div class="card" style="margin-top:12px"><h3 style="margin
 </div></section>`;
 
 /* 2. 책 전체 */
-const KT=b=>((window.RS_L1||{}).titles||{})[b.id]||'';
+const PK=window.RS_PACKS||{},KT=b=>Object.values(PK).map(p=>(p.titles||{})[b.id]).filter(Boolean).join(' · ');
+const packChunks=b=>window.RS_CHUNK?Object.values(PK).filter(p=>p.chunks&&p.chunks[b.id]).map(p=>`<h4>덩어리별 뜻: ${esc(p.name)} (시범, AI 초안${(p.chunksReviewed||[]).includes(b.id)?', 사람 검수함':', 사람 검수 전'})</h4><ul class="plain">${b.pages.map((pg,pi)=>`<li>${pi+1}쪽: ${window.RS_CHUNK.lines(pg[0]).map(c=>`<span lang="en" style="font-family:var(--read)">${esc(c.t)}</span> <span class="mut" lang="${esc(p.code)}">(${esc(p.chunks[b.id][c.k]||'풀이 없음')})</span>`).join(' / ')}</li>`).join('')}</ul>`).join(''):'';
 const bookCard=b=>{const r=row(b.id),text=(b.title+' '+KT(b)+' '+b.id+' '+b.pages.map(p=>p[0]).join(' ')+' '+b.quiz.map(q=>q.q+' '+q.o.join(' ')).join(' ')).toLowerCase();
   return `<article class="card bk" id="b-${esc(b.id)}" data-step="${b.step}" data-text="${esc(text)}">
   <div class="bkh"><div class="t" data-rk="${esc(b.id)}|t" data-rl="${esc(b.id)} 제목" data-rt="${esc(b.title)}"><b lang="en">${esc(b.title)}</b> <span class="mut">${esc(KT(b))}</span></div><div class="chips">${rvChip(b.id)}<span class="chip">${esc(b.id)}</span><span class="chip">${esc(b.type)}</span><span class="chip${r.inRange===false?' help':''}">낱말 ${r.words}</span><span class="chip${r.pgOk===false?' help':''}">${b.pages.length}쪽</span><span class="chip">풀이 ${r.gloss}%</span>${b.focus?`<span class="chip hw">${esc(b.focus.label)}</span>`:''}<a class="btn ghost sm" style="text-decoration:none" href="../#book/${esc(b.id)}">앱에서 열기</a></div></div>
   <div class="pgs">${b.pages.map((p,i)=>`<div class="pgc" data-rk="${esc(b.id)}|p|${i+1}" data-rl="${esc(b.id)} ${i+1}쪽" data-rt="${esc(p[0])}"><small>${i+1}쪽${p[2]?' · '+esc(p[2]):''}</small><div class="pics">${(p[1]||[]).map(svg).join('')}</div><p lang="en">${mark(p[0],b)}</p></div>`).join('')}</div>
-  <h4>퀴즈 (✓ 표시가 정답)</h4><ol class="qz">${b.quiz.map((q,i)=>`<li data-rk="${esc(b.id)}|q|${i+1}" data-rl="${esc(b.id)} 퀴즈 ${i+1}" data-rt="${esc(qt(q))}"><span lang="en" style="font-weight:700">${esc(q.q)}</span> <span class="chip">${SK[q.s]||esc(q.s)}</span> <span class="mut" style="font-size:13px">근거 ${q.p}쪽</span><br>${opts(q)}</li>`).join('')}</ol>${window.RS_CHUNK?`<h4>다시 세우기 문장 (규칙으로 자동 선택, / 는 조각 경계)</h4><ul class="plain">${window.RS_CHUNK.pick(b).map(x=>`<li lang="en" style="font-family:var(--read)">${x.page}쪽: ${x.units.map(esc).join(' <span class="mut">/</span> ')}${esc(x.end)}</li>`).join('')||'<li class="mut">고를 문장이 없음</li>'}</ul>`:''}${window.RS_CHUNK&&(window.RS_L1&&window.RS_L1.chunks)&&window.RS_L1.chunks[b.id]?`<h4>덩어리별 우리말 뜻 (시범, AI 초안${window.RS_L1.chunksReviewed.includes(b.id)?', 사람 검수함':', 사람 검수 전'})</h4><ul class="plain">${b.pages.map((p,pi)=>`<li>${pi+1}쪽: ${window.RS_CHUNK.lines(p[0]).map(c=>`<span lang="en" style="font-family:var(--read)">${esc(c.t)}</span> <span class="mut">(${esc(window.RS_L1.chunks[b.id][c.k]||'풀이 없음')})</span>`).join(' / ')}</li>`).join('')}</ul>`:''}</article>`};
+  <h4>퀴즈 (✓ 표시가 정답)</h4><ol class="qz">${b.quiz.map((q,i)=>`<li data-rk="${esc(b.id)}|q|${i+1}" data-rl="${esc(b.id)} 퀴즈 ${i+1}" data-rt="${esc(qt(q))}"><span lang="en" style="font-weight:700">${esc(q.q)}</span> <span class="chip">${SK[q.s]||esc(q.s)}</span> <span class="mut" style="font-size:13px">근거 ${q.p}쪽</span><br>${opts(q)}</li>`).join('')}</ol>${window.RS_CHUNK?`<h4>다시 세우기 문장 (규칙으로 자동 선택, / 는 조각 경계)</h4><ul class="plain">${window.RS_CHUNK.pick(b).map(x=>`<li lang="en" style="font-family:var(--read)">${x.page}쪽: ${x.units.map(esc).join(' <span class="mut">/</span> ')}${esc(x.end)}</li>`).join('')||'<li class="mut">고를 문장이 없음</li>'}</ul>`:''}${packChunks(b)}</article>`};
 const sBooks=`<section id="books"><div class="wrap"><h2>책 전체</h2>
 <p class="lead">모든 책의 본문, 그림, 퀴즈입니다. 1단계 책은 이번에 배울 소리 글자를 보라색으로 표시했습니다. 검수 상태: 사람이 끝까지 검수한 책 ${nHuman}권, AI 검수만 거친 책 ${BOOKS.length-nHuman}권.</p>
 <div class="filters" role="group" aria-label="단계 고르기"><button data-f="0" aria-pressed="true">전체</button>${STEPS.map(s=>`<button data-f="${s.n}" aria-pressed="false">${s.n}단계</button>`).join('')}<input type="text" id="bq" placeholder="책, 본문, 퀴즈에서 찾기" aria-label="책 내용에서 찾기"><span class="mut" id="bcount"></span></div>
@@ -176,10 +179,10 @@ const sPics=`<section id="pictures"><div class="wrap"><h2>그림</h2>
 /* 6. 낱말 풀이 */
 const gKeys=Object.keys(G).sort(),unusedG=gKeys.filter(w=>!glossUse[w]);
 const sGloss=`<section id="glossary"><div class="wrap"><h2>낱말 풀이</h2>
-<p class="lead">학생이 낱말을 누르면 나오는 쉬운 영어 풀이입니다(AI 초안, 사람 검수 전). 오른쪽 칸은 한국어 묶음(선택 언어)의 뜻입니다. 모두 ${gKeys.length}개이고, 책에 쓰이지 않는 풀이는 ${unusedG.length}개입니다.</p>
+<p class="lead">학생이 낱말을 누르면 나오는 쉬운 영어 풀이입니다(AI 초안, 사람 검수 전). 오른쪽 두 칸은 선택 언어 묶음(중국어, 한국어)의 뜻입니다. 중국어는 AI 초안이며 중국어를 모국어로 쓰는 사람이 보지 않았습니다. 모두 ${gKeys.length}개이고, 책에 쓰이지 않는 풀이는 ${unusedG.length}개입니다.</p>
 <div class="filters"><input type="text" id="gq" placeholder="낱말이나 뜻으로 찾기" aria-label="낱말 풀이에서 찾기"><span class="mut" id="gcount"></span></div>
-<div class="card tablebox"><table><thead><tr><th scope="col">낱말</th><th scope="col">영어 풀이</th><th scope="col">한국어 (선택 묶음)</th><th scope="col">쓰인 책</th></tr></thead><tbody id="gbody">
-${gKeys.map(w=>{const u=glossUse[w]?[...glossUse[w]]:[];return `<tr data-text="${esc((w+' '+G[w]).toLowerCase())}"><td lang="en" style="font-family:var(--read);font-weight:700">${esc(w)}</td><td lang="en">${esc(G[w])}</td><td>${esc(((window.RS_L1||{}).words||{})[w]||'')}</td><td>${u.length?u.length+'권 <span class="mut" style="font-size:12px">'+esc(u.join(', '))+'</span>':'<span class="chip help">안 쓰임</span>'}</td></tr>`}).join('')}</tbody></table></div>
+<div class="card tablebox"><table><thead><tr><th scope="col">낱말</th><th scope="col">영어 풀이</th><th scope="col">中文 (선택 묶음)</th><th scope="col">한국어 (선택 묶음)</th><th scope="col">쓰인 책</th></tr></thead><tbody id="gbody">
+${gKeys.map(w=>{const u=glossUse[w]?[...glossUse[w]]:[];return `<tr data-text="${esc((w+' '+G[w]).toLowerCase())}"><td lang="en" style="font-family:var(--read);font-weight:700">${esc(w)}</td><td lang="en">${esc(G[w])}</td><td lang="zh">${esc(((PK.zh||{}).words||{})[w]||'')}</td><td>${esc(((PK.ko||{}).words||{})[w]||'')}</td><td>${u.length?u.length+'권 <span class="mut" style="font-size:12px">'+esc(u.join(', '))+'</span>':'<span class="chip help">안 쓰임</span>'}</td></tr>`}).join('')}</tbody></table></div>
 </div></section>`;
 
 /* 7. 화면 */
@@ -219,7 +222,7 @@ $$('.filters button[data-f]').forEach(b=>b.onclick=()=>{fStep=+b.dataset.f;$$('.
 $('#bq').oninput=filterBooks;filterBooks();
 function filterGloss(){const q=$('#gq').value.trim().toLowerCase();let n=0;$$('#gbody tr').forEach(tr=>{const ok=!q||tr.dataset.text.includes(q);tr.hidden=!ok;if(ok)n++});$('#gcount').textContent=n+'개 표시'}
 $('#gq').oninput=filterGloss;filterGloss();
-window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,builds:window.RS_CHUNK?BOOKS.map(b=>window.RS_CHUNK.pick(b).length):null,koBooks:(window.RS_L1&&window.RS_L1.chunks)?Object.keys(window.RS_L1.chunks).length:0,koChunks:(window.RS_L1&&window.RS_L1.chunks)?Object.values(window.RS_L1.chunks).reduce((n,o)=>n+Object.keys(o).length,0):0,humanBooks:nHuman,review:RV?{items:RV.items.length,applied:rvCount('applied'),human:rvCount('human'),rejected:rvCount('rejected')}:null,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
+window.__dev={books:$$('.bk[data-step]').length,pages:$$('#books .pgc').length,quiz:$$('#books .qz li').length,answers:$$('#books .qz .ans').length,pictures:$$('#pictures .pict > div').length,glossary:$$('#gbody tr').length,placement:$$('#placement .bk').length,screens:$$('#screens tbody tr').length,builds:window.RS_CHUNK?BOOKS.map(b=>window.RS_CHUNK.pick(b).length):null,packs:Object.fromEntries(Object.entries(PK).map(([c,p])=>[c,{words:Object.keys(p.words||{}).length,titles:Object.keys(p.titles||{}).length,chunks:Object.values(p.chunks||{}).reduce((n,o)=>n+Object.keys(o).length,0)}])),humanBooks:nHuman,review:RV?{items:RV.items.length,applied:rvCount('applied'),human:rvCount('human'),rejected:rvCount('rejected')}:null,missingPics:$$('.pgc .chip.help').length,unusedPics,unusedGloss:unusedG.length,check:{errors:C.errors.length,warnings:C.warnings.length}};
 if(location.hash.length>1){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t)t.scrollIntoView()}
 })();
 </script>
