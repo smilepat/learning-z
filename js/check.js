@@ -27,6 +27,10 @@ for(const b of BOOKS){
   if(b.quiz&&!b.quiz.some(q=>q.s==='vocab'))W('낱말 문제가 없습니다.');
   if(b.focus){for(const w of b.focus.words){if(!all.includes(w))E(`소리 글자 낱말 "${w}"가 본문에 없습니다.`);if(!w.includes(b.focus.letter))E(`소리 글자 "${b.focus.letter}"가 "${w}"에 없습니다.`)}}
   else if(b.step===1)W('1단계 책인데 소리 글자(focus)가 없습니다.');
+  if(window.RS_CHUNK){const nb=window.RS_CHUNK.pick(b).length;if(nb<2)W(`다시 세우기에 쓸 문장이 ${nb}개뿐입니다(조각이 3~7개인 문장이 필요).`);
+    const ko=((window.RS_KO||{}).books||{})[b.id];
+    if(ko){const used=new Set();b.pages.forEach((p,pi)=>window.RS_CHUNK.lines(p[0]).forEach(c=>{used.add(c.k);if(!ko[c.k])W(`${pi+1}쪽 덩어리 "${c.k}"의 우리말 풀이가 없습니다(data/chunks-ko.js).`)}));
+      Object.keys(ko).forEach(k=>{if(!used.has(k))W(`쓰이지 않는 덩어리 풀이 "${k}" (끊어 읽기 규칙이나 본문이 바뀌었을 수 있음).`)})}}
   const inRange=all.length>=st.min&&all.length<=st.max,pgOk=!st.pages||(b.pages.length>=st.pages[0]&&b.pages.length<=st.pages[1]);
   if(!inRange)W(`낱말 수 ${all.length}개가 ${b.step}단계 기준(${st.min}~${st.max})을 벗어났습니다.`);
   if(!pgOk)W(`쪽 수 ${b.pages.length}쪽이 ${b.step}단계 기준(${st.pages[0]}~${st.pages[1]})을 벗어났습니다.`);
