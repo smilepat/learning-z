@@ -1,10 +1,11 @@
 /* 덩어리별 우리말 풀이(직독직해). 시범으로 세 권만 넣었다.
-   모두 AI가 쓴 초안이며 사람 검수 전이다. 사람이 고치면 reviewed 에 책 id 를 넣는다.
+   모두 AI가 쓴 초안이며 사람 검수 전이다. 사람이 고치면 chunksReviewed 에 책 id 를 넣는다.
+   한국어 묶음(data/words-ko.js)의 일부다. 기본 화면에서는 읽지 않고 주소에 ?l1=ko 를 붙였을 때만 읽는다.
    열쇠는 js/chunk.js 가 만든 덩어리의 낱말(쉼표와 마침표 제외)이다. 끊어 읽기 규칙이 바뀌어 덩어리가 달라지면
    검사 도구(tools/check.html)가 "풀이가 없는 덩어리"와 "쓰이지 않는 풀이"를 알려 준다. */
-window.RS_KO={
-reviewed:[],
-books:{
+window.RS_L1=Object.assign(window.RS_L1||{},{code:'ko',
+chunksReviewed:[],
+chunks:{
  'red-bus': {
  'I see a red bus': '빨간 버스가 보여요',
  'The bus is big and red': '버스는 크고 빨개요',
@@ -17,22 +18,22 @@ books:{
  'I like my red bus': '나는 내 빨간 버스가 좋아요'
  },
  'lost-ball': {
- 'Mina had a new blue ball': '미나에게는 새 파란 공이 있었어요',
- 'She took it': '미나는 그것을 가져갔어요',
+ 'Lily had a new blue ball': '릴리에게는 새 파란 공이 있었어요',
+ 'She took it': '릴리는 그것을 가져갔어요',
  'to the park': '공원으로',
- 'She kicked the ball hard': '미나는 공을 세게 찼어요',
+ 'She kicked the ball hard': '릴리는 공을 세게 찼어요',
  'It went': '공은 날아갔어요',
  'over the tree': '나무 너머로',
- 'Mina looked and looked': '미나는 찾고 또 찾았어요',
- 'She could not find her ball': '미나는 공을 찾을 수 없었어요',
- 'A dog ran to her': '개 한 마리가 미나에게 달려왔어요',
+ 'Lily looked and looked': '릴리는 찾고 또 찾았어요',
+ 'She could not find her ball': '릴리는 공을 찾을 수 없었어요',
+ 'A dog ran to her': '개 한 마리가 릴리에게 달려왔어요',
  'It had something': '개는 무언가를 가지고 있었어요',
  'in its mouth': '입에',
  'It was the blue ball': '그것은 파란 공이었어요',
  'The dog wanted to play': '개는 놀고 싶었어요',
- 'Mina threw the ball': '미나는 공을 던졌어요',
+ 'Lily threw the ball': '릴리는 공을 던졌어요',
  'for the dog': '개를 위해',
- 'Now she had a ball': '이제 미나에게는 공이 있었어요',
+ 'Now she had a ball': '이제 릴리에게는 공이 있었어요',
  'and a new friend': '그리고 새 친구도요'
  },
  'rain-trip': {
@@ -68,4 +69,4 @@ books:{
  'So the water you drink today may be the same water a dinosaur drank long ago': '그러니까 오늘 여러분이 마시는 물은 아주 오래전 공룡이 마셨던 바로 그 물일지도 몰라요'
  }
 }
-};
+});
