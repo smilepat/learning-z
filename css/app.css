@@ -163,6 +163,7 @@ footer{border-top:1.5px solid var(--line);padding:24px 0 36px;font-size:14px;col
 .ptext{font:600 clamp(20px,3vw,26px)/1.7 var(--read)}
 footer a{color:var(--blue-d);font-weight:700}
 .slash{color:#64748B;font-weight:400;margin:0 1px}
+.l1 select{font:inherit;min-height:36px;border:1.5px solid #94A3B8;border-radius:8px;background:#fff;color:var(--ink);padding:2px 8px;margin-left:4px}
 .dk{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 14px}
 .dkp{display:flex;flex-direction:column;gap:2px;padding:6px 12px;border-left:3px solid #94A3B8;background:#fff;border-radius:0 10px 10px 0}
 .dkp span{font:600 18px/1.35 var(--read);color:var(--ink)}
