@@ -1,0 +1,70 @@
+/* 덩어리별 중국어 풀이. 시범으로 세 권만 넣었다(한국어 묶음과 같은 세 권).
+   모두 AI가 쓴 초안이며 사람 검수 전이다. 사람이 고치면 chunksReviewed 에 책 id 를 넣는다.
+   열쇠는 js/chunk.js 가 만든 덩어리의 낱말이다. 끊어 읽기 규칙이나 본문이 바뀌면 검사 도구가 빠진 풀이와 쓰이지 않는 풀이를 알려 준다. */
+window.RS_PACKS=window.RS_PACKS||{};window.RS_PACKS.zh=Object.assign(window.RS_PACKS.zh||{},{code:'zh',
+chunksReviewed:[],
+chunks:{
+ "red-bus": {
+  "I see a red bus": "我看见一辆红色的公共汽车",
+  "The bus is big and red": "公共汽车又大又红",
+  "I get on the bus": "我上了公共汽车",
+  "with my mom": "和妈妈一起",
+  "We sit": "我们坐",
+  "at the back": "在后面",
+  "The bus goes": "公共汽车开",
+  "to the park": "去公园",
+  "I like my red bus": "我喜欢我的红色公共汽车"
+ },
+ "lost-ball": {
+  "Lily had a new blue ball": "莉莉有一个新的蓝色的球",
+  "She took it": "她带着它",
+  "to the park": "去公园",
+  "She kicked the ball hard": "她用力踢了球",
+  "It went": "球飞了过去",
+  "over the tree": "越过了树",
+  "Lily looked and looked": "莉莉找了又找",
+  "She could not find her ball": "她找不到她的球",
+  "A dog ran to her": "一只狗向她跑来",
+  "It had something": "它有一样东西",
+  "in its mouth": "在嘴里",
+  "It was the blue ball": "那是蓝色的球",
+  "The dog wanted to play": "狗想玩",
+  "Lily threw the ball": "莉莉扔了球",
+  "for the dog": "给那只狗",
+  "Now she had a ball": "现在她有了一个球",
+  "and a new friend": "还有一个新朋友"
+ },
+ "rain-trip": {
+  "Water is always moving": "水总是在运动",
+  "It goes up": "它上升",
+  "to the sky": "到天空",
+  "and comes back down again": "然后又落回来",
+  "The sun warms the water": "太阳使水变暖",
+  "in seas": "海里的水",
+  "lakes and rivers": "湖里和河里的水",
+  "Some of the warm water turns": "一部分温水会变",
+  "into a gas": "成气体",
+  "You cannot see it": "你看不见它",
+  "It rises": "它上升",
+  "into the air": "到空气中",
+  "High in the sky": "在高高的天空中",
+  "the air is cold": "空气很冷",
+  "The gas turns back": "气体又变回",
+  "into tiny drops of water": "极小的水滴",
+  "Millions of tiny drops come together": "数百万个小水滴聚在一起",
+  "and make a cloud": "形成一朵云",
+  "When the drops get big and heavy": "当水滴变得又大又重时",
+  "they fall": "它们落下来",
+  "as rain": "以雨的形式",
+  "In very cold clouds": "在很冷的云里",
+  "tiny bits of ice grow and fall": "小冰粒长大并落下",
+  "as snow": "以雪的形式",
+  "The rain runs": "雨水流",
+  "into rivers": "进河里",
+  "and flows back": "然后流回",
+  "to the sea": "大海",
+  "Then the trip starts again": "然后旅行又开始了",
+  "So the water you drink today may be the same water a dinosaur drank long ago": "所以你今天喝的水，可能就是很久以前恐龙喝过的水"
+ }
+}
+});

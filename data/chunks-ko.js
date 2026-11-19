@@ -3,7 +3,7 @@
    한국어 묶음(data/words-ko.js)의 일부다. 기본 화면에서는 읽지 않고 주소에 ?l1=ko 를 붙였을 때만 읽는다.
    열쇠는 js/chunk.js 가 만든 덩어리의 낱말(쉼표와 마침표 제외)이다. 끊어 읽기 규칙이 바뀌어 덩어리가 달라지면
    검사 도구(tools/check.html)가 "풀이가 없는 덩어리"와 "쓰이지 않는 풀이"를 알려 준다. */
-window.RS_L1=Object.assign(window.RS_L1||{},{code:'ko',
+window.RS_PACKS=window.RS_PACKS||{};window.RS_PACKS.ko=Object.assign(window.RS_PACKS.ko||{},{code:'ko',
 chunksReviewed:[],
 chunks:{
  'red-bus': {
