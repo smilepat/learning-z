@@ -1,52 +1,52 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ReadStep (가칭) · 단계별 영어 읽기</title>
-<meta name="description" content="단계에 맞는 영어책을 듣고, 읽고, 문장을 다시 세우며 익히는 초등 영어 읽기 서비스 프로토타입입니다.">
+<title>ReadStep (working title) · Leveled English reading</title>
+<meta name="description" content="A prototype of a leveled English reading service for young learners: listen, read, and rebuild sentences from books at your own step.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232563EB'/%3E%3Ctext x='16' y='23' font-size='20' font-weight='700' text-anchor='middle' fill='white' font-family='Arial'%3ER%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-<a class="skip" href="#main">본문으로 건너뛰기</a>
+<a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap">
-  <button class="logo" data-go="home" aria-label="ReadStep 첫 화면"><i aria-hidden="true">R</i>ReadStep <small>가칭 · v0.7</small></button>
-  <nav class="nav" aria-label="주 메뉴">
-    <button data-go="home">소개</button>
-    <button data-go="library">내 서재</button>
-    <button data-go="teacher">선생님</button>
-    <button data-go="parent">학부모</button>
+  <button class="logo" data-go="home" aria-label="ReadStep home"><i aria-hidden="true">R</i>ReadStep <small>working title · v0.8</small></button>
+  <nav class="nav" aria-label="Main menu">
+    <button data-go="home">About</button>
+    <button data-go="library">My Library</button>
+    <button data-go="teacher">Teachers</button>
+    <button data-go="parent">Parents</button>
   </nav>
-  <span class="starbox" id="starbox" aria-label="내가 모은 도장"></span>
+  <span class="starbox" id="starbox" aria-label="My stamps"></span>
 </div></header>
 
 <main id="main" tabindex="-1">
 <section id="v-home"><div class="wrap">
   <div class="hero">
-    <p class="eyebrow">초등 영어 · 단계별 읽기</p>
-    <h1>듣고, 읽고, 다시 세우는<br>내 단계의 영어책</h1>
-    <p class="lead">아이는 자기 단계의 책을 듣고 읽은 뒤, 문장을 뜻 덩어리로 다시 세워 봅니다. 선생님은 점수보다 아이가 어디서 막히는지를 봅니다. 설치와 가입 없이 바로 써 볼 수 있습니다.</p>
-    <div class="cta"><button class="btn" data-book="cat-mat">30초 체험: 첫 책 읽기</button><button class="btn ghost" data-go="library">서재 둘러보기</button></div>
+    <p class="eyebrow">English for young learners · Leveled reading</p>
+    <h1>Listen, read, and rebuild<br>English books at your step</h1>
+    <p class="lead">Children listen to and read a book at their own step, then rebuild its sentences from meaning chunks. Teachers see where a child gets stuck, not just a score. There is nothing to install and no sign-up.</p>
+    <div class="cta"><button class="btn" data-book="cat-mat">30-second try: read the first book</button><button class="btn ghost" data-go="library">Look around the library</button></div>
   </div>
   <div class="roles">
-    <button class="card role" data-go="library"><b>학생</b><span>내 단계의 책을 읽고 도장판을 채워요.</span><em>내 서재로 가기 →</em></button>
-    <button class="card role" data-go="teacher"><b>선생님</b><span>숙제 지정, 학급 현황, 수업안, 인쇄용 책.</span><em>선생님 화면 →</em></button>
-    <button class="card role" data-go="parent"><b>학부모</b><span>이번 주에 읽은 책과 집에서 돕는 방법.</span><em>학부모 화면 →</em></button>
+    <button class="card role" data-go="library"><b>Students</b><span>Read books at your step and fill your stamp card.</span><em>Go to My Library →</em></button>
+    <button class="card role" data-go="teacher"><b>Teachers</b><span>Homework, class overview, lesson plans, print books.</span><em>Teacher page →</em></button>
+    <button class="card role" data-go="parent"><b>Parents</b><span>The books your child has read, and how to help at home.</span><em>Parent page →</em></button>
   </div>
-  <h2 class="sec">이렇게 배웁니다</h2>
+  <h2 class="sec">How children learn here</h2>
   <div class="bento">
-    <div class="card s4 sample"><h3>지금 바로 읽어 보기</h3><div id="sample"></div><button class="btn" data-book="cat-mat">이 책 읽기</button></div>
-    <div class="card s2"><p class="num" id="nBooks"></p><h3>단계별 서재</h3><p id="nDesc"></p></div>
-    <div class="card s2"><h3>듣기와 낱말 뜻</h3><p>문장을 들으면 읽는 낱말이 표시됩니다. 낱말을 누르면 소리와 우리말 뜻이 나옵니다.</p></div>
-    <div class="card s2"><h3>문장을 다시 세워요</h3><p>읽은 문장을 뜻 덩어리로 나눠 섞어 놓고, 아이가 차례대로 다시 세웁니다. 읽을 때는 "끊어 읽기"로 덩어리를 미리 볼 수 있습니다.</p></div>
-    <div class="card s2"><h3>수업안과 인쇄용 책</h3><p>책마다 읽기 전, 읽는 중, 읽은 후 활동이 자동으로 정리되고, 종이책으로 인쇄할 수 있습니다.</p></div>
-    <div class="card s3"><h3>독서 도장판</h3><p>점수를 모으지 않습니다. 책마다 도장 네 개(듣기, 읽기, 다시 세우기, 확인 문제)를 찍고, 한 단계에서 네 권을 마치면 다음 단계로 갑니다. 남은 책은 언제든 읽을 수 있습니다.</p></div>
-    <div class="card s3"><h3>어디서 막히는지 봅니다</h3><p>눌러 본 낱말은 "내 낱말장"에 모이고, 틀리거나 다시 세우다 막힌 쪽이 기록됩니다. 확인 문제는 틀리면 정답 대신 그 쪽을 다시 보게 합니다.</p></div>
-    <div class="card s3"><h3>화면은 조용하게, 그림은 자연스럽게</h3><p>배경과 카드는 한 가지 색으로 두고, 색은 세 곳에만 씁니다. 파랑은 누를 것, 보라 밑줄은 이번에 배울 글자, 노랑은 보상입니다.</p></div>
-    <div class="card s3"><h3>추적 없음, 서버 없음</h3><p>광고와 분석 스크립트를 넣지 않았습니다. 기록과 녹음은 이 기기에만 저장되고, 선생님께는 학생이 직접 만든 기록 코드로만 전달됩니다.</p></div>
+    <div class="card s4 sample"><h3>Read one now</h3><div id="sample"></div><button class="btn" data-book="cat-mat">Read this book</button></div>
+    <div class="card s2"><p class="num" id="nBooks"></p><h3>A library in steps</h3><p id="nDesc"></p></div>
+    <div class="card s2"><h3>Listening and word meanings</h3><p>When a sentence is read aloud, the word being read is marked. Tap a word to hear it and see a simple English meaning.</p></div>
+    <div class="card s2"><h3>Rebuild the sentence</h3><p>Sentences from the book are cut into meaning chunks and mixed up, and the child puts them back in order. While reading, "Chunk reading" shows the chunks first.</p></div>
+    <div class="card s2"><h3>Lesson plans and print books</h3><p>Each book comes with activities for before, while and after reading, and can be printed as a paper book.</p></div>
+    <div class="card s3"><h3>Reading stamp card</h3><p>There are no points to collect. Each book has four stamps (Listen, Read, Rebuild, Check), and four finished books in a step take you to the next step. The other books stay open.</p></div>
+    <div class="card s3"><h3>See where reading gets hard</h3><p>Tapped words go into "My word book", and pages with a wrong answer or a rebuild mistake are noted. In the Check, a wrong answer sends the child back to the page, not to the answer.</p></div>
+    <div class="card s3"><h3>Quiet screens, natural pictures</h3><p>Backgrounds and cards use one color, and color is used in three places only: blue for things to tap, a purple underline for the letters to learn, and yellow for rewards.</p></div>
+    <div class="card s3"><h3>No tracking, no server</h3><p>There are no ads or analytics scripts. Records and recordings stay on this device, and a teacher only gets the record code that the student makes.</p></div>
   </div>
-  <p class="note">프로토타입 안내: 1~6단계의 책이 들어 있고, 처음 온 학생은 서재의 "내 단계 찾기"로 시작 단계를 정합니다. 선생님 화면은 학생이 보낸 기록 코드를 넣으면 실제 기록을 보여 주고, 아무것도 넣지 않았을 때는 예시 데이터를 보여 줍니다. 음성은 브라우저의 기본 영어 음성을 씁니다.<span id="rvNote"></span></p>
+  <p class="note">About this prototype: it has books for Steps 1 to 6. New students start with "Find my step" in the library. The teacher page shows real records when student record codes are imported, and sample data when there are none. The voice is the browser's built-in English voice.<span id="rvNote"></span></p>
 </div></section>
 <section id="v-library" hidden></section>
 <section id="v-reader" hidden></section>
@@ -58,14 +58,15 @@
 <section id="v-parent" hidden></section>
 </main>
 
-<footer><div class="wrap">ReadStep (가칭) 프로토타입 v0.7 · 이야기와 그림은 이 프로토타입을 위해 새로 만든 것입니다 · 학습 기록은 이 기기에만 저장됩니다. · <a href="dev/">개발 참여자용: 전체 내용 보기</a></div></footer>
-<dialog id="dlg" aria-labelledby="dlgT"><div id="dlgBody"></div><form method="dialog" style="margin-top:20px;text-align:right"><button class="btn">닫기</button></form></dialog>
+<footer><div class="wrap">ReadStep (working title) prototype v0.8 · Stories and pictures were made for this prototype · Reading records stay on this device. · <a href="dev/">For contributors: see all content</a></div></footer>
+<dialog id="dlg" aria-labelledby="dlgT"><div id="dlgBody"></div><form method="dialog" style="margin-top:20px;text-align:right"><button class="btn">Close</button></form></dialog>
 <div id="print"></div>
 
 <script src="data/pictures.js"></script>
 <script src="data/books.js"></script>
 <script src="js/chunk.js"></script>
-<script src="data/chunks-ko.js"></script>
+<!-- Optional home-language pack. English only by default; add ?l1=ko to the address to load the Korean pack. -->
+<script>(function(){var m=/[?&]l1=([a-z]{2})\b/.exec(location.search);if(m&&m[1]==='ko')document.write('<script src="data/words-ko.js"><\/script><script src="data/chunks-ko.js"><\/script>')})();</script>
 <script src="js/app.js"></script>
 </body>
 </html>

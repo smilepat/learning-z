@@ -1,8 +1,8 @@
 # learning-z
 
-ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.7
+ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.8
 
-초등 영어 학습자가 자기 단계의 책을 듣고, 읽고, 문장을 다시 세우며 익히는 웹 서비스의 프로토타입입니다. 참고한 서비스와 무엇이 왜 다른지는 `docs/DIFFERENTIATION.md`에 있습니다.
+영어를 외국어로 배우는 어린 학습자가 자기 단계의 책을 듣고, 읽고, 문장을 다시 세우며 익히는 웹 서비스의 프로토타입입니다. 첫 대상은 중국 학습자이고 아시아 영어 교육 시장에서 두루 쓸 제품을 목표로 합니다. 학생·선생님·학부모 화면은 영어이고, 개발 현황판과 문서는 한국어입니다. 전체 범위는 `docs/SCOPE.md`에 있습니다. 참고한 서비스와 무엇이 왜 다른지는 `docs/DIFFERENTIATION.md`에 있습니다.
 설치와 빌드가 필요 없습니다. 폴더를 내려받아 `index.html`을 열면 동작합니다.
 
 - 사이트: https://smilepat.github.io/learning-z/
@@ -53,7 +53,7 @@ ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.7
 | `data/review.js` | 검수 기록 (지적, 처리 결과, 사람이 판단할 것) |
 | `dev/index.html` | 개발 현황판 |
 | `data/books.js` | 단계 기준, 책, 퀴즈, 낱말 풀이, 단계 진단 글 |
-| `data/chunks-ko.js` | 덩어리별 우리말 풀이 (시범 3권, AI 초안) |
+| `data/words-ko.js`, `data/chunks-ko.js` | 한국어 묶음(선택 언어): 낱말 뜻, 책 제목, 덩어리 뜻 시범 3권. 기본 화면은 영어만 쓰고 주소에 `?l1=ko`를 붙였을 때만 읽음 |
 | `data/pictures.js` | 낱말 그림 |
 | `tools/check.html` | 책 검사 도구 |
 | `docs/level-guide.md` | 단계 기준과 책 만드는 법 |
