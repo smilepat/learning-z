@@ -21,16 +21,19 @@ li{margin:4px 0}
 <body>
 <div class="wrap">
 <h1>ReadStep 책 검사</h1>
-<p class="mut">data/books.js 와 data/pictures.js 를 읽어 검사합니다. 책을 추가하거나 고친 뒤 이 페이지를 새로 고치세요. <a href="../dev/" style="color:var(--blue-d);font-weight:700">개발 현황판으로</a></p>
+<p class="mut">data/levels.js(20레벨 기준), data/books.js, data/wordlist.js(낱말 목록), data/pictures.js 를 읽어 검사합니다. 책을 추가하거나 고친 뒤 이 페이지를 새로 고치세요. <a href="../dev/" style="color:var(--blue-d);font-weight:700">개발 현황판으로</a></p>
 <div id="out"><p>검사 중...</p></div>
 </div>
 <script src="../data/pictures.js"></script>
+<script src="../data/levels.js"></script>
 <script src="../data/books.js"></script>
+<script src="../data/wordlist.js"></script>
 <script src="../js/chunk.js"></script>
 <script src="../data/words-zh.js"></script>
 <script src="../data/chunks-zh.js"></script>
 <script src="../data/words-ko.js"></script>
 <script src="../data/chunks-ko.js"></script>
+<script src="./ref-titles.js"></script>
 <script src="../js/check.js"></script>
 <script>
 (()=>{
@@ -41,9 +44,12 @@ const {errors,warnings,rows,pos,byStep}=r,BOOKS={length:r.books};
 out.innerHTML=`<div class="sum"><span>책 ${BOOKS.length}권</span><span>퀴즈 ${window.__check.quiz}문항</span><span>그림 ${window.__check.pictures}종</span><span>낱말 풀이 ${window.__check.glossary}개</span><span class="${errors.length?'bad':'good'}">오류 ${errors.length}건</span><span class="${warnings.length?'bad':'good'}">확인할 점 ${warnings.length}건</span></div>
 ${errors.length?`<h2>오류 (반드시 고칠 것)</h2><ul>${errors.map(e=>'<li>'+esc(e)+'</li>').join('')}</ul>`:''}
 ${warnings.length?`<h2>확인할 점</h2><ul>${warnings.map(e=>'<li>'+esc(e)+'</li>').join('')}</ul>`:''}
-<h2>단계별 책 수</h2><div class="card tablebox"><table><thead><tr>${byStep.map(s=>`<th scope="col">${s.n}단계 ${esc(s.name)}</th>`).join('')}</tr></thead><tbody><tr>${byStep.map(s=>`<td>${s.books}권</td>`).join('')}</tr></tbody></table></div>
-<h2>책별 수치</h2><div class="card tablebox"><table><thead><tr><th scope="col">책</th><th scope="col">단계</th><th scope="col">쪽 수</th><th scope="col">낱말 수</th><th scope="col">기준</th><th scope="col">판정</th><th scope="col">가장 긴 쪽</th><th scope="col">낱말 풀이</th></tr></thead><tbody>
-${rows.map(r=>`<tr><td lang="en">${esc(r.title)}<br><span class="mut" style="font-size:12px">${esc(r.id)}</span></td><td>${r.step}</td><td class="${r.pgOk?'':'bad'}">${r.pages}</td><td>${r.words}</td><td>${r.range}</td><td class="${r.inRange?'good':'bad'}">${r.inRange?'범위 안':'범위 밖'}</td><td>${r.longest}낱말</td><td>${r.gloss}%</td></tr>`).join('')}</tbody></table></div>
+<h2>1,500권 배분 현황 (data/levels.js 목표 대비)</h2><p class="mut">전체 ${r.totals.books} / ${r.totals.target}권 · 아시아 소재 ${r.totals.asia}권(목표 20%) · 픽션 ${r.totals.fic}권 · 낱말 목록 ${r.totals.wordlist}단어 · 제목 대조 ${r.totals.refTitles}개</p>
+<div class="card tablebox"><table><thead><tr><th scope="col">레벨</th><th scope="col">단계</th><th scope="col">책 / 목표</th><th scope="col">아시아 / 목표</th><th scope="col">픽션 / 목표</th><th scope="col">갈래 (지금 / 목표)</th></tr></thead><tbody>
+${r.byLevel.map(l=>`<tr><td><b>${l.id}</b></td><td>${esc(l.name)}</td><td class="${l.books?'':'bad'}">${l.books} / ${l.target}</td><td>${l.asia} / ${l.asiaT}</td><td>${l.fic} / ${l.ficT}</td><td>${l.tracksT?Object.keys(l.tracksT).map(k=>k+' '+l.tracks[k]+'/'+l.tracksT[k]).join(', '):'story '+l.tracks.story}</td></tr>`).join('')}</tbody></table></div>
+<h2>주제별 책 수 (12개 주제)</h2><div class="card tablebox"><table><thead><tr><th scope="col">주제</th><th scope="col">전체</th>${byStep.map(s=>`<th scope="col">${s.n}단계</th>`).join('')}</tr></thead><tbody>${r.byTopic.map(t=>`<tr><td>${esc(t.topic)}</td><td>${t.books}</td>${t.bySteps.map(n=>`<td>${n}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+<h2>책별 수치</h2><div class="card tablebox"><table><thead><tr><th scope="col">책</th><th scope="col">레벨</th><th scope="col">갈래</th><th scope="col">쪽 수</th><th scope="col">낱말 수</th><th scope="col">기준</th><th scope="col">판정</th><th scope="col">가장 긴 문장</th><th scope="col">목록 안 낱말</th><th scope="col">해독 가능</th><th scope="col">낱말 풀이</th></tr></thead><tbody>
+${rows.map(r=>`<tr><td lang="en">${esc(r.title)}<br><span class="mut" style="font-size:12px">${esc(r.id)} · ${esc(r.topic)} · ${r.region}</span></td><td>${esc(r.lv||String(r.step))}</td><td>${esc(r.track)}${r.ph?' '+r.ph:''}</td><td class="${r.pgOk?'':'bad'}">${r.pages}</td><td>${r.words}</td><td>${r.range}</td><td class="${r.inRange?'good':'bad'}">${r.inRange?'범위 안':'범위 밖'}</td><td>${r.maxS}낱말</td><td>${r.cov==null?'-':r.cov+'%'}</td><td>${r.dec==null?'-':r.dec+'%'}</td><td>${r.gloss}%</td></tr>`).join('')}</tbody></table></div>
 <h2>정답 위치</h2><p class="mut">인쇄용 문제지 기준 정답 위치: 1번 ${pos[0]}개, 2번 ${pos[1]}개, 3번 ${pos[2]}개. 화면 퀴즈는 풀 때마다 보기 순서를 섞습니다.</p>`;
 })();
 </script>
