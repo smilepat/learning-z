@@ -4,33 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ReadStep (가칭) · 단계별 영어 읽기</title>
-<meta name="description" content="단계에 맞는 영어책을 듣고, 읽고, 퀴즈로 확인하는 초등 영어 읽기 서비스 프로토타입입니다.">
+<meta name="description" content="단계에 맞는 영어책을 듣고, 읽고, 문장을 다시 세우며 익히는 초등 영어 읽기 서비스 프로토타입입니다.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232563EB'/%3E%3Ctext x='16' y='23' font-size='20' font-weight='700' text-anchor='middle' fill='white' font-family='Arial'%3ER%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="wrap">
-  <button class="logo" data-go="home" aria-label="ReadStep 첫 화면"><i aria-hidden="true">R</i>ReadStep <small>가칭 · v0.6</small></button>
+  <button class="logo" data-go="home" aria-label="ReadStep 첫 화면"><i aria-hidden="true">R</i>ReadStep <small>가칭 · v0.7</small></button>
   <nav class="nav" aria-label="주 메뉴">
     <button data-go="home">소개</button>
     <button data-go="library">내 서재</button>
     <button data-go="teacher">선생님</button>
     <button data-go="parent">학부모</button>
   </nav>
-  <span class="starbox" id="starbox" aria-label="내가 모은 별"></span>
+  <span class="starbox" id="starbox" aria-label="내가 모은 도장"></span>
 </div></header>
 
 <main id="main" tabindex="-1">
 <section id="v-home"><div class="wrap">
   <div class="hero">
     <p class="eyebrow">초등 영어 · 단계별 읽기</p>
-    <h1>듣고, 읽고, 확인하는<br>내 단계의 영어책</h1>
-    <p class="lead">아이는 자기 단계의 책을 듣고 읽은 뒤 퀴즈로 확인합니다. 선생님은 숙제를 내고 결과를 한눈에 봅니다. 설치와 가입 없이 바로 써 볼 수 있습니다.</p>
+    <h1>듣고, 읽고, 다시 세우는<br>내 단계의 영어책</h1>
+    <p class="lead">아이는 자기 단계의 책을 듣고 읽은 뒤, 문장을 뜻 덩어리로 다시 세워 봅니다. 선생님은 점수보다 아이가 어디서 막히는지를 봅니다. 설치와 가입 없이 바로 써 볼 수 있습니다.</p>
     <div class="cta"><button class="btn" data-book="cat-mat">30초 체험: 첫 책 읽기</button><button class="btn ghost" data-go="library">서재 둘러보기</button></div>
   </div>
   <div class="roles">
-    <button class="card role" data-go="library"><b>학생</b><span>내 단계의 책을 고르고 별을 모아요.</span><em>내 서재로 가기 →</em></button>
+    <button class="card role" data-go="library"><b>학생</b><span>내 단계의 책을 읽고 도장판을 채워요.</span><em>내 서재로 가기 →</em></button>
     <button class="card role" data-go="teacher"><b>선생님</b><span>숙제 지정, 학급 현황, 수업안, 인쇄용 책.</span><em>선생님 화면 →</em></button>
     <button class="card role" data-go="parent"><b>학부모</b><span>이번 주에 읽은 책과 집에서 돕는 방법.</span><em>학부모 화면 →</em></button>
   </div>
@@ -39,8 +39,10 @@
     <div class="card s4 sample"><h3>지금 바로 읽어 보기</h3><div id="sample"></div><button class="btn" data-book="cat-mat">이 책 읽기</button></div>
     <div class="card s2"><p class="num" id="nBooks"></p><h3>단계별 서재</h3><p id="nDesc"></p></div>
     <div class="card s2"><h3>듣기와 낱말 뜻</h3><p>문장을 들으면 읽는 낱말이 표시됩니다. 낱말을 누르면 소리와 우리말 뜻이 나옵니다.</p></div>
-    <div class="card s2"><h3>스스로 찾는 퀴즈</h3><p>틀리면 정답을 바로 보여 주지 않고, 그 쪽을 다시 듣고 한 번 더 고르게 합니다. 80% 이상이면 통과입니다.</p></div>
+    <div class="card s2"><h3>문장을 다시 세워요</h3><p>읽은 문장을 뜻 덩어리로 나눠 섞어 놓고, 아이가 차례대로 다시 세웁니다. 읽을 때는 "끊어 읽기"로 덩어리를 미리 볼 수 있습니다.</p></div>
     <div class="card s2"><h3>수업안과 인쇄용 책</h3><p>책마다 읽기 전, 읽는 중, 읽은 후 활동이 자동으로 정리되고, 종이책으로 인쇄할 수 있습니다.</p></div>
+    <div class="card s3"><h3>독서 도장판</h3><p>점수를 모으지 않습니다. 책마다 도장 네 개(듣기, 읽기, 다시 세우기, 확인 문제)를 찍고, 한 단계에서 네 권을 마치면 다음 단계로 갑니다. 남은 책은 언제든 읽을 수 있습니다.</p></div>
+    <div class="card s3"><h3>어디서 막히는지 봅니다</h3><p>눌러 본 낱말은 "내 낱말장"에 모이고, 틀리거나 다시 세우다 막힌 쪽이 기록됩니다. 확인 문제는 틀리면 정답 대신 그 쪽을 다시 보게 합니다.</p></div>
     <div class="card s3"><h3>화면은 조용하게, 그림은 자연스럽게</h3><p>배경과 카드는 한 가지 색으로 두고, 색은 세 곳에만 씁니다. 파랑은 누를 것, 보라 밑줄은 이번에 배울 글자, 노랑은 보상입니다.</p></div>
     <div class="card s3"><h3>추적 없음, 서버 없음</h3><p>광고와 분석 스크립트를 넣지 않았습니다. 기록과 녹음은 이 기기에만 저장되고, 선생님께는 학생이 직접 만든 기록 코드로만 전달됩니다.</p></div>
   </div>
@@ -48,18 +50,22 @@
 </div></section>
 <section id="v-library" hidden></section>
 <section id="v-reader" hidden></section>
+<section id="v-build" hidden></section>
+<section id="v-words" hidden></section>
 <section id="v-quiz" hidden></section>
 <section id="v-place" hidden></section>
 <section id="v-teacher" hidden></section>
 <section id="v-parent" hidden></section>
 </main>
 
-<footer><div class="wrap">ReadStep (가칭) 프로토타입 v0.6 · 이야기와 그림은 이 프로토타입을 위해 새로 만든 것입니다 · 학습 기록은 이 기기에만 저장됩니다. · <a href="dev/">개발 참여자용: 전체 내용 보기</a></div></footer>
+<footer><div class="wrap">ReadStep (가칭) 프로토타입 v0.7 · 이야기와 그림은 이 프로토타입을 위해 새로 만든 것입니다 · 학습 기록은 이 기기에만 저장됩니다. · <a href="dev/">개발 참여자용: 전체 내용 보기</a></div></footer>
 <dialog id="dlg" aria-labelledby="dlgT"><div id="dlgBody"></div><form method="dialog" style="margin-top:20px;text-align:right"><button class="btn">닫기</button></form></dialog>
 <div id="print"></div>
 
 <script src="data/pictures.js"></script>
 <script src="data/books.js"></script>
+<script src="js/chunk.js"></script>
+<script src="data/chunks-ko.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
