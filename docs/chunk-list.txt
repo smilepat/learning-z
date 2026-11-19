@@ -1,0 +1,318 @@
+끊어 읽기 전체 목록 (js/chunk.js 규칙이 만든 것, 2026-11-19). / 는 끊는 자리, [a | b] 는 다시 세우기 조각.
+규칙이나 본문이 바뀌면 이 파일은 낡는다. 최신 결과는 개발 현황판 "책 전체"에서 본다.
+
+## cat-mat (1단계) A Cat on a Mat
+1쪽: A cat sat.
+2쪽: A cat sat / on a mat.
+3쪽: A rat ran.
+4쪽: The rat ran / to the mat.
+5쪽: The cat and the rat had a nap.
+다시 세우기: 2쪽 [A | cat | sat | on | a | mat].  3쪽 [A | rat | ran].  4쪽 [The | rat | ran | to | the | mat].
+
+## big-pig (1단계) Big Pig
+1쪽: This is a pig.
+2쪽: The pig is big.
+3쪽: The big pig can dig.
+4쪽: It digs a pit.
+5쪽: The pig sits / in the pit.
+다시 세우기: 1쪽 [This | is | a | pig].  3쪽 [The | big | pig | can | dig].  5쪽 [The | pig | sits | in | the | pit].
+
+## bug-sun (1단계) The Bug and the Sun
+1쪽: A bug is / on a cup.
+2쪽: The sun is up.
+3쪽: The bug runs / in the sun.
+4쪽: The bug has fun.
+5쪽: Run, bug, run!
+다시 세우기: 1쪽 [A | bug | is | on | a | cup].  3쪽 [The | bug | runs | in | the | sun].  4쪽 [The | bug | has | fun].
+
+## red-bus (2단계) My Red Bus
+1쪽: I see a red bus.
+2쪽: The bus is big and red.
+3쪽: I get on the bus / with my mom.
+4쪽: We sit / at the back.
+5쪽: The bus goes / to the park.
+6쪽: I like my red bus!
+다시 세우기: 1쪽 [I | see | a | red | bus].  4쪽 [We | sit | at | the | back].  6쪽 [I | like | my | red | bus]!
+덩어리 뜻(AI 초안):
+  1쪽: I see a red bus = 빨간 버스가 보여요
+  2쪽: The bus is big and red = 버스는 크고 빨개요
+  3쪽: I get on the bus = 나는 버스에 타요 / with my mom = 엄마와 함께
+  4쪽: We sit = 우리는 앉아요 / at the back = 뒤쪽에
+  5쪽: The bus goes = 버스가 가요 / to the park = 공원으로
+  6쪽: I like my red bus = 나는 내 빨간 버스가 좋아요
+
+## my-hat (2단계) Where Is My Hat?
+1쪽: Where is my hat?
+2쪽: Is it / on the bed? No.
+3쪽: Is it / in the box? No.
+4쪽: Is it / under the tree? No.
+5쪽: Look! The dog has my hat.
+6쪽: Good dog! Thank you.
+다시 세우기: 1쪽 [Where | is | my | hat]?  3쪽 [Is | it | in | the | box]?  5쪽 [The | dog | has | my | hat].
+
+## fish-lunch (2단계) Fish for Lunch
+1쪽: The bird is hungry.
+2쪽: It sees a fish / in the pond.
+3쪽: The fish is fast.
+4쪽: The bird cannot get the fish.
+5쪽: The bird sees a red apple.
+6쪽: Yum! Apples are good, too.
+다시 세우기: 1쪽 [The | bird | is | hungry].  4쪽 [The | bird | cannot | get | the | fish].  6쪽 [Apples | are | good, | too].
+
+## lost-ball (3단계) The Lost Ball
+1쪽: Mina had a new blue ball. She took it / to the park.
+2쪽: She kicked the ball hard. It went / over the tree!
+3쪽: Mina looked and looked. She could not find her ball.
+4쪽: A dog ran to her. It had something / in its mouth.
+5쪽: It was the blue ball! The dog wanted to play.
+6쪽: Mina threw the ball / for the dog. Now she had a ball / and a new friend.
+다시 세우기: 1쪽 [Mina | had | a | new | blue | ball].  3쪽 [She | could | not | find | her | ball].  5쪽 [The | dog | wanted | to | play].
+덩어리 뜻(AI 초안):
+  1쪽: Mina had a new blue ball = 미나에게는 새 파란 공이 있었어요 / She took it = 미나는 그것을 가져갔어요 / to the park = 공원으로
+  2쪽: She kicked the ball hard = 미나는 공을 세게 찼어요 / It went = 공은 날아갔어요 / over the tree = 나무 너머로
+  3쪽: Mina looked and looked = 미나는 찾고 또 찾았어요 / She could not find her ball = 미나는 공을 찾을 수 없었어요
+  4쪽: A dog ran to her = 개 한 마리가 미나에게 달려왔어요 / It had something = 개는 무언가를 가지고 있었어요 / in its mouth = 입에
+  5쪽: It was the blue ball = 그것은 파란 공이었어요 / The dog wanted to play = 개는 놀고 싶었어요
+  6쪽: Mina threw the ball = 미나는 공을 던졌어요 / for the dog = 개를 위해 / Now she had a ball = 이제 미나에게는 공이 있었어요 / and a new friend = 그리고 새 친구도요
+
+## rain-day (3단계) A Rainy Day
+1쪽: It rained all morning. Jun could not go outside.
+2쪽: He was sad. He looked out the window.
+3쪽: Then his sister came / with a big box.
+4쪽: They made a boat / from the box. They put the cat / in the boat, too.
+5쪽: They sailed / across the room and laughed.
+6쪽: When the sun came out, / Jun did not want to stop.
+다시 세우기: 1쪽 [It | rained | all | morning].  1쪽 [Jun | could | not | go | outside].  2쪽 [He | looked | out | the | window].
+
+## little-seed (3단계) The Little Seed
+1쪽: An apple seed is very small. But it can grow / into a big apple tree.
+2쪽: The seed is / in the soil. It needs water / to start growing.
+3쪽: Soon a little plant comes up. The sun gives the plant light.
+4쪽: The plant grows taller every day. It grows green leaves.
+5쪽: After many years, / it becomes a tree. Birds live / in the tree.
+6쪽: The tree makes apples. Inside each apple are new seeds.
+다시 세우기: 1쪽 [An | apple | seed | is | very | small].  4쪽 [The | plant | grows | taller | every | day].  6쪽 [Inside | each | apple | are | new | seeds].
+
+## birthday-cake (4단계) The Birthday Cake
+1쪽: It was Grandma's birthday. Sora wanted / to make a cake / for her. Dad said he would help.
+2쪽: "We need eggs, / milk, and flour," / said Dad. Sora found three eggs / in the kitchen.
+3쪽: She mixed everything / in a big bowl. Some flour got on her nose, / and Dad laughed.
+4쪽: Dad put the cake / in the oven. They waited / for a long time. It smelled so good!
+5쪽: When the cake was ready, / they put it / on the table. Then Sora went / to get a candle.
+6쪽: "Oh no!" / said Sora. The cat was sitting / next to the cake. But the cat was only sleeping.
+7쪽: Grandma smiled / when she saw the cake. "This is the best birthday," / she said.
+다시 세우기: 1쪽 [Sora wanted | to make a cake | for her].  4쪽 [They | waited | for | a | long | time].  5쪽 [When the cake was ready, | they put it | on the table].
+
+## kite-wind (4단계) The Kite and the Wind
+1쪽: Jin made a red kite / with his grandfather. It had a long yellow tail.
+2쪽: On Saturday morning they went up the hill together. But there was no wind / at all.
+3쪽: Jin ran fast / with the kite. He tried three times. It fell down again and again.
+4쪽: "Let's wait," / said Grandfather. They sat / under a tree / and ate apples.
+5쪽: Soon the leaves began to move. A bird flew by. "The wind is coming!" / said Jin.
+6쪽: This time the kite went up, / up, up. It danced high / in the blue sky.
+7쪽: Jin held the string and smiled. Sometimes waiting is the best plan.
+다시 세우기: 1쪽 [It | had | a | long | yellow | tail].  5쪽 [Soon | the | leaves | began | to | move].  7쪽 [Sometimes | waiting | is | the | best | plan].
+
+## busy-bees (5단계) Busy Bees
+1쪽: Honeybees are small insects. They live together / in a home called a hive. You can see them / in gardens and parks / in spring and summer.
+2쪽: One hive can have thousands of bees. Each bee has a job to do.
+3쪽: Worker bees fly / from flower to flower. They collect sweet nectar. A bee can visit hundreds of flowers / in one day.
+4쪽: Back at the hive, / the bees turn the nectar / into honey. Honey is their food / for winter.
+5쪽: Bees also carry pollen / from one flower to another. This helps plants make seeds and fruit.
+6쪽: Without bees, / we would have fewer apples / and other fruits. Many farmers keep bees / near their fruit trees.
+7쪽: So when you see a bee, / do not touch it / or hurt it. Bees are busy helping our world.
+다시 세우기: 4쪽 [Back at the hive, | the bees turn the nectar | into honey].  6쪽 [Without bees, | we would have fewer apples | and other fruits].  7쪽 [So when you see a bee, | do not touch it | or hurt it].
+
+## day-night (5단계) Day and Night
+1쪽: Every morning the sun comes up. Every evening it goes down. Why does this happen?
+2쪽: The Earth is a giant ball. It is always spinning, / like a top.
+3쪽: It takes 24 hours / for the Earth / to spin around once. We call this one day.
+4쪽: When your side of the Earth faces the sun, / it is daytime. You can see light / and feel warm.
+5쪽: When your side turns away / from the sun, / it is night. Then you can see the stars, / and often the moon.
+6쪽: The sun does not really move / across the sky. It only looks that way / because the Earth is spinning.
+7쪽: So when it is night where you live, / it is daytime / on the other side of the world.
+다시 세우기: 3쪽 [It takes 24 hours | for the Earth | to spin around once].  5쪽 [When your side turns away | from the sun, | it is night].  7쪽 [So when it is night where you live, | it is daytime | on the other side of the world].
+
+## garden-box (6단계) The Secret Garden Box
+1쪽: On the first day of spring, / a small box arrived / for Hana. It did not say who it was from. It only said, / "Open with care."
+2쪽: Inside she found five brown seeds / and a note. The note said, / "Plant us, / and wait. Something wonderful will come."
+3쪽: Hana did not know who had sent the box. Still, she filled a pot / with soil / and planted the seeds / by her window.
+4쪽: Every morning she gave them water. Every morning she saw nothing but soil. "Maybe they are not real seeds," / she thought. She began / to feel a little sad.
+5쪽: Two weeks later, / five tiny green plants pushed up / through the soil. Hana was so excited / that she ran / to tell her mom.
+6쪽: The plants grew taller and taller. In summer, / bright yellow flowers bloomed / on them. Each flower was / as big as a plate. Bees came / to visit them every day.
+7쪽: One evening, / Grandfather came to visit. He looked / at the flowers / and smiled a secret smile. Hana watched him carefully.
+8쪽: "You sent the box!" / said Hana. Grandfather laughed. "I wanted you to learn / that good things take time," / he said.
+다시 세우기: 1쪽 [On the first day of spring, | a small box arrived | for Hana].  5쪽 [Hana was so excited | that she ran | to tell her mom].  6쪽 [In summer, | bright yellow flowers bloomed | on them].
+
+## lights-out (6단계) The Night the Lights Went Out
+1쪽: It was a windy night. Rain was hitting the window. Yuna was reading her favorite book / when, suddenly, all the lights went out.
+2쪽: The whole street was dark. Her little brother Tae began to cry. "I don't like the dark," / he said.
+3쪽: Mom lit a candle / and put it / on the table. The small flame made big shadows / on the wall.
+4쪽: Yuna had an idea. She held up her hands / in front of the candle / and made a shadow bird.
+5쪽: Tae stopped crying. "Make a dog!" / he said. Yuna made a dog, / then a rabbit, / then a fish.
+6쪽: Soon Mom and Tae were making shadows, too. Their shadow animals told a funny story / about a brave little fish.
+7쪽: An hour later, / the lights came back on. Everyone looked a little disappointed.
+8쪽: "Can we turn them off again?" / asked Tae. That night, the dark was not scary anymore.
+다시 세우기: 2쪽 [The | whole | street | was | dark].  3쪽 [Mom lit a candle | and put it | on the table].  5쪽 [Yuna made a dog, | then a rabbit, | then a fish].
+
+## missing-apples (4단계) Who Ate My Apples?
+1쪽: Every morning, / Mr. Park looked / at the apples / on his tree. One morning, / three apples had big holes / in them.
+2쪽: "Who ate my apples?" / he asked. He looked / at the dog. The dog was sleeping.
+3쪽: He looked / at the cat. The cat was washing its face. It did not like apples.
+4쪽: Then he saw a small bird / on the fence. It had a piece of apple / in its beak.
+5쪽: Mr. Park followed the bird / to a nest. Inside the nest were three hungry baby birds.
+6쪽: Mr. Park smiled. "You can have them," / he said. "You need them more / than I do."
+7쪽: The next morning, / he cut an apple / into small pieces / and left them / under the tree.
+다시 세우기: 1쪽 [One morning, | three apples had big holes | in them].  2쪽 [He | looked | at | the | dog].  3쪽 [It | did | not | like | apples].
+
+## why-sleep (5단계) Your Body at Night
+1쪽: Every night, / you close your eyes and sleep. But your body does not stop working.
+2쪽: Your body grows / while you sleep. A lot of growing happens / during deep sleep.
+3쪽: Your brain is busy, too. It sorts the things you learned / during the day / and saves the important ones.
+4쪽: Sleep also helps your body fight germs. People who sleep well get sick less often.
+5쪽: Children your age need about nine to eleven hours of sleep each night.
+6쪽: Bright screens can make it hard / to fall asleep. Try reading a book / before bed instead.
+7쪽: So sleep is not a waste of time. It is how your body and brain get ready / for tomorrow.
+다시 세우기: 2쪽 [Your | body | grows | while | you | sleep].  3쪽 [Your | brain | is | busy, | too].  3쪽 [It sorts the things you learned | during the day | and saves the important ones].
+
+## new-girl (6단계) The New Girl
+1쪽: On Monday, / a new girl came / to Jiho's class. Her name was Lina, / and she had just moved / from another country.
+2쪽: Lina did not speak much Korean. At lunch she sat alone and looked / at her food. Nobody knew what to say to her.
+3쪽: Jiho remembered his first day / at this school. He had felt small and quiet, / like a mouse / in a big room.
+4쪽: After lunch, / Jiho took out his soccer ball. He pointed / at the ball, / then at Lina, / and smiled.
+5쪽: Lina's eyes became bright. She was a very good player! Soon six more children joined the game.
+6쪽: Lina taught them a word / from her language. It meant "pass." Everyone shouted it and laughed.
+7쪽: The next day, / Lina brought a picture book / from her country. Jiho could not read it, / but he loved the pictures.
+8쪽: "Chingu," said Lina slowly. It was the Korean word / for "friend." Jiho nodded. Some words are easy to learn / when you really need them.
+다시 세우기: 1쪽 [On Monday, | a new girl came | to Jiho's class].  4쪽 [He pointed | at the ball, | then at Lina, | and smiled].  7쪽 [The next day, | Lina brought a picture book | from her country].
+
+## red-hen (1단계) Ten Eggs
+1쪽: This is a red hen.
+2쪽: The hen has ten eggs.
+3쪽: The hen sits / on the eggs.
+4쪽: The hen gets wet.
+5쪽: The eggs do not get wet.
+다시 세우기: 1쪽 [This | is | a | red | hen].  3쪽 [The | hen | sits | on | the | eggs].  5쪽 [The | eggs | do | not | get | wet].
+
+## fox-box (1단계) The Fox and the Box
+1쪽: A fox got a big box.
+2쪽: Is a dog / in the box?
+3쪽: No, it is not a dog.
+4쪽: A frog is / in the box!
+5쪽: Hop, frog, hop!
+다시 세우기: 1쪽 [A | fox | got | a | big | box].  3쪽 [No, | it | is | not | a | dog].  4쪽 [A | frog | is | in | the | box]!
+
+## i-can-help (2단계) I Help at Home
+1쪽: I can help my mom.
+2쪽: I put the cups / on the table.
+3쪽: I feed the dog.
+4쪽: I water the plant.
+5쪽: I make my bed.
+6쪽: Mom says, / "Thank you!"
+7쪽: I like to help.
+다시 세우기: 1쪽 [I | can | help | my | mom].  4쪽 [I | water | the | plant].  7쪽 [I | like | to | help].
+
+## good-night (2단계) When the Sun Goes Down
+1쪽: The sun goes down.
+2쪽: The moon comes up.
+3쪽: I see a star / in the sky.
+4쪽: The bird sleeps / in the tree.
+5쪽: The dog sleeps / on the mat.
+6쪽: I go to bed.
+7쪽: Good night, everyone!
+다시 세우기: 1쪽 [The | sun | goes | down].  4쪽 [The | bird | sleeps | in | the | tree].  6쪽 [I | go | to | bed].
+
+## snowman (3단계) The Snowman
+1쪽: It snowed all night. In the morning, / the park was white.
+2쪽: Mia and her dad made a big snowman.
+3쪽: Mia gave him a blue hat. Dad gave him two sticks / for arms.
+4쪽: The next day, / the sun came out. It was warm.
+5쪽: The snowman got smaller and smaller.
+6쪽: Soon only the blue hat and the two sticks were left. Mia was sad.
+7쪽: "He will come back next winter," / said Dad.
+다시 세우기: 1쪽 [It | snowed | all | night].  3쪽 [Mia | gave | him | a | blue | hat].  5쪽 [The | snowman | got | smaller | and | smaller].
+
+## the-moon (3단계) Looking at the Moon
+1쪽: Look at the sky / at night. Often you can see the moon.
+2쪽: The moon is a big ball of rock.
+3쪽: It does not make light. The sun shines / on it.
+4쪽: The moon goes / around the Earth.
+5쪽: Some nights the moon looks round. Some nights it looks thin.
+6쪽: People went / to the moon a long time ago.
+7쪽: Maybe you will go there one day!
+다시 세우기: 1쪽 [Look | at | the | sky | at | night].  3쪽 [The | sun | shines | on | it].  5쪽 [Some | nights | it | looks | thin].
+
+## fish-name (4단계) A Name for the Fish
+1쪽: Ms. Lee brought a fish to class. "This is our new class pet," / she said.
+2쪽: "What is its name?" / asked Jisu. "It does not have one yet," / said Ms. Lee.
+3쪽: Everyone had an idea. "Bubbles!" said Jisu. "Star!" said Min.
+4쪽: "Let's vote," / said Ms. Lee. Each child wrote a name / on paper / and put it / in a box.
+5쪽: Ms. Lee counted the papers. "Bubbles has ten votes. Star has ten votes, too!"
+6쪽: The class was quiet. Then Min smiled. "I know! Let's call it Bubble Star."
+7쪽: Everyone clapped. The fish swam / in a happy circle.
+8쪽: Now Bubble Star has a name, / a home, / and twenty friends.
+다시 세우기: 4쪽 [Each child wrote a name | on paper | and put it | in a box].  6쪽 [The | class | was | quiet].  8쪽 [Now Bubble Star has a name, | a home, | and twenty friends].
+
+## wrong-bus (4단계) The Wrong Bus
+1쪽: Every Saturday, / Hoon took the number seven bus / to his grandma's house.
+2쪽: One Saturday, / he was reading a book / at the bus stop. A bus came, / and he got on.
+3쪽: He looked out the window. Nothing looked the same. "Where is the big tree?" / he thought.
+4쪽: "Excuse me," / he said / to the driver. "Is this the number seven bus?"
+5쪽: "No, this is number one," / said the driver. "Don't worry. Get off / at the next stop and wait / for number seven."
+6쪽: Hoon did what the driver said. Ten minutes later, / the number seven bus came.
+7쪽: Grandma was waiting / at the door. "You are late," / she said. "I took the long way today," / said Hoon.
+다시 세우기: 1쪽 [Every Saturday, | Hoon took the number seven bus | to his grandma's house].  2쪽 [One Saturday, | he was reading a book | at the bus stop].  6쪽 [Hoon | did | what | the | driver | said].
+
+## rain-trip (5단계) Where Does Rain Come From?
+1쪽: Water is always moving. It goes up / to the sky / and comes back down again.
+2쪽: The sun warms the water / in seas, / lakes, and rivers.
+3쪽: Some of the warm water turns / into a gas. You cannot see it. It rises / into the air.
+4쪽: High in the sky, / the air is cold. The gas turns back / into tiny drops of water.
+5쪽: Millions of tiny drops come together / and make a cloud.
+6쪽: When the drops get big and heavy, / they fall / as rain. In very cold clouds, / tiny bits of ice grow and fall / as snow.
+7쪽: The rain runs / into rivers / and flows back / to the sea. Then the trip starts again.
+8쪽: So the water you drink today may be the same water a dinosaur drank long ago!
+다시 세우기: 1쪽 [It goes up | to the sky | and comes back down again].  6쪽 [When the drops get big and heavy, | they fall | as rain].  6쪽 [In very cold clouds, | tiny bits of ice grow and fall | as snow].
+덩어리 뜻(AI 초안):
+  1쪽: Water is always moving = 물은 늘 움직여요 / It goes up = 물은 올라가요 / to the sky = 하늘로 / and comes back down again = 그리고 다시 내려와요
+  2쪽: The sun warms the water = 해가 물을 데워요 / in seas, = 바다에 있는 / lakes, and rivers = 호수와 강에 있는
+  3쪽: Some of the warm water turns = 따뜻해진 물의 일부는 변해요 / into a gas = 기체로 / You cannot see it = 그것은 눈에 보이지 않아요 / It rises = 그것은 올라가요 / into the air = 공기 속으로
+  4쪽: High in the sky, = 하늘 높은 곳에서는 / the air is cold = 공기가 차가워요 / The gas turns back = 기체는 다시 변해요 / into tiny drops of water = 아주 작은 물방울로
+  5쪽: Millions of tiny drops come together = 수백만 개의 작은 물방울이 모여요 / and make a cloud = 그리고 구름을 만들어요
+  6쪽: When the drops get big and heavy, = 물방울이 크고 무거워지면 / they fall = 떨어져요 / as rain = 비가 되어 / In very cold clouds, = 아주 차가운 구름 속에서는 / tiny bits of ice grow and fall = 작은 얼음 알갱이가 자라서 떨어져요 / as snow = 눈이 되어
+  7쪽: The rain runs = 빗물은 흘러가요 / into rivers = 강으로 / and flows back = 그리고 다시 흘러가요 / to the sea = 바다로 / Then the trip starts again = 그러면 여행이 다시 시작돼요
+  8쪽: So the water you drink today may be the same water a dinosaur drank long ago = 그러니까 오늘 여러분이 마시는 물은 아주 오래전 공룡이 마셨던 바로 그 물일지도 몰라요
+
+## your-heart (5단계) Your Amazing Heart
+1쪽: Put your hand / on your chest. Can you feel a small beat? That is your heart.
+2쪽: Your heart is a strong muscle. It is about as big as your fist.
+3쪽: Its job is / to push blood / around your body. Blood carries food and oxygen / to every part of you.
+4쪽: A child's heart beats about ninety times each minute. It never stops, / even when you sleep.
+5쪽: When you run or jump, / your heart beats faster. Your body needs more oxygen, / so your heart works harder.
+6쪽: You can help your heart stay strong. Play outside, / eat fruit and vegetables, / and get enough sleep.
+7쪽: Your heart works hard / for you every day. Take good care of it!
+다시 세우기: 2쪽 [Your | heart | is | a | strong | muscle].  3쪽 [Its job is | to push blood | around your body].  6쪽 [Play outside, | eat fruit and vegetables, | and get enough sleep].
+
+## science-fair (6단계) Sujin's Bean Plant
+1쪽: The school science fair was / on Friday. Sujin wanted to show / that plants grow / toward light.
+2쪽: She put a bean plant / in a box / with one small hole. Light came in only / through the hole. Each day she drew the plant / in her notebook.
+3쪽: Day after day, / the plant leaned a little more / toward the hole. It was working!
+4쪽: But on Thursday, / Sujin found the box / on the floor. The plant was broken, / and her little brother's ball was / next to it.
+5쪽: Her brother stood / at the door. "I'm sorry," / he said quietly. "Can I help?"
+6쪽: Sujin wanted to cry. Then she saw her notebook. It had seven drawings, / one for every day.
+7쪽: "Yes, you can help," / she said. Together they put the drawings / in a line / on a big board.
+8쪽: On Friday, / people could see the plant leaning more / in every picture. The judges stopped to look / for a long time.
+9쪽: Sujin did not win first prize. But one judge said, / "Real scientists keep good notes. Well done."
+다시 세우기: 1쪽 [Sujin wanted to show | that plants grow | toward light].  4쪽 [But on Thursday, | Sujin found the box | on the floor].  8쪽 [On Friday, | people could see the plant leaning more | in every picture].
+
+## home-for-bori (6단계) A Home for Bori
+1쪽: Dojun was walking home / from school / when it started to rain. He heard a small sound / behind a bush.
+2쪽: It was a tiny kitten. It was wet and shaking. There was no mother cat anywhere.
+3쪽: Dojun wanted / to take it home. But his family lived / in a small apartment, / and his mom always said, / "No pets."
+4쪽: He could not leave it there. He put the kitten / inside his jacket / and ran home.
+5쪽: Mom looked / at the kitten / for a long time. "It can stay / for one week," / she said. "Then we will find it a home."
+6쪽: Dojun fed the kitten every morning. He made a bed / for it / in a box. He named it Bori.
+7쪽: All week, / Bori followed Mom / around the kitchen. On Friday, / Bori fell asleep / on Mom's lap.
+8쪽: On Sunday, / Dojun made a poster / that said "Kitten needs a home." Mom read it / and shook her head.
+9쪽: "Bori already has a home," / she said, / and she put the poster away. Dojun hugged them both.
+다시 세우기: 1쪽 [Dojun was walking home | from school | when it started to rain].  7쪽 [All week, | Bori followed Mom | around the kitchen].  7쪽 [On Friday, | Bori fell asleep | on Mom's lap].
