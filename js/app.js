@@ -1,6 +1,7 @@
 (()=>{
 const {SP,STEPS,BOOKS,G,PLACEMENT}=window.RS_DATA;
-const CH=window.RS_CHUNK,L1=window.RS_L1||null,KO=(L1&&L1.chunks)||{};
+/* 선택 언어 묶음(data/words-zh.js 등). 고르지 않으면 L1 은 null 이고 화면에는 영어만 나온다. */
+const CH=window.RS_CHUNK,L1=(window.RS_PACKS||{})[window.RS_L1CODE]||null,KO=(L1&&L1.chunks)||{};
 /* 예전 기록에 남아 있는 한국어 활동 이름을 영어로 보여 준다 */
 const LEG={'듣기 도장':'Listening stamp','읽기 도장':'Reading stamp','다시 세우기 도장':'Rebuild stamp','확인 문제 도장':'Check stamp','듣기 완료':'Listening done','읽기 완료':'Reading done','퀴즈 통과':'Check passed','퀴즈 만점':'Check: all correct'},why=s=>LEG[s]||String(s).replace(/^(확인 문제|퀴즈) /,'Check ');
 const HUMAN=new Set((window.RS_DATA.REVIEWED||{}).human||[]);
@@ -203,12 +204,14 @@ function finishBuild(){const {b,list,firstOk}=B,r=rec(b.id),first=!r.build;r.bui
 
 /* ---------- 내 낱말장: 읽다가 눌러 본 낱말이 모인다 ---------- */
 const W={hide:false,shown:new Set()};
+/* 낱말 뜻: 영어 풀이, 그리고 선택 언어 묶음이 있으면 그 말의 뜻 */
+const gl=w=>esc(G[w]||'')+(L1&&L1.words&&L1.words[w]?' · <span lang="'+esc(L1.code)+'">'+esc(L1.words[w])+'</span>':'');
 DRAW.words=function(){const list=Object.entries(S.taps||{}).sort((a,b)=>b[1]-a[1]);
   $('#v-words').innerHTML=`<div class="wrap narrow"><div class="rhead"><button class="btn ghost sm" data-go="library">← Library</button><div><h1 class="rt">My word book</h1><p class="mut">Words you tapped while reading are here. The words you tapped most come first.</p></div></div>
   ${list.length?`<label class="tog" style="justify-content:flex-start;margin:0 0 12px"><input type="checkbox" id="hideKo" ${W.hide?'checked':''}> Hide the meanings and guess</label>
-  <div class="card tablebox"><table><thead><tr><th scope="col">Word</th><th scope="col">Meaning</th><th scope="col">Taps</th></tr></thead><tbody>${list.map(([w,n])=>`<tr><td><button class="wbtn" data-say="${esc(w)}" lang="en" aria-label="Listen to ${esc(w)}">${esc(w)}</button></td><td>${G[w]?(W.hide&&!W.shown.has(w)?`<button class="btn ghost sm" data-show="${esc(w)}">Show meaning</button>`:esc(G[w])):'<span class="mut">No meaning yet</span>'}</td><td>${n}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card"><p class="mut">No words yet. While you read, tap a word you do not know.</p></div>'}</div>`;
+  <div class="card tablebox"><table><thead><tr><th scope="col">Word</th><th scope="col">Meaning</th><th scope="col">Taps</th></tr></thead><tbody>${list.map(([w,n])=>`<tr><td><button class="wbtn" data-say="${esc(w)}" lang="en" aria-label="Listen to ${esc(w)}">${esc(w)}</button></td><td>${G[w]?(W.hide&&!W.shown.has(w)?`<button class="btn ghost sm" data-show="${esc(w)}">Show meaning</button>`:gl(w)):'<span class="mut">No meaning yet</span>'}</td><td>${n}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card"><p class="mut">No words yet. While you read, tap a word you do not know.</p></div>'}</div>`;
   if($('#hideKo'))$('#hideKo').onchange=e=>{W.hide=e.target.checked;W.shown.clear();DRAW.words();$('#hideKo').focus()}};
-function showKo(el){const w=el.dataset.show;W.shown.add(w);el.parentNode.textContent=G[w]||''}
+function showKo(el){const w=el.dataset.show;W.shown.add(w);el.parentNode.innerHTML=gl(w)}
 
 /* ---------- 어디서 막히는지: 점수가 아니라 읽는 동안의 행동으로 본다 ---------- */
 function evidence(){const tw=Object.entries(S.taps||{}).sort((a,b)=>b[1]-a[1]).slice(0,8),pg={};(S.stuck||[]).forEach(x=>{const k=x.id+'|'+x.p;pg[k]=(pg[k]||0)+1});
@@ -306,6 +309,8 @@ document.addEventListener('keydown',e=>{const t=e.target;
   if(R&&!$('#v-reader').hidden&&!(t.closest&&t.closest('input,dialog'))){if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1)}});
 
 /* ---------- 시작 ---------- */
+/* 낱말 도움 언어 고르기: 고른 값을 이 기기에 적어 두고 주소에 ?l1= 을 붙여 다시 연다 */
+{const sel=$('#l1sel');if(sel){sel.value=L1?L1.code:'';sel.onchange=()=>{try{localStorage.setItem('rs_l1',sel.value)}catch(e){}const u=new URL(location.href);u.searchParams.set('l1',sel.value||'en');location.href=u.toString()}}}
 const s0=BOOKS[0];
 $('#sample').innerHTML=pics(s0.pages[1][1])+`<p class="rtext" lang="en">${wordsHtml(s0.pages[1][0],s0,true)}</p>`;
 $('#nBooks').textContent=BOOKS.length+' books';
