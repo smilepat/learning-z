@@ -11,7 +11,8 @@ for(const b of BOOKS){
   const E=m=>errors.push(`[${b.id}] ${m}`),W=m=>warnings.push(`[${b.id}] ${m}`);
   if(!b.id||ids.has(b.id))E('id가 없거나 다른 책과 겹칩니다.');ids.add(b.id);
   const st=STEPS[b.step-1];if(!st){E('단계 번호가 잘못되었습니다: '+b.step);continue}
-  for(const k of ['title','ko','type'])if(!b[k])E(k+' 값이 없습니다.');
+  for(const k of ['title','type'])if(!b[k])E(k+' 값이 없습니다.');
+  if(/[\uAC00-\uD7A3]/.test(JSON.stringify(b)))E('책 데이터에 한글이 있습니다. 책에 딸린 글은 모두 영어로 적습니다.');
   if(!Array.isArray(b.pages)||!b.pages.length){E('본문(pages)이 없습니다.');continue}
   const all=b.pages.flatMap(p=>words(p[0])),uniq=[...new Set(all)];
   b.pages.forEach((p,i)=>{if(!p[0]||!p[0].trim())E(`${i+1}쪽 본문이 비었습니다.`);if(!Array.isArray(p[1])||!p[1].length)E(`${i+1}쪽에 그림이 없습니다.`);else{if(p[1].length>3)W(`${i+1}쪽 그림이 3개를 넘습니다(모바일에서 작아짐).`);p[1].forEach(s=>{if(!SP[s])E(`${i+1}쪽 그림 "${s}"가 pictures.js 에 없습니다.`)})}});
@@ -28,7 +29,7 @@ for(const b of BOOKS){
   if(b.focus){for(const w of b.focus.words){if(!all.includes(w))E(`소리 글자 낱말 "${w}"가 본문에 없습니다.`);if(!w.includes(b.focus.letter))E(`소리 글자 "${b.focus.letter}"가 "${w}"에 없습니다.`)}}
   else if(b.step===1)W('1단계 책인데 소리 글자(focus)가 없습니다.');
   if(window.RS_CHUNK){const nb=window.RS_CHUNK.pick(b).length;if(nb<2)W(`다시 세우기에 쓸 문장이 ${nb}개뿐입니다(조각이 3~7개인 문장이 필요).`);
-    const ko=((window.RS_KO||{}).books||{})[b.id];
+    const ko=((window.RS_L1||{}).chunks||{})[b.id];
     if(ko){const used=new Set();b.pages.forEach((p,pi)=>window.RS_CHUNK.lines(p[0]).forEach(c=>{used.add(c.k);if(!ko[c.k])W(`${pi+1}쪽 덩어리 "${c.k}"의 우리말 풀이가 없습니다(data/chunks-ko.js).`)}));
       Object.keys(ko).forEach(k=>{if(!used.has(k))W(`쓰이지 않는 덩어리 풀이 "${k}" (끊어 읽기 규칙이나 본문이 바뀌었을 수 있음).`)})}}
   const inRange=all.length>=st.min&&all.length<=st.max,pgOk=!st.pages||(b.pages.length>=st.pages[0]&&b.pages.length<=st.pages[1]);
