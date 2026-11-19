@@ -1,31 +1,49 @@
 # ReadStep 단계 기준과 책 만드는 법
 
 이 문서는 책을 새로 쓰거나 검수할 때 보는 기준입니다.
-수치는 모두 **잠정 기준**입니다. v0.3 시점에 들어 있는 책 18권의 실제 값을 감싸도록 잡았고, 교사 검수를 거쳐 조정합니다.
-같은 수치가 `data/books.js`의 `STEPS`에 들어 있으며, `tools/check.html`이 그 값으로 검사합니다. 기준을 바꿀 때는 두 곳을 함께 고칩니다.
+v0.9(2026-11-20)부터 단계 기준은 **6단계, 세부 레벨 20개**입니다. 전체 기획과 근거는 `docs/LIBRARY_PLAN.md`에 있습니다.
+수치는 모두 **잠정 기준(에이전트 설계값)**이며, 시범 150권을 만든 뒤 실측으로 조정합니다.
+같은 수치가 `data/levels.js`의 `LEVELS`에 들어 있고, `tools/check.html`이 그 값으로 검사합니다. 기준을 바꿀 때는 두 곳을 함께 고칩니다.
 
-## 1. 단계 기준표
+## 1. 단계와 세부 레벨 기준표
 
-| 단계 | 이름 | 낱말 수 | 쪽 수 | 한 쪽 문장 수 | 문법과 어휘 | 글 종류 |
-|---|---|---|---|---|---|---|
-| 1 | Sounds (소리 읽기) | 20~30 | 5~6 | 1 | 짧은 모음 낱말(cat, pig, bug), is, has, can | 이야기 |
-| 2 | Sentences (문장 읽기) | 30~45 | 6~7 | 1~2 | 자주 쓰는 낱말, 현재형, 묻고 답하기 | 이야기 |
-| 3 | Short Stories (이야기 읽기) | 55~75 | 6~7 | 1~2 | 이야기는 과거형, 쉬운 정보 글은 현재형. and, but, then | 이야기, 쉬운 정보 글 |
-| 4 | Longer Stories (긴 이야기) | 95~125 | 7~8 | 1~3 | 대화문, when, 이유 말하기 | 이야기 |
-| 5 | Fact Books (정보 글) | 110~140 | 7~8 | 1~3 | 설명하는 문장, because, without, 수와 단위 | 정보 글 |
-| 6 | Chapters (챕터 읽기) | 140~200 | 8~10 | 2~4 | 두 장 구성, 인물의 마음, 비유 | 챕터 이야기 |
+| 레벨 | 단계 | 낱말 수 | 쪽 수 | 한 문장 최대 | 한 쪽 최대 문장 | 누적 어휘 | 파닉스 | 이 레벨에서 하는 것 |
+|---|---|---|---|---|---|---|---|---|
+| 1-1 | Word Spotter | 8~20 | 5~8 | 5 | 1 | ~60 | P1 | Letters and first sounds. One short sentence on a page. Label and pattern books (This is a ___.) |
+| 1-2 | Word Spotter | 12~30 | 5~8 | 6 | 1 | ~90 | P1 | All 26 letters and sounds. One pattern with one changing word (I see a ___.) |
+| 1-3 | Word Spotter | 20~35 | 5~8 | 8 | 1 | ~110 | P2 | Short a and short i words (cat, pig). One sentence on a page |
+| 1-4 | Word Spotter | 20~40 | 5~8 | 8 | 1 | ~130 | P2 | Short o, u, e words (fox, bug, hen). Two patterns in one book |
+| 1-5 | Word Spotter | 30~60 | 5~8 | 8 | 2 | ~150 | P2 | All short vowels and common sight words. Up to two sentences on a page. Simple questions (Where is ___?) |
+| 2-1 | Sentence Builder | 50~70 | 6~8 | 10 | 2 | ~220 | P3 | Long vowels with silent e (cake, home). Present tense, can, like, have |
+| 2-2 | Sentence Builder | 55~90 | 6~8 | 11 | 2 | ~290 | P3 | Questions and answers. Easy fact books in the present tense |
+| 2-3 | Sentence Builder | 80~110 | 6~8 | 12 | 3 | ~360 | P4 | Blends and digraphs (frog, ship, lunch). Stories in the past tense begin. and, but, then |
+| 2-4 | Sentence Builder | 100~130 | 7~8 | 14 | 4 | ~430 | P4 | Talking in stories (said, asked). Common irregular past forms. when, because |
+| 2-5 | Sentence Builder | 120~150 | 7~8 | 15 | 4 | ~500 | P5 | Vowel teams and r-controlled vowels (rain, star, bird). Fact books with numbers and steps |
+| 3-1 | Story Walker | 140~200 | 8~10 | 15 | 4 | ~600 | - | Short stories with a beginning, middle, and end. Two chapters possible |
+| 3-2 | Story Walker | 200~260 | 8~12 | 16 | 5 | ~700 | - | Characters with feelings and reasons. Fact books with headings |
+| 3-3 | Story Walker | 260~330 | 10~12 | 17 | 5 | ~800 | - | Problem and solution. Compare two things |
+| 3-4 | Story Walker | 330~400 | 10~14 | 18 | 6 | ~900 | - | Longer dialogue. Simple instructions and how-to texts |
+| 4-1 | Chapter Climber | 400~550 | 12~16 | 18 | 6 | ~1100 | - | Two or three short chapters. Past and future |
+| 4-2 | Chapter Climber | 550~700 | 12~16 | 20 | 7 | ~1250 | - | Chapters with a turning point. Fact books with diagrams |
+| 4-3 | Chapter Climber | 700~900 | 14~18 | 20 | 8 | ~1400 | - | Three chapters. Cause and effect, sequence words |
+| 5-1 | Idea Explorer | 900~1300 | 16~20 | 22 | 8 | ~1700 | - | Information texts with facts and opinions. Maps, charts, glossary |
+| 5-2 | Idea Explorer | 1300~1800 | 16~24 | 24 | 9 | ~2000 | - | Biographies, history, science explanations. Main idea and details |
+| 6-1 | Book Navigator | 1800~3000 | 20~32 | 26 | 10 | ~3000 | - | Readers choose genres and read longer books on their own |
 
-낱말 수는 책 한 권의 영어 낱말 전체 개수입니다(같은 낱말도 나올 때마다 셉니다).
-한 쪽 문장 수는 현재 책에서 센 값입니다. 대화문 안의 짧은 외침("Oh no!")은 따로 세지 않았습니다.
+- 낱말 수는 책 한 권의 영어 낱말 전체 개수입니다(같은 낱말도 나올 때마다 셉니다).
+- 책에는 `step`(1~6)과 `lv`(세부 레벨), `track`(listen, phonics, pattern, story), `topic`(12개 주제), `region`(asia, global)을 적습니다. 파닉스 해독책은 `ph`(P1~P5)도 적습니다.
+- 낱말 목록: 1단계 책은 Word Spotter 목록 안의 낱말이 95% 이상, 2단계 책은 누적 목록 안의 낱말이 90% 이상이어야 합니다(`data/wordlist.js`, 이름은 세지 않음). 3단계 이상 목록은 그 단계를 시작하기 전에 만듭니다.
+- 파닉스 해독책은 해독 가능 비율 85% 이상(`docs/phonics-track.md`).
+- v0.8까지의 단계 이름(Sounds, Sentences, Short Stories, Longer Stories, Fact Books, Chapters)은 쓰지 않습니다. 기존 30권은 낱말 수와 문장 길이로 1-3 ~ 3-1에 다시 배치했습니다.
 
 ## 2. 책 한 권의 구성
 
 - 표지 그림 1~2개, 영어 제목 (우리말 제목은 책 데이터에 넣지 않고 한국어 묶음 `data/words-ko.js`에만 둔다)
-- 책 종류(type)는 `Story`, `Fact book`, `Chapter story` 중 하나
+- 책 종류(type)는 `Picture book`, `Pattern book`, `Phonics book`, `Story`, `Fact book`, `Chapter story` 중 하나
 - 등장인물 이름은 어느 나라 학습자에게나 읽기 쉬운 짧은 영어 이름을 쓴다(2026-11-19). 책 데이터에는 한글을 넣지 않으며, 넣으면 검사 도구가 오류로 알린다
 - 본문: 쪽마다 영어 문장과 그림 1~3개
-- 1단계 책은 이번에 배울 소리 글자를 하나 정합니다(`focus`). 화면에서 보라색 밑줄로 표시됩니다.
-- 6단계 책은 두 장으로 나누고, 각 장의 첫 쪽에 장 제목을 붙입니다.
+- 파닉스 해독책은 이번에 배울 소리 글자를 하나 정합니다(`focus`). 화면에서 보라색 밑줄로 표시됩니다.
+- 챕터 이야기(3-1 이상)는 두 장 이상으로 나누고, 각 장의 첫 쪽에 장 제목을 붙입니다.
 - 퀴즈 5문항
 
 ## 3. 그림 규칙
@@ -53,7 +71,7 @@
 
 - 단계마다 서재의 책과 겹치지 않는 짧은 글 1개와 문제 2개를 둡니다.
 - 1단계 글부터 시작해서, 두 문제를 모두 맞히면 다음 단계 글로 넘어갑니다.
-- 하나라도 틀린 단계가 시작 단계가 됩니다. 6단계 글까지 모두 맞히면 6단계입니다.
+- 하나라도 틀린 글의 단계가 시작 단계가 됩니다. 지금 진단 글 6개는 레벨 1-3, 1-5, 2-1, 2-4, 2-5, 3-1에 있습니다(v0.9). 책이 있는 단계(1~3)까지만 추천합니다.
 - 학생 화면에는 결과를 "추천 단계"로 보여 주고 임시 추천임을 알립니다.
 - 이 규칙은 잠정이며, 실제 학생 결과를 보고 조정합니다.
 

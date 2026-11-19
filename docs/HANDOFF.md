@@ -17,6 +17,8 @@
 | 독립성 점검(다른 모델, 읽기 전용)과 지적 반영 | `docs/independence-review-2026-11-18.md` |
 | 2026-11-19: 통과 기준의 공식 출처 확인, 책 제목 대조와 제목 6개 변경, 눈 그림 추가 | `docs/REA_ANALYSIS.md` F-10, 7절 |
 
+**2026-11-20 v0.9 (1,500권 라이브러리 0단계, 다른 작업 창에서 함)**: 6단계 새 이름(Word Spotter ~ Book Navigator)과 세부 레벨 20개(`data/levels.js`), 낱말 목록 585단어(`data/wordlist.js`), 파닉스 해독책 P1~P5(`docs/phonics-track.md`), 배분 지도(`docs/quota.csv`), 시리즈 6개(`docs/series-bible.md`), 검사기 v2, 서재의 레벨과 주제 고르기, 기존 30권 재배치. 전체 기획은 `docs/LIBRARY_PLAN.md`. 장면 그림은 비공개 레포 `smilepat/readstep-art`에 둔다. 다음 일은 시범 150권(LIBRARY_PLAN 6절).
+
 **지금 상태 한 줄**: 서버 없는 시제품이 공개 주소에서 동작한다. 모든 글은 AI가 쓰고 AI가 검수한 초안이며, 사람의 줄별 검수는 0줄이다.
 
 **받아야 할 것(사용자 → 개발)**
