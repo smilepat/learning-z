@@ -1,6 +1,6 @@
 /* ReadStep 책 데이터. 책을 추가하는 방법은 docs/level-guide.md 를 본다.
    화면과 책에 딸린 글(단계 이름, 책 종류, 낱말 풀이, 낱말 문제)은 모두 영어다. 한국어 풀이는 data/words-ko.js 에 따로 있다(선택 언어 묶음).
-   책 한 권 = {id, step(1~6), lv(세부 레벨 '1-3'), track(listen|phonics|pattern|story), ph(파닉스 해독책만 P1~P5), topic(12개 주제), region(asia|global), series(선택),
+   책 한 권 = {id, step(1~6), lv(세부 레벨 '1-3'), track(listen|phonics|pattern|story), ph(파닉스 해독책만 P1~P5), topic(12개 주제), region(asia|global), series(선택), art(1이면 표지 장면 그림 art/<id>-cover.webp 를 씀),
               title, type, cover:[그림 이름], focus(파닉스 해독책), pages:[[영어 본문,[그림 이름],'장 제목(선택)']], quiz:[5문항]}
    레벨 기준과 주제 목록은 data/levels.js, 낱말 목록은 data/wordlist.js (v0.9, docs/LIBRARY_PLAN.md)
    퀴즈 = {q:질문, o:[보기 3개], a:정답 번호(0부터), s:유형(detail|vocab|main|seq|infer), p:근거 쪽}
@@ -108,7 +108,41 @@ const BOOKS=[
  quiz:[{q:'What did Ella want to show?',o:['Plants grow toward light.','Plants need no water.','Balls can break boxes.'],a:0,s:'detail',p:1},{q:'What happened on Thursday?',o:['Ella won a prize.','The plant was broken.','The fair was canceled.'],a:1,s:'detail',p:4},{q:'How did Ella save her project?',o:['She bought a new plant.','She stayed home.','She used the drawings in her notebook.'],a:2,s:'infer',p:7},{q:V('judges'),w:'judges',o:['children in the same class','people who choose the winner','people who teach at a school'],a:1,s:'vocab',p:8},{q:'What is the lesson of this story?',o:['Keeping good notes can save your work.','Little brothers are bad.','Science fairs are too hard.'],a:0,s:'main',p:9}]},
 {id:'home-for-bori',step:3,lv:'3-1',track:'story',topic:'Feelings & Choices',region:'global',title:'A Home for Coco',type:'Chapter story',cover:['cat','box'],
  pages:[[`Alex was walking home from school when it started to rain. He heard a small sound behind a bush.`,['rain','kid'],'Chapter 1 · A Sound in the Rain'],[`It was a tiny kitten. It was wet and shaking. There was no mother cat anywhere.`,['cat','rain']],[`Alex wanted to take it home. But his family lived in a small apartment, and his mom always said, "No pets."`,['kid']],[`He could not leave it there. He put the kitten inside his jacket and ran home.`,['cat','kid']],[`Mom looked at the kitten for a long time. "It can stay for one week," she said. "Then we will find it a home."`,['cat'],'Chapter 2 · One Week'],[`Alex fed the kitten every morning. He made a bed for it in a box. He named it Coco.`,['cat','box']],[`All week, Coco followed Mom around the kitchen. On Friday, Coco fell asleep on Mom's lap.`,['cat']],[`On Sunday, Alex made a poster that said "Kitten needs a home." Mom read it and shook her head.`,['cat','kid']],[`"Coco already has a home," she said, and she put the poster away. Alex hugged them both.`,['cat','kid']]],
- quiz:[{q:'Where did Alex find the kitten?',o:['Behind a bush','In a box','At school'],a:0,s:'detail',p:1},{q:'Why did Alex worry about taking the kitten home?',o:['The kitten was too big.','His mom always said, "No pets."','He did not like cats.'],a:1,s:'detail',p:3},{q:'How long did Mom say the kitten could stay?',o:['One day','One month','One week'],a:2,s:'detail',p:5},{q:V('shaking'),w:'shaking',o:['making long slow movements','making small quick movements','making no movements at all'],a:1,s:'vocab',p:2},{q:'Why did Mom put the poster away?',o:['She wanted to keep Coco.','She did not like the drawing.','It was raining.'],a:0,s:'infer',p:9}]}
+ quiz:[{q:'Where did Alex find the kitten?',o:['Behind a bush','In a box','At school'],a:0,s:'detail',p:1},{q:'Why did Alex worry about taking the kitten home?',o:['The kitten was too big.','His mom always said, "No pets."','He did not like cats.'],a:1,s:'detail',p:3},{q:'How long did Mom say the kitten could stay?',o:['One day','One month','One week'],a:2,s:'detail',p:5},{q:V('shaking'),w:'shaking',o:['making long slow movements','making small quick movements','making no movements at all'],a:1,s:'vocab',p:2},{q:'Why did Mom put the poster away?',o:['She wanted to keep Coco.','She did not like the drawing.','It was raining.'],a:0,s:'infer',p:9}]},
+/* v0.9 시범 1묶음(2026-11-20): 레벨 1-1 10권. 에이전트가 새로 쓴 글(다른 책에서 옮기지 않음), AI 초안 */
+{id:'tuk-wakes',art:1,step:1,lv:'1-1',track:'listen',topic:'Animals',region:'global',series:'S01',title:'Tuk Wakes Up',type:'Picture book',cover:['tuk','sun'],
+ pages:[['Tuk is in bed.',['tuk','bed']],['Tuk sees the sun.',['tuk','sun']],['Tuk eats.',['tuk','bowl']],['Tuk runs.',['tuk']],['Tuk sees Mo.',['tuk','mo']],['Tuk and Mo play.',['tuk','mo','ball']]],
+ quiz:[{q:'Where is Tuk at the start?',o:['In bed','In a box','On a bus'],a:0,s:'detail',p:1},{q:'What does Tuk see first?',o:['The moon','The sun','A cat'],a:1,s:'seq',p:2},{q:'What does "play" mean?',w:'play',o:['to sleep at night','to eat food','to have fun with a game'],a:2,s:'vocab',p:6},{q:'Who does Tuk play with?',o:['Sam','Mo','Mom'],a:1,s:'detail',p:6},{q:'What is this book about?',o:['Tuk\'s morning','A big bus','A red kite'],a:0,s:'main',p:1}]},
+{id:'where-mo',art:1,step:1,lv:'1-1',track:'listen',topic:'Animals',region:'global',series:'S01',title:'Where Is Mo?',type:'Picture book',cover:['tuk','mo'],
+ pages:[['Where is Mo?',['tuk']],['In the box?',['box']],['No!',['box']],['In the bag?',['bag']],['No!',['bag']],['Mo is up here!',['mo','tree']]],
+ quiz:[{q:'Who is Tuk looking for?',o:['A ball','Sam','Mo'],a:2,s:'main',p:1},{q:'Where does Tuk look first?',o:['In the box','In the bag','In the tree'],a:0,s:'seq',p:2},{q:'Is Mo in the bag?',o:['Yes','No','We do not know'],a:1,s:'detail',p:5},{q:'What does "bag" mean?',w:'bag',o:['a thing you carry things in','a soft thing on a bed','a small animal'],a:0,s:'vocab',p:4},{q:'Where is Mo at the end?',o:['In bed','Up in a tree','In a cup'],a:1,s:'detail',p:6}]},
+{id:'rice-noodles',art:1,step:1,lv:'1-1',track:'listen',topic:'Food',region:'asia',title:'Rice and Noodles',type:'Picture book',fic:false,cover:['rice','noodles'],newWords:['rice','noodles','bun','chopsticks'],
+ pages:[['I have rice.',['rice']],['I have noodles.',['noodles']],['I have a bun.',['bun']],['I have an egg.',['egg']],['I eat with chopsticks.',['chopsticks']]],
+ quiz:[{q:'What does the child have first?',o:['An egg','Rice','A bun'],a:1,s:'seq',p:1},{q:'What does the child eat with?',o:['A cup','A pen','Chopsticks'],a:2,s:'detail',p:5},{q:'What does "noodles" mean?',w:'noodles',o:['long thin food you eat','a small round toy','a red fruit'],a:0,s:'vocab',p:2},{q:'What comes after the noodles?',o:['A bun','Rice','An apple'],a:0,s:'seq',p:3},{q:'What is this book about?',o:['Toys','Food','Animals'],a:1,s:'main',p:1}]},
+{id:'morning-market',art:1,step:1,lv:'1-1',track:'listen',topic:'Places & Travel',region:'asia',title:'The Morning Market',type:'Picture book',cover:['mom','lantern'],newWords:['bun','lantern'],
+ pages:[['Mom and I go.',['mom','kid']],['I see fish.',['fish']],['I see buns.',['bun']],['I see red lanterns.',['lantern']],['Mom gets eggs.',['mom','egg']],['We go home.',['home']]],
+ quiz:[{q:'Who goes with the child?',o:['Dad','Mom','Tuk'],a:1,s:'detail',p:1},{q:'What color are the lanterns?',o:['Blue','Green','Red'],a:2,s:'detail',p:4},{q:'What does "home" mean?',w:'home',o:['the place where you live','a place to buy food','a big tree'],a:0,s:'vocab',p:6},{q:'What does Mom get?',o:['Eggs','Fish','Buns'],a:0,s:'detail',p:5},{q:'Where do they go at the end?',o:['To school','To the park','Home'],a:2,s:'seq',p:6}]},
+{id:'red-yellow',art:1,step:1,lv:'1-1',track:'listen',topic:'Arts & Sports',region:'global',title:'Red, Yellow, Green',type:'Picture book',fic:false,cover:['apple','sun','frog'],
+ pages:[['The apple is red.',['apple']],['The sun is yellow.',['sun']],['The frog is green.',['frog']],['The bird is blue.',['bird']],['The egg is white.',['egg']]],
+ quiz:[{q:'What color is the apple?',o:['Red','Blue','White'],a:0,s:'detail',p:1},{q:'What is green?',o:['The sun','The frog','The egg'],a:1,s:'detail',p:3},{q:'What does "yellow" mean?',w:'yellow',o:['the color of a banana','the color of the night','the color of grass'],a:0,s:'vocab',p:2},{q:'What is blue?',o:['The apple','The egg','The bird'],a:2,s:'detail',p:4},{q:'What is this book about?',o:['Colors','Food','Toys'],a:0,s:'main',p:1}]},
+{id:'sam-box-b',art:1,step:1,lv:'1-1',track:'phonics',ph:'P1',topic:'Me & My Family',region:'global',series:'S02',title:'Sam\'s Box of B',type:'Phonics book',cover:['sam','box'],
+ focus:{label:'b sound',letter:'b',words:['box','bag','ball','bus','bee']},
+ pages:[['Sam has a box.',['sam','box']],['Sam sees a bag.',['bag']],['Sam sees a ball.',['ball']],['Sam sees a bus.',['bus']],['Sam sees a bee.',['bee']]],
+ quiz:[{q:'What does Sam have?',o:['A hat','A box','A cup'],a:1,s:'detail',p:1},{q:'What does Sam see first?',o:['A bag','A bee','A ball'],a:0,s:'seq',p:2},{q:'What does "ball" mean?',w:'ball',o:['a long stick','a round toy you can throw','a small house'],a:1,s:'vocab',p:3},{q:'What does Sam see last?',o:['A bus','A bag','A bee'],a:2,s:'seq',p:5},{q:'Bag, ball, bus, and bee start with the same sound. Which one?',o:['m','s','b'],a:2,s:'main',p:2}]},
+{id:'sam-box-m',art:1,step:1,lv:'1-1',track:'phonics',ph:'P1',topic:'Me & My Family',region:'global',series:'S02',title:'Sam\'s Box of M',type:'Phonics book',cover:['sam','box'],
+ focus:{label:'m sound',letter:'m',words:['map','mop','mug','milk']},
+ pages:[['Sam has a box.',['sam','box']],['Sam sees a map.',['map']],['Sam sees a mop.',['mop']],['Sam sees a mug.',['mug']],['Sam sees milk.',['milk']]],
+ quiz:[{q:'What does Sam see first?',o:['A mug','A map','Milk'],a:1,s:'seq',p:2},{q:'What does "mop" mean?',w:'mop',o:['a thing you use to clean the floor','a thing you drink from','a thing you wear'],a:0,s:'vocab',p:3},{q:'What does Sam see after the mop?',o:['A mug','A map','A box'],a:0,s:'seq',p:4},{q:'What does Sam see last?',o:['A map','A mop','Milk'],a:2,s:'seq',p:5},{q:'Map, mop, mug, and milk start with the same sound. Which one?',o:['b','m','s'],a:1,s:'main',p:2}]},
+{id:'sam-box-s',art:1,step:1,lv:'1-1',track:'phonics',ph:'P1',topic:'Me & My Family',region:'global',series:'S02',title:'Sam\'s Box of S',type:'Phonics book',cover:['sam','box'],
+ focus:{label:'s sound',letter:'s',words:['sock','sun','star','sand']},
+ pages:[['Sam has a box.',['sam','box']],['Sam sees a sock.',['sock']],['Sam sees a sun.',['sun']],['Sam sees a star.',['star']],['Sam sees sand.',['sand']]],
+ quiz:[{q:'What does Sam see first?',o:['A star','Sand','A sock'],a:2,s:'seq',p:2},{q:'What does "sock" mean?',w:'sock',o:['a thing you wear on your foot','a thing you wear on your head','a thing you eat'],a:0,s:'vocab',p:2},{q:'What does Sam see after the sun?',o:['A star','A sock','Sand'],a:0,s:'seq',p:4},{q:'What does Sam see last?',o:['A sun','Sand','A star'],a:1,s:'seq',p:5},{q:'Sock, sun, star, and sand start with the same sound. Which one?',o:['s','b','m'],a:0,s:'main',p:2}]},
+{id:'my-things',art:1,step:1,lv:'1-1',track:'pattern',topic:'School & Friends',region:'global',title:'My Things',type:'Pattern book',fic:false,cover:['bag','book'],
+ pages:[['This is my hat.',['hat']],['This is my cup.',['cup']],['This is my bag.',['bag']],['This is my book.',['book']],['This is me!',['kid']]],
+ quiz:[{q:'What is first?',o:['My hat','My cup','My bag'],a:0,s:'seq',p:1},{q:'What does "cup" mean?',w:'cup',o:['a thing you sleep in','a small thing you drink from','a thing you read'],a:1,s:'vocab',p:2},{q:'What comes after the bag?',o:['The hat','The cup','The book'],a:2,s:'seq',p:4},{q:'Who is on the last page?',o:['Mom','The child','A dog'],a:1,s:'detail',p:5},{q:'What is this book about?',o:['A child\'s things','A big farm','The sun'],a:0,s:'main',p:1}]},
+{id:'hop-run-dig',art:1,step:1,lv:'1-1',track:'pattern',topic:'Animals',region:'global',title:'Hop, Run, Dig',type:'Pattern book',fic:false,cover:['frog','pig'],
+ pages:[['The frog can hop.',['frog']],['The dog can run.',['dog']],['The pig can dig.',['pig']],['The cat can sit.',['cat']],['I can jump!',['kid']]],
+ quiz:[{q:'What can the frog do?',o:['Dig','Hop','Sit'],a:1,s:'detail',p:1},{q:'Who can dig?',o:['The pig','The cat','The frog'],a:0,s:'detail',p:3},{q:'What does "hop" mean?',w:'hop',o:['to sleep','to jump on your feet','to eat'],a:1,s:'vocab',p:1},{q:'What can the cat do?',o:['Run','Hop','Sit'],a:2,s:'detail',p:4},{q:'What can the child do?',o:['Jump','Dig','Fly'],a:0,s:'detail',p:5}]}
 ];
 /* 낱말 풀이: 학생이 낱말을 누르면 나오는 쉬운 영어 풀이. 풀이에 쓰는 낱말은 되도록 그 낱말보다 쉬워야 한다.
    과거형 등은 "(past of run)"처럼 원형을 함께 적는다. AI가 쓴 초안이며 사람 검수 전이다(2026-11-19). */
@@ -602,7 +636,26 @@ well:"in a good way",
 done:"finished; \"Well done\" = good job",
 lap:"the top of your legs when you sit",
 ice:"water that is so cold it is hard",
-bits:"very small pieces"
+bits:"very small pieces",
+sees:"looks at something with your eyes",
+eats:"puts food in the mouth",
+sit:"to rest on a seat or on the floor",
+have:"to own or hold something",
+has:"owns or holds something",
+here:"in this place",
+bag:"a thing you carry things in",
+rice:"small white seeds that people cook and eat",
+noodles:"long thin food that you cook and eat",
+bun:"a small round soft bread",
+buns:"small round soft breads",
+egg:"a round thing that a baby bird comes out of; people eat it",
+chopsticks:"two thin sticks you use to eat",
+lanterns:"lights in paper or glass covers",
+map:"a picture that shows where places are",
+mop:"a thing on a long stick that you use to clean the floor",
+mug:"a big cup with a handle",
+sock:"a soft thing you wear on your foot",
+sand:"very small bits of rock on a beach"
 };
 
 /* 단계 진단용 글. 서재의 책과 겹치지 않는 새 글을 단계마다 하나씩 둔다. */
