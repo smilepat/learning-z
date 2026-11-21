@@ -77,7 +77,7 @@ let curStep=null,curLv='',curTopic='';
 const lvName=b=>`Level ${b.lv||b.step} · ${STEPS[b.step-1].name}`;
 const chip=(on,t)=>`<span class="chip${on?' done':''}">${on?IC.ok:''}${t}</span>`;
 function bookCard(b){const r=S.books[b.id]||{},hw=S.assigned.includes(b.id);
-  return `<button class="card book" data-book="${b.id}"><span class="cover">${b.cover.map(svg).join('')}</span><span class="bt" lang="en">${esc(b.title)}</span><span class="meta">Level ${esc(b.lv||String(b.step))} · ${b.type} · ${wc(b)} words</span><span class="chips">${hw?'<span class="chip hw">Homework</span>':''}${chip(r.listen,'Listen')}${chip(r.read,'Read')}${chip(r.build,'Rebuild')}${chip(passed(b),'Check')}</span></button>`}
+  return `<button class="card book" data-book="${b.id}"><span class="cover${b.art?' art':''}">${b.art?`<img src="art/${b.id}-cover.webp" alt="" loading="lazy" decoding="async">`:b.cover.map(svg).join('')}</span><span class="bt" lang="en">${esc(b.title)}</span><span class="meta">Level ${esc(b.lv||String(b.step))} · ${b.type} · ${wc(b)} words</span><span class="chips">${hw?'<span class="chip hw">Homework</span>':''}${chip(r.listen,'Listen')}${chip(r.read,'Read')}${chip(r.build,'Rebuild')}${chip(passed(b),'Check')}</span></button>`}
 DRAW.library=function(){const rs=recStep();if(curStep==null)curStep=rs;
   const all=BOOKS.filter(b=>b.step===curStep),done=all.filter(bookDone).length,LVS=(window.RS_DATA.LEVELS||[]).filter(l=>l.step===curStep),tps=[...new Set(all.map(b=>b.topic).filter(Boolean))].sort();
   if(curLv&&!LVS.some(l=>l.id===curLv))curLv='';if(curTopic&&!tps.includes(curTopic))curTopic='';

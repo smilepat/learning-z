@@ -81,7 +81,10 @@ for(const b of BOOKS){
   if(lv&&maxSpp>lv.spp)W(`한 쪽에 문장이 ${maxSpp}개로 레벨 ${b.lv} 기준(${lv.spp}개 이하)보다 많습니다.`);
   /* 낱말 목록 범위: 1단계는 Word Spotter 목록, 2단계는 누적 목록. 3단계 이상은 목록 준비 전이라 재지 않는다. 이름은 세지 않는다. */
   let cov=null,outW=[];const set=WL&&WL.sets[b.step];
-  if(set){const toks=b.pages.flatMap(p=>p[0].match(/[A-Za-z']+/g)||[]).map(t=>t.toLowerCase()).filter(t=>!NAMES.has(t)),fw=new Set(((b.focus||{}).words)||[]);
+  /* 그림으로 뜻을 아는 새 낱말(newWords): 낱말 목록 밖이어도 세지 않는다. 1단계 4개, 2단계 6개까지 */
+  const NW=(b.newWords||[]).map(w=>w.toLowerCase()),nwMax=b.step===1?4:6;if(NW.length>nwMax)W(`새 낱말(newWords)이 ${NW.length}개로 ${b.step}단계 기준(${nwMax}개 이하)보다 많습니다.`);
+  NW.forEach(w=>{if(!all.some(t=>window.RS_LEMMA(t,WL&&WL.FORMS).includes(w)))E(`새 낱말 "${w}"이 본문에 없습니다.`)});
+  if(set){const toks=b.pages.flatMap(p=>p[0].match(/[A-Za-z']+/g)||[]).map(t=>t.toLowerCase()).filter(t=>!NAMES.has(t)&&!window.RS_LEMMA(t,WL.FORMS).some(c=>NW.includes(c))),fw=new Set(((b.focus||{}).words)||[]);
     outW=toks.filter(t=>!fw.has(t)&&!window.RS_LEMMA(t,WL.FORMS).some(c=>set.has(c)));cov=toks.length?Math.round((1-outW.length/toks.length)*100):100;
     const need=b.step===1?95:90;if(cov<need)W(`낱말 목록 안의 낱말이 ${cov}%입니다(${b.step}단계 기준 ${need}% 이상). 목록 밖: ${[...new Set(outW)].slice(0,10).join(', ')}`)}
   /* 파닉스 해독책: 배운 소리 규칙 + 배운 사이트 워드 + 이름 + 소리 글자 낱말로 읽을 수 있는 비율 */
