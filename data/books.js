@@ -244,7 +244,40 @@ const BOOKS=[
  quiz:[{q:'How is the child in the sun?',o:['Sad','Happy','Wet'],a:1,s:'detail',p:1},{q:'How is the child in the rain?',o:['Sad','Hot','Happy'],a:0,s:'detail',p:2},{q:'What does "sad" mean?',w:'sad',o:['not happy','very hot','very big'],a:0,s:'vocab',p:2},{q:'Why is the child hot?',o:['The child is in a hat.','The child is in the tub.','The child is in the rain.'],a:0,s:'infer',p:4},{q:'Who makes the child happy at the end?',o:['Mom','Dad','Tuk'],a:0,s:'detail',p:5}]},
 {id:'big-bigger',art:1,step:1,lv:'1-3',track:'pattern',topic:'Science & How Things Work',region:'global',title:'Big, Bigger, Biggest',type:'Pattern book',fic:false,cover:['bug','cow'],
  pages:[['A bug is little.',['bug']],['A cat is big.',['cat']],['A pig is bigger.',['pig']],['A cow is bigger.',['cow']],['A bus is the biggest!',['bus']],['I am little!',['kid']]],
- quiz:[{q:'What is little?',o:['A bug','A cow','A bus'],a:0,s:'detail',p:1},{q:'What is bigger than a cat?',o:['A bug','A pig','A cup'],a:1,s:'detail',p:3},{q:'What does "biggest" mean?',w:'biggest',o:['bigger than all the others','very little','very wet'],a:0,s:'vocab',p:5},{q:'What is the biggest?',o:['The cow','The bus','The pig'],a:1,s:'main',p:5},{q:'What does the child say at the end?',o:['I am big!','I am little!','I am hot!'],a:1,s:'detail',p:6}]}
+ quiz:[{q:'What is little?',o:['A bug','A cow','A bus'],a:0,s:'detail',p:1},{q:'What is bigger than a cat?',o:['A bug','A pig','A cup'],a:1,s:'detail',p:3},{q:'What does "biggest" mean?',w:'biggest',o:['bigger than all the others','very little','very wet'],a:0,s:'vocab',p:5},{q:'What is the biggest?',o:['The cow','The bus','The pig'],a:1,s:'main',p:5},{q:'What does the child say at the end?',o:['I am big!','I am little!','I am hot!'],a:1,s:'detail',p:6}]},
+/* v0.9 시범 5묶음(2026-11-21): 레벨 1-3 5권, 1-4 5권. 에이전트가 새로 쓴 글, AI 초안 */
+{id:'red-new-year',art:1,step:1,lv:'1-3',track:'listen',topic:'Me & My Family',region:'asia',title:'Red for New Year',type:'Picture book',cover:['lantern','envelope'],newWords:['new','year','envelope','dumpling'],
+ pages:[['It is New Year!',['lantern']],['The door is red.',['home','lantern']],['Mom gives me a red envelope.',['mom','envelope']],['We eat fish.',['fish']],['We eat dumplings.',['dumpling']],['Happy New Year!',['kid','mom']]],
+ quiz:[{q:'What day is it?',o:['New Year','A school day','A rainy day'],a:0,s:'detail',p:1},{q:'What does Mom give the child?',o:['A red bag','A red envelope','A red hat'],a:1,s:'detail',p:3},{q:'What does "envelope" mean?',w:'envelope',o:['a paper cover for a letter or money','a kind of food','a big lamp'],a:0,s:'vocab',p:3},{q:'What do they eat after the fish?',o:['Cake','Rice','Dumplings'],a:2,s:'seq',p:5},{q:'What color do you see a lot in this book?',o:['Blue','Red','Green'],a:1,s:'main',p:2}]},
+{id:'cat-for-sam',art:1,step:1,lv:'1-3',track:'phonics',ph:'P2',topic:'Feelings & Choices',region:'global',series:'S02',title:'A Cat for Sam',type:'Phonics book',cover:['sam','cat'],
+ focus:{label:'short a sound',letter:'a',words:['sad','dad','and','sat','has','bag','cat','nap']},
+ pages:[['Sam is sad.',['sam']],['Dad and Sam sat.',['dad','sam']],['Dad has a big bag.',['dad','bag']],['It is a cat!',['cat']],['Sam is not sad.',['sam']],['Sam and the cat nap.',['sam','cat']]],
+ quiz:[{q:'How does Sam feel at the start?',o:['Happy','Sad','Hot'],a:1,s:'detail',p:1},{q:'What does Dad have?',o:['A big bag','A big box','A big van'],a:0,s:'detail',p:3},{q:'What is in the bag?',o:['A hat','A cat','A pan'],a:1,s:'detail',p:4},{q:'What does "sad" mean?',w:'sad',o:['not happy','very big','very wet'],a:0,s:'vocab',p:1},{q:'Why is Sam not sad at the end?',o:['He has a new cat.','He has a hat.','It is hot.'],a:0,s:'infer',p:5}]},
+{id:'lily-gets-up',art:1,step:1,lv:'1-3',track:'pattern',topic:'Me & My Family',region:'global',series:'S03',title:'Lily Gets Up',type:'Pattern book',cover:['lily','sun'],
+ pages:[['Lily gets up.',['lily','sun']],['Lily eats an egg.',['lily','egg']],['Lily gets her bag.',['lily','bag']],['Lily goes to school.',['lily','school']],['Lily plays with a friend.',['lily','kid']],['Lily goes home.',['lily','home']],['Lily goes to bed.',['lily','bed']]],
+ quiz:[{q:'What does Lily eat?',o:['An egg','A fish','A cake'],a:0,s:'detail',p:2},{q:'Where does Lily go after she gets her bag?',o:['To school','To bed','To the park'],a:0,s:'seq',p:4},{q:'What does "friend" mean?',w:'friend',o:['a person you like and play with','a kind of food','a big bus'],a:0,s:'vocab',p:5},{q:'What does Lily do last?',o:['She eats.','She goes to bed.','She plays.'],a:1,s:'seq',p:7},{q:'What is this book about?',o:['Lily\'s day','A farm','A boat race'],a:0,s:'main',p:1}]},
+{id:'lily-school',art:1,step:1,lv:'1-3',track:'pattern',topic:'School & Friends',region:'global',series:'S03',title:'Lily at School',type:'Pattern book',cover:['lily','school'],newWords:['lunch'],
+ pages:[['Lily is at school.',['lily','school']],['Lily sees her friend.',['lily','kid']],['They sit and look at a book.',['lily','kid','book']],['They eat lunch.',['lily','kid']],['They play with a ball.',['ball']],['They run and jump.',['lily','kid']],['Lily likes school!',['lily','school']]],
+ quiz:[{q:'Where is Lily?',o:['At home','At school','At the farm'],a:1,s:'detail',p:1},{q:'What do they look at?',o:['A book','A map','A bug'],a:0,s:'detail',p:3},{q:'What does "lunch" mean?',w:'lunch',o:['the meal in the middle of the day','a big bag','a kind of game'],a:0,s:'vocab',p:4},{q:'What do they do after lunch?',o:['They sleep.','They play with a ball.','They go home.'],a:1,s:'seq',p:5},{q:'How does Lily feel about school?',o:['She likes it.','She is sad.','She is scared.'],a:0,s:'infer',p:7}]},
+{id:'hot-or-cold',art:1,step:1,lv:'1-3',track:'pattern',topic:'Science & How Things Work',region:'global',title:'Hot or Cold?',type:'Pattern book',fic:false,cover:['sun','ice'],newWords:['cold','tea','soup','ice'],
+ pages:[['The sun is hot.',['sun']],['The snow is cold.',['snow']],['The tea is hot.',['tea']],['The milk is cold.',['milk']],['The soup is hot.',['soup']],['The ice is cold.',['ice']]],
+ quiz:[{q:'What is hot?',o:['The snow','The sun','The ice'],a:1,s:'detail',p:1},{q:'Is the milk hot or cold?',o:['Hot','Cold','Wet'],a:1,s:'detail',p:4},{q:'What does "cold" mean?',w:'cold',o:['not warm','very big','very fast'],a:0,s:'vocab',p:2},{q:'Which one is NOT hot?',o:['The tea','The soup','The ice'],a:2,s:'infer',p:6},{q:'What is this book about?',o:['Hot and cold things','Animals','Colors'],a:0,s:'main',p:1}]},
+{id:'tuk-bone',art:1,step:1,lv:'1-4',track:'listen',topic:'Animals',region:'global',series:'S01',title:'Tuk\'s Bone',type:'Picture book',cover:['tuk','bone'],newWords:['bone','hole'],
+ pages:[['Tuk has a bone.',['tuk','bone']],['Tuk digs a hole.',['tuk','pit']],['Tuk puts the bone in the hole.',['bone','pit']],['Mo sees the bone.',['mo','bone']],['Mo digs too!',['mo','pit']],['Where is the bone?',['tuk','pit']],['Mo has it!',['mo','bone']]],
+ quiz:[{q:'What does Tuk have?',o:['A ball','A bone','A hat'],a:1,s:'detail',p:1},{q:'Where does Tuk put the bone?',o:['In a box','In the hole','In a bag'],a:1,s:'detail',p:3},{q:'What does "hole" mean?',w:'hole',o:['an open space in the ground','a kind of bone','a small bed'],a:0,s:'vocab',p:2},{q:'Who sees the bone?',o:['Mo','Sam','Mom'],a:0,s:'detail',p:4},{q:'Who has the bone at the end?',o:['Tuk','Mo','Lily'],a:1,s:'seq',p:7}]},
+{id:'ted-pet',art:1,step:1,lv:'1-4',track:'phonics',ph:'P2',topic:'Animals',region:'global',series:'S02',title:'Ted Gets a Pet',type:'Phonics book',cover:['ted','bug'],
+ focus:{label:'short u sound',letter:'u',words:['bug','cup','hum','fun']},
+ pages:[['Ted has a red box.',['ted','box']],['Ted gets a pet.',['ted']],['It is a bug!',['bug']],['The bug is in a cup.',['bug','cup']],['The bug can hum.',['bug']],['Ted and the bug have fun.',['ted','bug']]],
+ quiz:[{q:'What color is the box?',o:['Red','Blue','Tan'],a:0,s:'detail',p:1},{q:'What is the pet?',o:['A cat','A bug','A dog'],a:1,s:'main',p:3},{q:'Where is the bug?',o:['In a cup','In a bag','In a hat'],a:0,s:'detail',p:4},{q:'What does "hum" mean?',w:'hum',o:['to make a low soft sound','to run fast','to eat'],a:0,s:'vocab',p:5},{q:'How do Ted and the bug feel?',o:['Sad','They have fun.','Wet'],a:1,s:'infer',p:6}]},
+{id:'noodle-shop',art:1,step:1,lv:'1-4',track:'pattern',topic:'Jobs & Community',region:'asia',title:'At the Noodle Shop',type:'Pattern book',cover:['noodles','tea'],newWords:['noodles','tea'],
+ pages:[['Can I have noodles?',['kid']],['Here you are.',['noodles']],['Can I have an egg?',['kid']],['Here you are.',['egg']],['Can I have tea?',['kid']],['Here you are.',['tea']],['Thank you!',['kid']]],
+ quiz:[{q:'What does the child ask for first?',o:['Tea','An egg','Noodles'],a:2,s:'seq',p:1},{q:'What does the child ask for after the egg?',o:['Tea','Noodles','Cake'],a:0,s:'seq',p:5},{q:'What does "thank" mean?',w:'thank',o:['to tell someone you are happy they helped you','to say goodbye','to ask a question'],a:0,s:'vocab',p:7},{q:'Where is the child?',o:['At a noodle shop','At school','At the farm'],a:0,s:'infer',p:1},{q:'What does the child say at the end?',o:['Here you are.','Thank you!','Can I have tea?'],a:1,s:'detail',p:7}]},
+{id:'what-in-egg',art:1,step:1,lv:'1-4',track:'pattern',topic:'Animals',region:'global',title:'What Is in the Egg?',type:'Pattern book',fic:false,cover:['egg','hen'],
+ pages:[['What is in the egg?',['egg']],['It is a hen!',['hen']],['What is in the egg?',['egg']],['It is a duck!',['duck']],['What is in the egg?',['egg']],['It is a bug!',['bug']]],
+ quiz:[{q:'What is in the first egg?',o:['A duck','A hen','A bug'],a:1,s:'seq',p:2},{q:'What is in the second egg?',o:['A duck','A cat','A fish'],a:0,s:'seq',p:4},{q:'What does "egg" mean?',w:'egg',o:['a round thing that a baby bird comes out of','a kind of ball','a small box'],a:0,s:'vocab',p:1},{q:'What is in the last egg?',o:['A hen','A bug','A duck'],a:1,s:'seq',p:6},{q:'What is this book about?',o:['Animals that come from eggs','Food','Colors'],a:0,s:'main',p:1}]},
+{id:'day-night-me',art:1,step:1,lv:'1-4',track:'pattern',topic:'Me & My Family',region:'global',title:'In the Day, at Night',type:'Pattern book',cover:['sun','moon'],
+ pages:[['In the day, I run.',['kid','sun']],['At night, I sleep.',['kid','moon']],['In the day, I play.',['kid','ball']],['At night, I hug Mom.',['kid','mom']],['In the day, I see the sun.',['sun']],['At night, I see the moon.',['moon']]],
+ quiz:[{q:'What does the child do at night first?',o:['Runs','Sleeps','Plays'],a:1,s:'detail',p:2},{q:'What does the child see in the day?',o:['The moon','The sun','A star'],a:1,s:'detail',p:5},{q:'What does "night" mean?',w:'night',o:['the dark time when people sleep','the time for lunch','a big hill'],a:0,s:'vocab',p:2},{q:'Who does the child hug at night?',o:['Dad','Mom','Tuk'],a:1,s:'detail',p:4},{q:'What is this book about?',o:['Day and night','Food','Animals'],a:0,s:'main',p:1}]}
 ];
 /* 낱말 풀이: 학생이 낱말을 누르면 나오는 쉬운 영어 풀이. 풀이에 쓰는 낱말은 되도록 그 낱말보다 쉬워야 한다.
    과거형 등은 "(past of run)"처럼 원형을 함께 적는다. AI가 쓴 초안이며 사람 검수 전이다(2026-11-19). */
@@ -809,7 +842,17 @@ helps:"does something good for someone",
 soup:"hot food that is like water",
 bigger:"more big",
 cow:"a big farm animal that gives milk",
-biggest:"bigger than all the others"
+biggest:"bigger than all the others",
+year:"a time of 12 months",
+gives:"hands something to someone",
+envelope:"a paper cover for a letter or money",
+plays:"has fun with a game or toy",
+likes:"thinks something is good or fun",
+bone:"a hard white part inside the body of an animal",
+puts:"moves something to a place",
+hum:"to make a low soft sound",
+are:"a form of \"be\" (we are, you are, they are)",
+hug:"to put your arms around someone"
 };
 
 /* 단계 진단용 글. 서재의 책과 겹치지 않는 새 글을 단계마다 하나씩 둔다. */
