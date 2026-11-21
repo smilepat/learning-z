@@ -60,3 +60,4 @@
 - 2026-11-21 시범 4묶음(1-3 10권): S01 1권(mo-bug), S02 1권(sam-tan-hat, 첫 P2 단모음 이야기책), 시리즈 밖 8권(아시아 2권).
 - 2026-11-21 시범 5묶음(1-3 5권, 1-4 5권): S01 1권(tuk-bone), S02 2권(cat-for-sam, ted-pet: Ted 첫 등장, 곱슬 갈색 머리, 초록 티셔츠, 낱말 그림 `ted`), S03 2권(lily-gets-up, lily-school: Lily 첫 등장), 시리즈 밖 5권(아시아 2권).
 - 2026-11-21 시범 6묶음(1-4 10권): S01 1권(mo-moon), S02 2권(pams-top: Pam 첫 등장, 갈색 옆머리 묶음, 분홍 핀, 보라 티셔츠, 낱말 그림 `pam` / ted-wet-hen), S03 1권(lily-packs), 시리즈 밖 6권(아시아 2권).
+- 2026-11-21 시범 7묶음(1-5 10권): S01 1권(tuk-snow), S02 3권(pams-cap, ted-digs, mud-pup), S03 1권(where-lily), 시리즈 밖 5권(아시아 2권).
