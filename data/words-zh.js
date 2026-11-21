@@ -3,7 +3,7 @@
    words 는 낱말 뜻(책에서 쓰인 뜻 기준, 과거형은 원형을 함께 적음), titles 는 책 제목의 중국어 옮김이다.
    모두 AI가 쓴 초안이며 중국어를 모국어로 쓰는 사람의 검수를 받지 않았다(2026-11-19). 고칠 때는 낱말 하나에 한 줄만 고치면 된다. */
 window.RS_PACKS=window.RS_PACKS||{};window.RS_PACKS.zh=Object.assign(window.RS_PACKS.zh||{},{code:'zh',name:'中文',
-titles:{"cat-mat":"垫子上的猫","big-pig":"大猪","bug-sun":"虫子和太阳","red-bus":"我的红色公共汽车","my-hat":"我的帽子在哪里？","fish-lunch":"午饭吃鱼","lost-ball":"丢失的球","rain-day":"下雨天","little-seed":"小种子","birthday-cake":"生日蛋糕","kite-wind":"风筝和风","busy-bees":"忙碌的蜜蜂","day-night":"白天和黑夜","garden-box":"神秘的花园盒子","lights-out":"停电的夜晚","missing-apples":"谁吃了我的苹果？","why-sleep":"夜里的身体","new-girl":"新来的女孩","red-hen":"十个鸡蛋","fox-box":"狐狸和盒子","i-can-help":"我在家帮忙","good-night":"太阳下山以后","snowman":"雪人","the-moon":"看月亮","fish-name":"给鱼起名字","wrong-bus":"坐错公交车","rain-trip":"雨从哪里来？","your-heart":"神奇的心脏","science-fair":"埃拉的豆苗","home-for-bori":"可可的家","tuk-wakes":"图克起床了","where-mo":"莫在哪里？","rice-noodles":"米饭和面条","morning-market":"早市","red-yellow":"红色、黄色、绿色","sam-box-b":"萨姆的B盒子","sam-box-m":"萨姆的M盒子","sam-box-s":"萨姆的S盒子","my-things":"我的东西","hop-run-dig":"跳、跑、挖","tuk-wet":"图克淋湿了","lantern-night":"夜晚的灯笼","sam-box-t":"萨姆的T盒子","sam-box-p":"萨姆的P盒子","is-it-cat":"是猫吗？","tuk-ball":"图克和球","grandpa-farm":"爷爷的农场","sun-rain-snow":"太阳、雨和雪","sam-box-d":"萨姆的D盒子","on-in-under":"上面、里面、下面","mo-hungry":"莫饿了","dumplings-grandma":"和奶奶包饺子","boats-river":"河上的船","bath-time":"浴缸里的水花","sam-box-c":"萨姆的C盒子","sam-box-f":"萨姆的F盒子","sam-box-h":"萨姆的H盒子","sam-box-n":"萨姆的N盒子","i-can-too":"我也会！","who-has-ball":"谁拿着球？","sam-tan-hat":"萨姆的棕色帽子","tin-lid":"罐子里有什么？","mo-bug":"莫和小虫子","tea-grandpa":"和爷爷喝茶","stars-sky":"天上的星星","who-can-help":"谁能帮忙？","my-chopsticks":"我的筷子","up-it-goes":"上去了","how-feel":"我感觉怎么样？","big-bigger":"大、更大、最大","red-new-year":"红红的新年","cat-for-sam":"给萨姆的猫","lily-gets-up":"莉莉起床了","lily-school":"莉莉在学校","hot-or-cold":"热的还是冷的？","tuk-bone":"图克的骨头","ted-pet":"泰德有了宠物","noodle-shop":"在面馆","what-in-egg":"蛋里面是什么？","day-night-me":"白天和晚上","pams-top":"帕姆的陀螺","ted-wet-hen":"泰德的湿母鸡","mo-moon":"莫和月亮","panda-eats":"熊猫在吃东西","fun-sand":"沙滩上的乐趣","lily-packs":"莉莉收拾书包","round-moon":"像月亮一样圆","fast-slow":"快还是慢？","knock-knock":"咚咚咚！","clean-up":"收拾干净！"},
+titles:{"cat-mat":"垫子上的猫","big-pig":"大猪","bug-sun":"虫子和太阳","red-bus":"我的红色公共汽车","my-hat":"我的帽子在哪里？","fish-lunch":"午饭吃鱼","lost-ball":"丢失的球","rain-day":"下雨天","little-seed":"小种子","birthday-cake":"生日蛋糕","kite-wind":"风筝和风","busy-bees":"忙碌的蜜蜂","day-night":"白天和黑夜","garden-box":"神秘的花园盒子","lights-out":"停电的夜晚","missing-apples":"谁吃了我的苹果？","why-sleep":"夜里的身体","new-girl":"新来的女孩","red-hen":"十个鸡蛋","fox-box":"狐狸和盒子","i-can-help":"我在家帮忙","good-night":"太阳下山以后","snowman":"雪人","the-moon":"看月亮","fish-name":"给鱼起名字","wrong-bus":"坐错公交车","rain-trip":"雨从哪里来？","your-heart":"神奇的心脏","science-fair":"埃拉的豆苗","home-for-bori":"可可的家","tuk-wakes":"图克起床了","where-mo":"莫在哪里？","rice-noodles":"米饭和面条","morning-market":"早市","red-yellow":"红色、黄色、绿色","sam-box-b":"萨姆的B盒子","sam-box-m":"萨姆的M盒子","sam-box-s":"萨姆的S盒子","my-things":"我的东西","hop-run-dig":"跳、跑、挖","tuk-wet":"图克淋湿了","lantern-night":"夜晚的灯笼","sam-box-t":"萨姆的T盒子","sam-box-p":"萨姆的P盒子","is-it-cat":"是猫吗？","tuk-ball":"图克和球","grandpa-farm":"爷爷的农场","sun-rain-snow":"太阳、雨和雪","sam-box-d":"萨姆的D盒子","on-in-under":"上面、里面、下面","mo-hungry":"莫饿了","dumplings-grandma":"和奶奶包饺子","boats-river":"河上的船","bath-time":"浴缸里的水花","sam-box-c":"萨姆的C盒子","sam-box-f":"萨姆的F盒子","sam-box-h":"萨姆的H盒子","sam-box-n":"萨姆的N盒子","i-can-too":"我也会！","who-has-ball":"谁拿着球？","sam-tan-hat":"萨姆的棕色帽子","tin-lid":"罐子里有什么？","mo-bug":"莫和小虫子","tea-grandpa":"和爷爷喝茶","stars-sky":"天上的星星","who-can-help":"谁能帮忙？","my-chopsticks":"我的筷子","up-it-goes":"上去了","how-feel":"我感觉怎么样？","big-bigger":"大、更大、最大","red-new-year":"红红的新年","cat-for-sam":"给萨姆的猫","lily-gets-up":"莉莉起床了","lily-school":"莉莉在学校","hot-or-cold":"热的还是冷的？","tuk-bone":"图克的骨头","ted-pet":"泰德有了宠物","noodle-shop":"在面馆","what-in-egg":"蛋里面是什么？","day-night-me":"白天和晚上","pams-top":"帕姆的陀螺","ted-wet-hen":"泰德的湿母鸡","mo-moon":"莫和月亮","panda-eats":"熊猫在吃东西","fun-sand":"沙滩上的乐趣","lily-packs":"莉莉收拾书包","round-moon":"像月亮一样圆","fast-slow":"快还是慢？","knock-knock":"咚咚咚！","clean-up":"收拾干净！","pams-cap":"帕姆的帽子在哪里？","ted-digs":"泰德挖坑","mud-pup":"泥巴小狗","tuk-snow":"雪中的图克","dragon-dance":"舞龙","where-lily":"莉莉在哪里？","mango-market":"市场上的芒果","can-it-fly":"它会飞吗？","how-many":"有多少？","lunch-box":"我的饭盒里有什么？"},
 words:{
 cat:"猫",
 mat:"垫子",
@@ -589,6 +589,27 @@ mooncake:"月饼",
 mooncakes:"月饼（复数）",
 slow:"慢的",
 knock:"敲（门）",
-come:"来"
+come:"来",
+mad:"生气的",
+off:"离开，脱下",
+"mom's":"妈妈的",
+hugs:"拥抱",
+pup:"小狗",
+mud:"泥",
+dragon:"龙；舞龙的龙",
+dance:"跳舞",
+market:"市场",
+mango:"芒果",
+lychee:"荔枝",
+swim:"游泳",
+fly:"飞",
+how:"怎样；how many = 多少",
+many:"许多",
+cats:"猫（复数）",
+dogs:"狗（复数）",
+hens:"母鸡（复数）",
+three:"三",
+four:"四",
+five:"五"
 }
 });
