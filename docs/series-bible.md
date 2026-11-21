@@ -56,3 +56,4 @@
 
 - 2026-11-20 시범 1묶음(1-1, 10권): S01 2권(tuk-wakes, where-mo), S02 3권(sam-box-b, sam-box-m, sam-box-s), 시리즈 밖 5권(아시아 2권 포함).
 - 2026-11-21 시범 2묶음(1-1 5권, 1-2 5권): S01 2권(tuk-wet, tuk-ball), S02 3권(sam-box-t, sam-box-p, sam-box-d), 시리즈 밖 5권(아시아 2권 포함). S02 소리 글자는 지금까지 b, m, s, t, p, d.
+- 2026-11-21 시범 3묶음(1-2 10권): S01 1권(mo-hungry), S02 4권(sam-box-c, f, h, n), 시리즈 밖 5권(아시아 2권). S02 소리 글자는 지금까지 b, m, s, t, p, d, c, f, h, n(10개).
