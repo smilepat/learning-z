@@ -3,7 +3,7 @@
    words 는 낱말 뜻(책에서 쓰인 뜻 기준, 과거형은 원형을 함께 적음), titles 는 책 제목의 중국어 옮김이다.
    모두 AI가 쓴 초안이며 중국어를 모국어로 쓰는 사람의 검수를 받지 않았다(2026-11-19). 고칠 때는 낱말 하나에 한 줄만 고치면 된다. */
 window.RS_PACKS=window.RS_PACKS||{};window.RS_PACKS.zh=Object.assign(window.RS_PACKS.zh||{},{code:'zh',name:'中文',
-titles:{"cat-mat":"垫子上的猫","big-pig":"大猪","bug-sun":"虫子和太阳","red-bus":"我的红色公共汽车","my-hat":"我的帽子在哪里？","fish-lunch":"午饭吃鱼","lost-ball":"丢失的球","rain-day":"下雨天","little-seed":"小种子","birthday-cake":"生日蛋糕","kite-wind":"风筝和风","busy-bees":"忙碌的蜜蜂","day-night":"白天和黑夜","garden-box":"神秘的花园盒子","lights-out":"停电的夜晚","missing-apples":"谁吃了我的苹果？","why-sleep":"夜里的身体","new-girl":"新来的女孩","red-hen":"十个鸡蛋","fox-box":"狐狸和盒子","i-can-help":"我在家帮忙","good-night":"太阳下山以后","snowman":"雪人","the-moon":"看月亮","fish-name":"给鱼起名字","wrong-bus":"坐错公交车","rain-trip":"雨从哪里来？","your-heart":"神奇的心脏","science-fair":"埃拉的豆苗","home-for-bori":"可可的家","tuk-wakes":"图克起床了","where-mo":"莫在哪里？","rice-noodles":"米饭和面条","morning-market":"早市","red-yellow":"红色、黄色、绿色","sam-box-b":"萨姆的B盒子","sam-box-m":"萨姆的M盒子","sam-box-s":"萨姆的S盒子","my-things":"我的东西","hop-run-dig":"跳、跑、挖","tuk-wet":"图克淋湿了","lantern-night":"夜晚的灯笼","sam-box-t":"萨姆的T盒子","sam-box-p":"萨姆的P盒子","is-it-cat":"是猫吗？","tuk-ball":"图克和球","grandpa-farm":"爷爷的农场","sun-rain-snow":"太阳、雨和雪","sam-box-d":"萨姆的D盒子","on-in-under":"上面、里面、下面"},
+titles:{"cat-mat":"垫子上的猫","big-pig":"大猪","bug-sun":"虫子和太阳","red-bus":"我的红色公共汽车","my-hat":"我的帽子在哪里？","fish-lunch":"午饭吃鱼","lost-ball":"丢失的球","rain-day":"下雨天","little-seed":"小种子","birthday-cake":"生日蛋糕","kite-wind":"风筝和风","busy-bees":"忙碌的蜜蜂","day-night":"白天和黑夜","garden-box":"神秘的花园盒子","lights-out":"停电的夜晚","missing-apples":"谁吃了我的苹果？","why-sleep":"夜里的身体","new-girl":"新来的女孩","red-hen":"十个鸡蛋","fox-box":"狐狸和盒子","i-can-help":"我在家帮忙","good-night":"太阳下山以后","snowman":"雪人","the-moon":"看月亮","fish-name":"给鱼起名字","wrong-bus":"坐错公交车","rain-trip":"雨从哪里来？","your-heart":"神奇的心脏","science-fair":"埃拉的豆苗","home-for-bori":"可可的家","tuk-wakes":"图克起床了","where-mo":"莫在哪里？","rice-noodles":"米饭和面条","morning-market":"早市","red-yellow":"红色、黄色、绿色","sam-box-b":"萨姆的B盒子","sam-box-m":"萨姆的M盒子","sam-box-s":"萨姆的S盒子","my-things":"我的东西","hop-run-dig":"跳、跑、挖","tuk-wet":"图克淋湿了","lantern-night":"夜晚的灯笼","sam-box-t":"萨姆的T盒子","sam-box-p":"萨姆的P盒子","is-it-cat":"是猫吗？","tuk-ball":"图克和球","grandpa-farm":"爷爷的农场","sun-rain-snow":"太阳、雨和雪","sam-box-d":"萨姆的D盒子","on-in-under":"上面、里面、下面","mo-hungry":"莫饿了","dumplings-grandma":"和奶奶包饺子","boats-river":"河上的船","bath-time":"浴缸里的水花","sam-box-c":"萨姆的C盒子","sam-box-f":"萨姆的F盒子","sam-box-h":"萨姆的H盒子","sam-box-n":"萨姆的N盒子","i-can-too":"我也会！","who-has-ball":"谁拿着球？"},
 words:{
 cat:"猫",
 mat:"垫子",
@@ -527,6 +527,25 @@ duck:"鸭子",
 buffalo:"水牛",
 hot:"热的",
 doll:"洋娃娃",
-drum:"鼓"
+drum:"鼓",
+looks:"看",
+yum:"好吃（感叹）",
+cook:"做饭，烹饪",
+dumpling:"饺子",
+makes:"做，制作",
+dumplings:"饺子（复数）",
+boats:"船（复数）",
+bang:"砰（声音）",
+bath:"洗澡",
+time:"时间",
+splash:"哗啦（水声）；溅水",
+clean:"干净的",
+cap:"帽子（鸭舌帽）",
+car:"汽车",
+fan:"风扇",
+horse:"马",
+net:"网",
+nut:"坚果",
+too:"也"
 }
 });
