@@ -3,7 +3,7 @@
    words 는 낱말 뜻(책에서 쓰인 뜻 기준, 과거형은 원형을 함께 적음), titles 는 책 제목의 중국어 옮김이다.
    모두 AI가 쓴 초안이며 중국어를 모국어로 쓰는 사람의 검수를 받지 않았다(2026-11-19). 고칠 때는 낱말 하나에 한 줄만 고치면 된다. */
 window.RS_PACKS=window.RS_PACKS||{};window.RS_PACKS.zh=Object.assign(window.RS_PACKS.zh||{},{code:'zh',name:'中文',
-titles:{"cat-mat":"垫子上的猫","big-pig":"大猪","bug-sun":"虫子和太阳","red-bus":"我的红色公共汽车","my-hat":"我的帽子在哪里？","fish-lunch":"午饭吃鱼","lost-ball":"丢失的球","rain-day":"下雨天","little-seed":"小种子","birthday-cake":"生日蛋糕","kite-wind":"风筝和风","busy-bees":"忙碌的蜜蜂","day-night":"白天和黑夜","garden-box":"神秘的花园盒子","lights-out":"停电的夜晚","missing-apples":"谁吃了我的苹果？","why-sleep":"夜里的身体","new-girl":"新来的女孩","red-hen":"十个鸡蛋","fox-box":"狐狸和盒子","i-can-help":"我在家帮忙","good-night":"太阳下山以后","snowman":"雪人","the-moon":"看月亮","fish-name":"给鱼起名字","wrong-bus":"坐错公交车","rain-trip":"雨从哪里来？","your-heart":"神奇的心脏","science-fair":"埃拉的豆苗","home-for-bori":"可可的家"},
+titles:{"cat-mat":"垫子上的猫","big-pig":"大猪","bug-sun":"虫子和太阳","red-bus":"我的红色公共汽车","my-hat":"我的帽子在哪里？","fish-lunch":"午饭吃鱼","lost-ball":"丢失的球","rain-day":"下雨天","little-seed":"小种子","birthday-cake":"生日蛋糕","kite-wind":"风筝和风","busy-bees":"忙碌的蜜蜂","day-night":"白天和黑夜","garden-box":"神秘的花园盒子","lights-out":"停电的夜晚","missing-apples":"谁吃了我的苹果？","why-sleep":"夜里的身体","new-girl":"新来的女孩","red-hen":"十个鸡蛋","fox-box":"狐狸和盒子","i-can-help":"我在家帮忙","good-night":"太阳下山以后","snowman":"雪人","the-moon":"看月亮","fish-name":"给鱼起名字","wrong-bus":"坐错公交车","rain-trip":"雨从哪里来？","your-heart":"神奇的心脏","science-fair":"埃拉的豆苗","home-for-bori":"可可的家","tuk-wakes":"图克起床了","where-mo":"莫在哪里？","rice-noodles":"米饭和面条","morning-market":"早市","red-yellow":"红色、黄色、绿色","sam-box-b":"萨姆的B盒子","sam-box-m":"萨姆的M盒子","sam-box-s":"萨姆的S盒子","my-things":"我的东西","hop-run-dig":"跳、跑、挖"},
 words:{
 cat:"猫",
 mat:"垫子",
@@ -494,6 +494,25 @@ well:"好",
 done:"完成的；（Well done）做得好",
 lap:"大腿上（坐着时）",
 ice:"冰",
-bits:"小块，碎片（复数）"
+bits:"小块，碎片（复数）",
+sees:"看见",
+eats:"吃",
+sit:"坐",
+have:"有",
+has:"有（第三人称）",
+here:"这里",
+bag:"包，书包",
+rice:"米饭",
+noodles:"面条",
+bun:"包子",
+buns:"包子（复数）",
+egg:"鸡蛋",
+chopsticks:"筷子",
+lanterns:"灯笼（复数）",
+map:"地图",
+mop:"拖把",
+mug:"马克杯",
+sock:"袜子",
+sand:"沙子"
 }
 });
