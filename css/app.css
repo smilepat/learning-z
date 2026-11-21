@@ -188,3 +188,7 @@ footer a{color:var(--blue-d);font-weight:700}
 .lvbar button[disabled]{opacity:.45;cursor:not-allowed}
 .lvbar .tpsel{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-weight:700;font-size:14px}
 .lvbar select{min-height:44px;border-radius:10px;border:1.5px solid var(--line);padding:0 10px;font:inherit;background:#fff}
+
+/* 표지 장면 그림 (v0.9, art/<책 id>-cover.webp) */
+.cover.art{padding:0 0 6px}
+.cover.art img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#FFF8EE}
