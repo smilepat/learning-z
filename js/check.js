@@ -29,7 +29,8 @@ const REF=window.RS_REF_TITLES?new Set(window.RS_REF_TITLES.h.split(' ')):null,s
 const NAMES=new Set(((WL&&WL.NAMES)||[]).map(n=>n.toLowerCase()));
 const sightTo=ph=>{const o=['P1','P2','P3','P4','P5'],k=o.indexOf(ph),s=new Set();if(WL)for(let i=0;i<=k;i++)(WL.SIGHT[o[i]]||[]).forEach(w=>s.add(w.toLowerCase()));return s};
 const isFic=b=>b.fic!=null?!!b.fic:!!(TYPES[b.type]||{}).fic;
-const sents=t=>t.split(/(?<=[.!?]["\u201d]?)\s+/).filter(Boolean);
+/* 문장 나누기: Mr. Mrs. Ms. Dr. 뒤의 점은 문장 끝으로 보지 않는다 */
+const sents=t=>t.split(/(?<!\b(?:Mr|Mrs|Ms|Dr)\.)(?<=[.!?]["\u201d]?)\s+/).filter(Boolean);
 const words=t=>t.toLowerCase().match(/[a-z']+/g)||[];
 const SKILLS=['detail','vocab','main','seq','infer'];
 const ids=new Set();
