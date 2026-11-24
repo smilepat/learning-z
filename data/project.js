@@ -35,12 +35,13 @@ done:[
 '시범 5묶음: 레벨 1-3 5권(1-3 완료: 듣기 4, 파닉스 P2 3, 반복 문장 8, 아시아 3), 1-4 5권. 새 시리즈 인물 Lily(S03 Lily\'s Day), Ted(S02). 새 낱말 그림 6개, 표지 10장. 제목 "Hot and Cold"는 참고 서비스 제목과 같아 "Hot or Cold?"로 정함',
 '시범 6묶음: 레벨 1-4 10권(1-4 새 책 15권 완료: 듣기 4, 파닉스 P2 3, 반복 문장 8, 아시아 3). 파닉스 P2 짧은 o, e 책 해독 100%. 새 인물 Pam(S02). 새 낱말 그림 6개, 표지 10장',
 '시범 7묶음: 레벨 1-5 새 책 10권(듣기 2, 파닉스 P2 3, 반복 문장 5, 아시아 2). 한 쪽 두 문장과 묻고 답하기 문형 시작. 파닉스 해독 96~100%. 새 낱말 그림 4개, 표지 10장. 제목 "How Many?"는 참고 서비스 제목과 같아 "How Many Are There?"로 정함',
-'시범 8묶음: 레벨 1-5 5권(Word Spotter 새 책 75권 완료), 2-1 5권(파닉스 P3 장모음 2, 이야기·정보글 3). 새 시리즈 인물 Amy(S04 Amy\'s Street), Ella(S06 Ask Ella). 새 낱말 그림 8개, 표지 10장'
+'시범 8묶음: 레벨 1-5 5권(Word Spotter 새 책 75권 완료), 2-1 5권(파닉스 P3 장모음 2, 이야기·정보글 3). 새 시리즈 인물 Amy(S04 Amy\'s Street), Ella(S06 Ask Ella). 새 낱말 그림 8개, 표지 10장',
+'시범 9묶음: 레벨 2-1 10권(2-1 새 책 15권 완료: 파닉스 P3 5, 이야기·정보글 10, 아시아 3). 새 시리즈 인물 Leo(S05 Leo and Grandpa). 검사기 문장 나누기가 Mr. Mrs. Ms. Dr. 뒤에서 끊지 않게 고침. 새 낱말 그림 12개, 표지 10장. 제목 "Taking Turns"는 참고 서비스 제목과 같아 "One Swing, Two Friends"로 정함'
 ],
 next:[
-'1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권). 10권 묶음 15번 중 8번 끝(Word Spotter 1-1 ~ 1-5 완료, 2-1 새 책 5권). 다음은 9묶음(2-1 나머지 10권: 파닉스 P3 3, 이야기·정보글 7, 아시아 2). 배분은 docs/LIBRARY_PLAN.md 6절',
-'아시아 소재 책: 지금 16권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day). 시범 150권 중 30권을 아시아 소재로 채움(시리즈 S04, S05)',
-'시범 1~8묶음 80권의 사람 검수: 글, 퀴즈, 표지 그림 79장(AI 생성, draft). 그림 28장은 사람 판단이 필요함(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 150개, 제목 80개)도 AI 초안',
+'1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권). 10권 묶음 15번 중 9번 끝(Word Spotter 1-1 ~ 1-5, Sentence Builder 2-1 완료). 다음은 10묶음(레벨 2-2 새 책 10권: 파닉스 P3 3, 이야기·정보글 7, 아시아 2). 배분은 docs/LIBRARY_PLAN.md 6절',
+'아시아 소재 책: 지금 18권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day, leo-river, amy-tire). 시범 150권 중 30권을 아시아 소재로 채움(시리즈 S04, S05)',
+'시범 1~9묶음 90권의 사람 검수: 글, 퀴즈, 표지 그림 89장(AI 생성, draft). 그림 33장은 사람 판단이 필요함(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 209개, 제목 90개)도 AI 초안',
 '검사기 확인할 점 5건(문장 길이 4, 낱말 목록 1): 사람 검수 때 고칠지 정함',
 '중국어 묶음의 사람 검수: 낱말 뜻 490개, 책 제목 30개, 덩어리 뜻 56개. AI 초안이며 중국어를 모국어로 쓰는 사람이 보지 않음',
 '레포 공개 범위: 사용자는 레포를 비공개로 두길 원함. 무료 요금제에서는 비공개로 바꾸면 공개 사이트가 내려감. 방법(유료 전환, 레포 둘로 나누기, 공개 유지)을 정해야 함',
@@ -106,6 +107,7 @@ log:[
 {v:'v0.9',d:'2026-11-21',t:'시범 5묶음: 레벨 1-3 완료, 1-4 새 책 5권. 시리즈 S03 Lily\'s Day 시작'},
 {v:'v0.9',d:'2026-11-21',t:'시범 6묶음: 레벨 1-4 완료(새 책 15권)'},
 {v:'v0.9',d:'2026-11-21',t:'시범 7묶음: 레벨 1-5 새 책 10권'},
-{v:'v0.9',d:'2026-11-21',t:'시범 8묶음: Word Spotter 시범 완료, Sentence Builder 2-1 시작(장모음 파닉스, 이야기책)'}
+{v:'v0.9',d:'2026-11-21',t:'시범 8묶음: Word Spotter 시범 완료, Sentence Builder 2-1 시작(장모음 파닉스, 이야기책)'},
+{v:'v0.9',d:'2026-11-21',t:'시범 9묶음: 레벨 2-1 완료. 검사기 문장 나누기 개선(Mr. 등)'}
 ]
 };
