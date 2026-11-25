@@ -64,3 +64,4 @@
 - 2026-11-21 시범 8묶음(1-5 5권, 2-1 5권): S02 3권(up-the-hill, cake-for-mom: 첫 P3 a_e, teds-kite: P3 i_e), S04 1권(water-day: Amy 첫 등장, 동남아 물 축제), S06 1권(milk-from: Ella 첫 등장), 시리즈 밖 5권(아시아 1권).
 - 2026-11-21 시범 9묶음(2-1 10권): S02 3권(sams-note: o_e, cute-mule: u_e, pams-bike: silent e 섞기), S04 1권(amy-tire), S05 1권(leo-river: Leo 첫 등장), S06 1권(bread-from), 시리즈 밖 4권.
 - 2026-11-21 시범 10묶음(2-2 10권): S02 3권(mole-hole: o_e, name-game: silent e 묻고 답하기, bike-race: i_e·a_e), S05 1권(leo-tea), S06 1권(bird-grass), 시리즈 밖 5권(아시아 1권: how-rice).
+- 2026-11-21 시범 11묶음(2-2 5권, 2-3 5권): S02 4권(pup-bone, wake-up-sam, frog-rock: 첫 P4 s 연속자음, teds-ship: sh·ch·th), S04 1권(amy-umbrella), S05 1권(leo-fishing), S06 1권(ice-go), 시리즈 밖 3권.
