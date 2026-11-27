@@ -2,7 +2,7 @@
    작업이 끝나거나 계획이 바뀌면 이 파일만 고치면 된다. */
 window.RS_PROJECT={
 version:'v0.9',
-updated:'2026-11-20',
+updated:'2026-11-27',
 purpose:'영어를 외국어로 배우는 어린 학습자가 자기 단계의 영어책을 듣고, 읽고, 문장을 다시 세우며 익히는 단계별 읽기 서비스를 만든다. 첫 대상은 중국 학습자이고, 아시아 영어 교육 시장에서 두루 쓸 수 있는 제품을 목표로 한다(사용자, 2026-11-19). 화면과 책에 딸린 글은 모두 영어다.',
 links:{site:'https://smilepat.github.io/learning-z/',repo:'https://github.com/smilepat/learning-z',issues:'https://github.com/smilepat/learning-z/issues',guide:'https://github.com/smilepat/learning-z/blob/main/docs/level-guide.md',review:'https://github.com/smilepat/learning-z/blob/main/docs/review-sheet.csv',rea:'https://github.com/smilepat/learning-z/blob/main/docs/REA_ANALYSIS.md',handoff:'https://github.com/smilepat/learning-z/blob/main/docs/HANDOFF.md'},
 done:[
@@ -41,12 +41,13 @@ done:[
 '시범 11묶음: 레벨 2-2 5권(2-2 새 책 15권 완료), 2-3 5권(파닉스 P4 연속자음·이중자음 2, 과거형 이야기와 정보글 3). P4 해독 98~100%. 새 낱말 그림 8개, 표지 10장. 제목 "Our Five Senses"는 참고 서비스 제목과 같아 "See, Hear, Smell, Taste, Touch"로 정함',
 '시범 12묶음: 레벨 2-3 10권(2-3 새 책 15권 완료: 파닉스 P4 5, 이야기·정보글 10, 아시아 3). P4 해독 96~100%. 새 낱말 그림 9개, 표지 10장',
 '시범 13묶음: 레벨 2-4 새 책 10권(파닉스 P4 3, 이야기 6, 정보글 2, 아시아 2). 대화가 많은 이야기, when·because, 불규칙 과거형. P4 해독 93~98%. 새 낱말 그림 8개, 표지 10장',
-'시범 14묶음: 레벨 2-4 5권(2-4 새 책 15권 완료), 2-5 5권(파닉스 P5 모음 조합·r 소리 3, 정보글 2: 단계가 있는 글과 수 세기). P5 해독 98~100%. 새 낱말 그림 9개, 표지 10장. 제목 "How Many Legs?"는 참고 서비스 제목과 같아 "Ella Counts Legs"로 정함'
+'시범 14묶음: 레벨 2-4 5권(2-4 새 책 15권 완료), 2-5 5권(파닉스 P5 모음 조합·r 소리 3, 정보글 2: 단계가 있는 글과 수 세기). P5 해독 98~100%. 새 낱말 그림 9개, 표지 10장. 제목 "How Many Legs?"는 참고 서비스 제목과 같아 "Ella Counts Legs"로 정함',
+'시범 15묶음: 레벨 2-5 10권(2-5 새 책 15권 완료, 시범 새 책 150권 완료). 파닉스 P5 7권(oa·oo·ou·oi·igh·aw·ir), 이야기·정보글 3권(아시아 2: tai chi, 종이 등), 시간 단위 정보글 1권. P5 해독 96~100%. 새 낱말 그림 8개, 표지 10장. 초안이 110~118낱말로 짧아 문장을 더해 120~132낱말로 맞춤'
 ],
 next:[
-'1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권). 10권 묶음 15번 중 14번 끝(Word Spotter 1-1 ~ 1-5, Sentence Builder 2-1 ~ 2-4 완료, 2-5 새 책 5권). 다음은 15묶음(2-5 나머지 10권: 파닉스 P5 7, 정보글·이야기 3, 아시아 2). 15묶음이 끝나면 시범 150권 완료 배분은 docs/LIBRARY_PLAN.md 6절',
-'아시아 소재 책: 지금 28권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day, leo-river, amy-tire, leo-tea, how-rice, amy-umbrella, leo-fishing, fruit-stand, old-bike, whose-kitten, leo-cooks, floating-market, rice-balls). 시범 150권 중 30권을 아시아 소재로 채움(시리즈 S04, S05)',
-'시범 1~14묶음 140권의 사람 검수: 글, 퀴즈, 표지 그림 139장(AI 생성, draft). 그림 65장은 사람 판단이 필요함(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 572개, 제목 140개)도 AI 초안',
+'1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권) 새 책 작성 끝(2026-11-27, 10권 묶음 15번). 다음은 시범 측정 정리와 2단계 일정 다시 계산(docs/LIBRARY_PLAN.md 6절), 그 전에 사람 결정: 검수자 수, 그림·음성 저장 위치, 파닉스 사이트 연결, 6단계 이름 상표 확인',
+'아시아 소재 책: 지금 30권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day, leo-river, amy-tire, leo-tea, how-rice, amy-umbrella, leo-fishing, fruit-stand, old-bike, whose-kitten, leo-cooks, floating-market, rice-balls, leo-taichi, paper-lantern). 시범 150권 중 30권을 아시아 소재로 채움(완료)(시리즈 S04, S05)',
+'시범 1~15묶음 150권의 사람 검수: 글, 퀴즈, 표지 그림 149장(AI 생성, draft). 그림 65장은 사람 판단이 필요함, 15묶음 10장도 인물 일관성 확인 필요(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 653개, 제목 150개)도 AI 초안',
 '검사기 확인할 점 5건(문장 길이 4, 낱말 목록 1): 사람 검수 때 고칠지 정함',
 '중국어 묶음의 사람 검수: 낱말 뜻 490개, 책 제목 30개, 덩어리 뜻 56개. AI 초안이며 중국어를 모국어로 쓰는 사람이 보지 않음',
 '레포 공개 범위: 사용자는 레포를 비공개로 두길 원함. 무료 요금제에서는 비공개로 바꾸면 공개 사이트가 내려감. 방법(유료 전환, 레포 둘로 나누기, 공개 유지)을 정해야 함',
