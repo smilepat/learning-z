@@ -68,3 +68,4 @@
 - 2026-11-21 시범 12묶음(2-3 10권): S02 3권(class-plant: l 연속자음, ted-crab: r 연속자음, long-jump: nd·ng·nk·nch), S04 1권(fruit-stand), S05 1권(old-bike), S06 1권(brush-teeth), 시리즈 밖 4권.
 - 2026-11-21 시범 13묶음(2-4 10권): S02 3권(stuck-truck, which-shell, ted-doing), S04 1권(whose-kitten, 동네 사람들이 함께 주인을 찾음), S05 1권(leo-cooks), S06 1권(rainbow), 시리즈 밖 4권.
 - 2026-11-21 시범 14묶음(2-4 5권, 2-5 5권): S02 5권(pams-ring, big-splash, rainy-train: 첫 P5 ai·ay, ted-beans: ee·ea, farm-stars: ar·or·ir), S06 1권(counts-legs), 시리즈 밖 4권(아시아 2권: floating-market, rice-balls).
+- 2026-11-27 시범 15묶음(2-5 10권): S02 7권(goat-boat: oa, ted-room: oo, brown-mouse: ou·ow, noisy-car: oi·oy, bright-light: igh, paw-prints: aw·ew, pams-shirt: ir·er·ar), S04 1권(paper-lantern, 만드는 순서 글), S05 1권(leo-taichi), 시리즈 밖 1권(seconds-hours). 새 인물: Ted의 친구 Roy(noisy-car 한 권만 나옴). 시범 새 책 150권 끝.
