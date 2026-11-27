@@ -40,12 +40,13 @@ done:[
 '시범 10묶음: 레벨 2-2 새 책 10권(파닉스 P3 3, 이야기 4, 정보글 3, 아시아 2). 해독 86~96%. 새 낱말 그림 9개, 표지 10장',
 '시범 11묶음: 레벨 2-2 5권(2-2 새 책 15권 완료), 2-3 5권(파닉스 P4 연속자음·이중자음 2, 과거형 이야기와 정보글 3). P4 해독 98~100%. 새 낱말 그림 8개, 표지 10장. 제목 "Our Five Senses"는 참고 서비스 제목과 같아 "See, Hear, Smell, Taste, Touch"로 정함',
 '시범 12묶음: 레벨 2-3 10권(2-3 새 책 15권 완료: 파닉스 P4 5, 이야기·정보글 10, 아시아 3). P4 해독 96~100%. 새 낱말 그림 9개, 표지 10장',
-'시범 13묶음: 레벨 2-4 새 책 10권(파닉스 P4 3, 이야기 6, 정보글 2, 아시아 2). 대화가 많은 이야기, when·because, 불규칙 과거형. P4 해독 93~98%. 새 낱말 그림 8개, 표지 10장'
+'시범 13묶음: 레벨 2-4 새 책 10권(파닉스 P4 3, 이야기 6, 정보글 2, 아시아 2). 대화가 많은 이야기, when·because, 불규칙 과거형. P4 해독 93~98%. 새 낱말 그림 8개, 표지 10장',
+'시범 14묶음: 레벨 2-4 5권(2-4 새 책 15권 완료), 2-5 5권(파닉스 P5 모음 조합·r 소리 3, 정보글 2: 단계가 있는 글과 수 세기). P5 해독 98~100%. 새 낱말 그림 9개, 표지 10장. 제목 "How Many Legs?"는 참고 서비스 제목과 같아 "Ella Counts Legs"로 정함'
 ],
 next:[
-'1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권). 10권 묶음 15번 중 13번 끝(Word Spotter 1-1 ~ 1-5, Sentence Builder 2-1 ~ 2-3 완료, 2-4 새 책 10권). 다음은 14묶음(2-4 나머지 5권: 파닉스 P4 2, 이야기·정보글 3, 아시아 1 + 레벨 2-5 새 책 5권: 파닉스 P5 모음 조합 시작). 배분은 docs/LIBRARY_PLAN.md 6절',
-'아시아 소재 책: 지금 26권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day, leo-river, amy-tire, leo-tea, how-rice, amy-umbrella, leo-fishing, fruit-stand, old-bike, whose-kitten, leo-cooks). 시범 150권 중 30권을 아시아 소재로 채움(시리즈 S04, S05)',
-'시범 1~13묶음 130권의 사람 검수: 글, 퀴즈, 표지 그림 129장(AI 생성, draft). 그림 58장은 사람 판단이 필요함(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 489개, 제목 130개)도 AI 초안',
+'1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권). 10권 묶음 15번 중 14번 끝(Word Spotter 1-1 ~ 1-5, Sentence Builder 2-1 ~ 2-4 완료, 2-5 새 책 5권). 다음은 15묶음(2-5 나머지 10권: 파닉스 P5 7, 정보글·이야기 3, 아시아 2). 15묶음이 끝나면 시범 150권 완료 배분은 docs/LIBRARY_PLAN.md 6절',
+'아시아 소재 책: 지금 28권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day, leo-river, amy-tire, leo-tea, how-rice, amy-umbrella, leo-fishing, fruit-stand, old-bike, whose-kitten, leo-cooks, floating-market, rice-balls). 시범 150권 중 30권을 아시아 소재로 채움(시리즈 S04, S05)',
+'시범 1~14묶음 140권의 사람 검수: 글, 퀴즈, 표지 그림 139장(AI 생성, draft). 그림 65장은 사람 판단이 필요함(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 572개, 제목 140개)도 AI 초안',
 '검사기 확인할 점 5건(문장 길이 4, 낱말 목록 1): 사람 검수 때 고칠지 정함',
 '중국어 묶음의 사람 검수: 낱말 뜻 490개, 책 제목 30개, 덩어리 뜻 56개. AI 초안이며 중국어를 모국어로 쓰는 사람이 보지 않음',
 '레포 공개 범위: 사용자는 레포를 비공개로 두길 원함. 무료 요금제에서는 비공개로 바꾸면 공개 사이트가 내려감. 방법(유료 전환, 레포 둘로 나누기, 공개 유지)을 정해야 함',
@@ -116,6 +117,7 @@ log:[
 {v:'v0.9',d:'2026-11-21',t:'시범 10묶음: 레벨 2-2 새 책 10권. 시범 100권째'},
 {v:'v0.9',d:'2026-11-21',t:'시범 11묶음: 레벨 2-2 완료, 2-3 시작(P4 연속자음·이중자음, 과거형 이야기)'},
 {v:'v0.9',d:'2026-11-21',t:'시범 12묶음: 레벨 2-3 완료'},
-{v:'v0.9',d:'2026-11-21',t:'시범 13묶음: 레벨 2-4 새 책 10권'}
+{v:'v0.9',d:'2026-11-21',t:'시범 13묶음: 레벨 2-4 새 책 10권'},
+{v:'v0.9',d:'2026-11-21',t:'시범 14묶음: 레벨 2-4 완료, 2-5 시작(P5 모음 조합과 r 소리)'}
 ]
 };
