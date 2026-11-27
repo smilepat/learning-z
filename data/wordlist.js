@@ -78,7 +78,7 @@ const FORMS={went:'go',goes:'go',gone:'go',saw:'see',seen:'see',ran:'run',ate:'e
   cannot:'can',leaves:'leaf',lit:'light',taught:'teach',meant:'mean',stood:'stand',shook:'shake',fed:'feed',became:'become',left:'leave',
   better:'good',best:'good',worse:'bad',worst:'bad'};
 /* 등장인물 이름(영어 이름 확정, 2026-11-19)과 시리즈 인물(docs/series-bible.md) */
-const NAMES=S(`Lily Ben Anna Sam Emma Kate Tim Leo Amy Dan Jack Ella Alex Coco Mike Lee Bell Tom Dana Lina Tuk Mo Max Mia Nina Ray Zoe Pam Ted Mr Ms Mrs`);
+const NAMES=S(`Lily Ben Anna Sam Emma Kate Tim Leo Amy Dan Jack Ella Alex Coco Mike Lee Bell Tom Dana Lina Tuk Mo Kiki Max Mia Nina Ray Zoe Pam Ted Mr Ms Mrs`);
 /* 파닉스 해독책 사이트 워드(누적). P1 10, P2 +20, P3 +20, P4 +20, P5 +20 = 약 90 */
 const SIGHT={
 P1:S(`a I the is my see look to go no`),
