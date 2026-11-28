@@ -4,7 +4,7 @@ window.RS_PROJECT={
 version:'v0.9',
 updated:'2026-11-27',
 purpose:'영어를 외국어로 배우는 어린 학습자가 자기 단계의 영어책을 듣고, 읽고, 문장을 다시 세우며 익히는 단계별 읽기 서비스를 만든다. 첫 대상은 중국 학습자이고, 아시아 영어 교육 시장에서 두루 쓸 수 있는 제품을 목표로 한다(사용자, 2026-11-19). 화면과 책에 딸린 글은 모두 영어다.',
-links:{site:'https://smilepat.github.io/learning-z/',repo:'https://github.com/smilepat/learning-z',issues:'https://github.com/smilepat/learning-z/issues',guide:'https://github.com/smilepat/learning-z/blob/main/docs/level-guide.md',review:'https://github.com/smilepat/learning-z/blob/main/docs/review-sheet.csv',rea:'https://github.com/smilepat/learning-z/blob/main/docs/REA_ANALYSIS.md',handoff:'https://github.com/smilepat/learning-z/blob/main/docs/HANDOFF.md'},
+links:{site:'https://smilepat.github.io/learning-z/',repo:'https://github.com/smilepat/learning-z',issues:'https://github.com/smilepat/learning-z/issues',guide:'https://github.com/smilepat/learning-z/blob/main/docs/level-guide.md',review:'https://docs.google.com/spreadsheets/d/12_4PDji8s8bv-0YWNyhD-PtE7K0hdNil7eoMe9rnfrY/edit',rea:'https://github.com/smilepat/learning-z/blob/main/docs/REA_ANALYSIS.md',handoff:'https://github.com/smilepat/learning-z/blob/main/docs/HANDOFF.md'},
 done:[
 '6단계 서재: 듣기, 낱말 뜻, 소리 글자 표시(1단계), 녹음, 퀴즈',
 '퀴즈: 틀리면 정답 대신 그 쪽을 다시 듣고 한 번 더 고름, 80% 이상 통과, 보기 순서 섞기',
@@ -13,6 +13,7 @@ done:[
 '학부모 화면: 읽기 기록, 집에서 돕는 방법',
 '기록 코드와 숙제 코드: 서버 없이 기기 사이에 기록과 숙제 전달',
 '책 데이터 분리, 책 검사 도구, 단계 기준 문서, 검수표',
+'정답표(2026-11-27): 선생님 화면의 책마다 "Answer key" 버튼, 학부모 화면의 "Answer keys" 칸. 어른 확인(한 자리 곱셈 문제)을 거쳐 보여 주고, 정답표를 인쇄할 수 있음. 종이 책의 보기 순서를 책마다 정해진 순서로 섞어 정답이 늘 (1)에 오지 않게 함(전에는 900문항 중 632개가 (1)). 서버가 없어 정답을 완전히 숨기지는 못함',
 '공개 주소(GitHub Pages)와 화면별 바로가기 주소',
 '개발 현황판: 전체 내용을 한 주소에서 보기',
 'AI 1차 검수: 두 모델이 따로 검수한 41건 중 32건 반영 (사실 오류, 문법, 낱말 뜻)',
@@ -46,7 +47,7 @@ done:[
 ],
 next:[
 '사람 검수자: 일단 1명으로 함(사용자, 2026-11-27). 검수 속도와 인원은 나중에 다시 정함',
-'그림·음성 저장 위치: 구글 드라이브(20TB)는 보관, GitHub는 운영으로 정함(사용자, 2026-11-27). 드라이브 ReadStep/ 폴더에 원본 PNG, 음성 원본, 검수 시트, 배포 스냅샷. GitHub에는 코드, 데이터, WebP, MP3(단계별 readstep-media 레포, 하나에 1GB 이하). 옮기는 순서는 docs/LIBRARY_PLAN.md 8.5. 2026-11-27 1~4번 끝(원본 149장 드라이브 복사·대조, 검수표를 구글 시트로 옮김). 남은 결정: 공개 레포의 검수표(퀴즈 정답 포함)를 뺄지',
+'그림·음성 저장 위치: 구글 드라이브(20TB)는 보관, GitHub는 운영으로 정함(사용자, 2026-11-27). 드라이브 ReadStep/ 폴더에 원본 PNG, 음성 원본, 검수 시트, 배포 스냅샷. GitHub에는 코드, 데이터, WebP, MP3(단계별 readstep-media 레포, 하나에 1GB 이하). 옮기는 순서는 docs/LIBRARY_PLAN.md 8.5. 2026-11-27 1~4번 끝(원본 149장 드라이브 복사·대조, 검수표를 구글 시트로 옮김, 공개 레포의 검수표는 퀴즈 정답이 있어 뺌). 검수 시트 주소는 links.review(비공개, 권한 있는 사람만 열림)',
 '1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권) 새 책 작성 끝(2026-11-27, 10권 묶음 15번). 다음은 시범 측정 정리와 2단계 일정 다시 계산(docs/LIBRARY_PLAN.md 6절), 그 전에 사람 결정: 검수자 수, 그림·음성 저장 위치, 파닉스 사이트 연결, 6단계 이름 상표 확인',
 '아시아 소재 책: 지금 30권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day, leo-river, amy-tire, leo-tea, how-rice, amy-umbrella, leo-fishing, fruit-stand, old-bike, whose-kitten, leo-cooks, floating-market, rice-balls, leo-taichi, paper-lantern). 시범 150권 중 30권을 아시아 소재로 채움(완료)(시리즈 S04, S05)',
 '시범 1~15묶음 150권의 사람 검수: 글, 퀴즈, 표지 그림 149장(AI 생성, draft). 그림 65장은 사람 판단이 필요함, 15묶음 10장도 인물 일관성 확인 필요(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 653개, 제목 150개)도 AI 초안',
