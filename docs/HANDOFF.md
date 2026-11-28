@@ -80,13 +80,13 @@ data/project.js       현황판에 나오는 할 일, 변경 기록
 data/review.js        AI 검수 기록과 처리 결과
 dev/index.html        개발 현황판
 tools/check.html      책 검사 도구
-docs/                 단계 기준, 검수표, REA 분석, 데이터 출처, 독립성 점검 기록, 이 문서
+docs/                 단계 기준, REA 분석, 데이터 출처, 독립성 점검 기록, 이 문서
 readstep-prototype-v0.1.html   첫 버전 보존용 (파일 하나)
 STATUS.md             한눈에 보는 상태 (repo-ops-system 양식)
 ```
 
 바꿀 때 같이 봐야 하는 짝
-- 책을 고치면: `tools/check.html`로 검사 → `docs/review-sheet.csv` 다시 만들기 → 그 책이 `REVIEWED.human`에 있었다면 빼기
+- 책을 고치면: `tools/check.html`로 검사 → 드라이브 검수 시트(`ReadStep/05_Review`, 비공개)에 그 책의 줄 고치기 → 그 책이 `REVIEWED.human`에 있었다면 빼기
 - 단계 기준을 고치면: `data/books.js`의 STEPS와 `docs/level-guide.md`를 함께
 - 할 일이 바뀌면: `data/project.js`와 `STATUS.md`를 함께
 
