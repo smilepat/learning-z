@@ -18,7 +18,7 @@
 3. 시리즈 이름과 인물 이름은 정하기 전에 검색해서 유명 캐릭터와 겹치는지 본다.
    - 2026-11-20 확인: 처음 제안한 시리즈 이름 "Pip and Dot"은 상표 등록된 그림책 시리즈 "Pip and Posy"(두 동물 친구)와 비슷해서 "Tuk and Mo"로 바꿨다. "Tuk and Mo"는 검색에서 같은 이름의 책을 찾지 못했다(상표 조사는 아님).
 4. 피할 이름 예: 유명 리더 시리즈의 주인공 이름 조합, 방송 캐릭터 이름.
-5. 기록: 2026-11-28 2단계 16묶음 제목 10개는 검사기(참고 서비스 제목 목록)와 우리 책 제목에 겹치는 것이 없었다. 2026-11-27 15묶음 제목 10개(처음 후보 11개, "A Mouse in the House"는 "The Little Brown Mouse"로 바꿈)는 참고 서비스 제목 목록과 우리 책 제목에 겹치는 것이 없었다. 2026-11-21 14묶음에서 "How Many Legs?"도 같은 이유로 "Ella Counts Legs"로 정했다. 11묶음에서 "Our Five Senses"도 같은 이유로 "See, Hear, Smell, Taste, Touch"로 정했다. 9묶음에서 "Taking Turns"도 같은 이유로 "One Swing, Two Friends"로 정했다. 7묶음에서 "How Many?"도 같은 이유로 "How Many Are There?"로 정했다. 4묶음에서 "Up and Down"도 같은 이유로 "Up It Goes"로 바꿨다. 같은 날 3묶음에서 제목 "Bath Time"이 참고 서비스 공개 제목과 같아 검사 단계에서 "Splash in the Tub"으로 바꿨다.
+5. 기록: 2026-11-28 2단계 17묶음 제목 10개도 겹치는 것이 없었다. 2026-11-28 2단계 16묶음 제목 10개는 검사기(참고 서비스 제목 목록)와 우리 책 제목에 겹치는 것이 없었다. 2026-11-27 15묶음 제목 10개(처음 후보 11개, "A Mouse in the House"는 "The Little Brown Mouse"로 바꿈)는 참고 서비스 제목 목록과 우리 책 제목에 겹치는 것이 없었다. 2026-11-21 14묶음에서 "How Many Legs?"도 같은 이유로 "Ella Counts Legs"로 정했다. 11묶음에서 "Our Five Senses"도 같은 이유로 "See, Hear, Smell, Taste, Touch"로 정했다. 9묶음에서 "Taking Turns"도 같은 이유로 "One Swing, Two Friends"로 정했다. 7묶음에서 "How Many?"도 같은 이유로 "How Many Are There?"로 정했다. 4묶음에서 "Up and Down"도 같은 이유로 "Up It Goes"로 바꿨다. 같은 날 3묶음에서 제목 "Bath Time"이 참고 서비스 공개 제목과 같아 검사 단계에서 "Splash in the Tub"으로 바꿨다.
 
 ## 3. 그림
 

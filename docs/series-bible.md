@@ -70,3 +70,4 @@
 - 2026-11-21 시범 14묶음(2-4 5권, 2-5 5권): S02 5권(pams-ring, big-splash, rainy-train: 첫 P5 ai·ay, ted-beans: ee·ea, farm-stars: ar·or·ir), S06 1권(counts-legs), 시리즈 밖 4권(아시아 2권: floating-market, rice-balls).
 - 2026-11-27 시범 15묶음(2-5 10권): S02 7권(goat-boat: oa, ted-room: oo, brown-mouse: ou·ow, noisy-car: oi·oy, bright-light: igh, paw-prints: aw·ew, pams-shirt: ir·er·ar), S04 1권(paper-lantern, 만드는 순서 글), S05 1권(leo-taichi), 시리즈 밖 1권(seconds-hours). 새 인물: Ted의 친구 Roy(noisy-car 한 권만 나옴). 시범 새 책 150권 끝.
 - 2026-11-28 2단계 16묶음(1-1 10권): S01 2권(mo-in-box, tuk-bee), S02 3권(sam-box-g, sam-box-r, sam-box-l: 소리 글자 g, r, l 추가), 시리즈 밖 5권(아시아 2권: hot-pot, my-kitchen). S02 1-1·1-2 소리 글자는 지금까지 b, m, s, t, p, d, c, f, h, n, g, r, l.
+- 2026-11-28 2단계 17묶음(1-1 10권): S01 1권(tuk-hat), S02 3권(sam-box-w, sam-box-k, sam-box-v: 소리 글자 w, k, v), 시리즈 밖 6권(아시아 2권: buns-breakfast, kites-park). S02 1-1·1-2 소리 글자는 지금까지 16개.
