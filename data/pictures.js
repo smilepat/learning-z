@@ -201,6 +201,11 @@ chick:'<path d="M42 78v10M54 78v10" stroke="#D97706" stroke-width="4"/><ellipse 
 peas:'<path d="M14 60Q48 26 86 40Q58 76 14 60Z" fill="#4ADE80"/><circle cx="34" cy="54" r="7" fill="#16A34A"/><circle cx="50" cy="50" r="7" fill="#16A34A"/><circle cx="66" cy="46" r="7" fill="#16A34A"/>',
 door:'<rect x="30" y="12" width="40" height="76" rx="3" fill="#B45309"/><rect x="36" y="18" width="28" height="28" rx="2" fill="#D97706"/><rect x="36" y="52" width="28" height="30" rx="2" fill="#D97706"/><circle cx="63" cy="52" r="3" fill="#FDE047"/>',
 /* 2단계 16묶음 그림(2026-11-28, 직접 그림) */
-gift:'<rect x="22" y="42" width="56" height="42" rx="3" fill="#F472B6"/><rect x="18" y="32" width="64" height="14" rx="3" fill="#EC4899"/><rect x="45" y="32" width="10" height="52" fill="#FDE047"/><path d="M50 32q-18-20-22-6q4 8 22 6q18-20 22-6q-4 8-22 6" fill="#FDE047"/>'
+gift:'<rect x="22" y="42" width="56" height="42" rx="3" fill="#F472B6"/><rect x="18" y="32" width="64" height="14" rx="3" fill="#EC4899"/><rect x="45" y="32" width="10" height="52" fill="#FDE047"/><path d="M50 32q-18-20-22-6q4 8 22 6q18-20 22-6q-4 8-22 6" fill="#FDE047"/>',
+/* 2단계 17묶음 그림(2026-11-28, 직접 그림) */
+key:'<circle cx="32" cy="50" r="16" fill="#FACC15"/><circle cx="32" cy="50" r="6" fill="#FEF9C3"/><path d="M48 46h38v8H80v10h-8V54h-6v8h-8V54H48Z" fill="#FACC15"/>',
+vest:'<path d="M30 16 42 22Q50 34 58 22L70 16 82 32 76 86H24L18 32Z" fill="#2563EB"/><path d="M50 30V86" stroke="#1E3A8A" stroke-width="3"/><circle cx="56" cy="48" r="3" fill="#FDE047" stroke="none"/><circle cx="56" cy="64" r="3" fill="#FDE047" stroke="none"/>',
+/* 2단계 17묶음 그림 web(2026-11-28, 직접 그림) */
+web:'<circle cx="50" cy="50" r="36" fill="none" stroke="#64748B" stroke-width="2"/><circle cx="50" cy="50" r="24" fill="none" stroke="#64748B" stroke-width="2"/><circle cx="50" cy="50" r="12" fill="none" stroke="#64748B" stroke-width="2"/><path d="M50 12V88M12 50H88M23 23 77 77M77 23 23 77" stroke="#64748B" stroke-width="2"/>'
 };
 return SP})();
