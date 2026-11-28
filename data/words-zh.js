@@ -1133,6 +1133,13 @@ hears:"听到",
 "wednesday":"星期三",
 "month":"月",
 "months":"月（复数）",
-"ago":"以前","needed":"需要（过去式）","asleep":"睡着的","drawings":"画（复数）","wear":"穿"
+"ago":"以前","needed":"需要（过去式）","asleep":"睡着的","drawings":"画（复数）","wear":"穿",
+"lifts":"举起，拿起",
+"party":"聚会，派对",
+"beach":"海滩",
+"onto":"到……上面",
+"roll":"卷",
+"tube":"管子，筒",
+"ups":"grown-ups = 大人"
 }
 });
