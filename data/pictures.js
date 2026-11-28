@@ -199,6 +199,8 @@ clock:'<circle cx="50" cy="52" r="38" fill="#F8FAFC"/><circle cx="50" cy="52" r=
 /* 2026-11-28 검수 반영 그림(직접 그림) */
 chick:'<path d="M42 78v10M54 78v10" stroke="#D97706" stroke-width="4"/><ellipse cx="48" cy="62" rx="22" ry="18" fill="#FDE047"/><circle cx="62" cy="40" r="13" fill="#FDE047"/><path d="M74 38 86 42 74 46Z" fill="#F59E0B"/><circle cx="65" cy="37" r="2.5" fill="#334155" stroke="none"/><path d="M34 60q8-8 16 0" fill="none" stroke="#CA8A04"/>',
 peas:'<path d="M14 60Q48 26 86 40Q58 76 14 60Z" fill="#4ADE80"/><circle cx="34" cy="54" r="7" fill="#16A34A"/><circle cx="50" cy="50" r="7" fill="#16A34A"/><circle cx="66" cy="46" r="7" fill="#16A34A"/>',
-door:'<rect x="30" y="12" width="40" height="76" rx="3" fill="#B45309"/><rect x="36" y="18" width="28" height="28" rx="2" fill="#D97706"/><rect x="36" y="52" width="28" height="30" rx="2" fill="#D97706"/><circle cx="63" cy="52" r="3" fill="#FDE047"/>'
+door:'<rect x="30" y="12" width="40" height="76" rx="3" fill="#B45309"/><rect x="36" y="18" width="28" height="28" rx="2" fill="#D97706"/><rect x="36" y="52" width="28" height="30" rx="2" fill="#D97706"/><circle cx="63" cy="52" r="3" fill="#FDE047"/>',
+/* 2단계 16묶음 그림(2026-11-28, 직접 그림) */
+gift:'<rect x="22" y="42" width="56" height="42" rx="3" fill="#F472B6"/><rect x="18" y="32" width="64" height="14" rx="3" fill="#EC4899"/><rect x="45" y="32" width="10" height="52" fill="#FDE047"/><path d="M50 32q-18-20-22-6q4 8 22 6q18-20 22-6q-4 8-22 6" fill="#FDE047"/>'
 };
 return SP})();
