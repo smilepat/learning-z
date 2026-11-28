@@ -195,6 +195,10 @@ coin:'<circle cx="50" cy="50" r="36" fill="#FACC15"/><circle cx="50" cy="50" r="
 crown:'<path d="M12 78 16 30 34 52 50 22 66 52 84 30 88 78Z" fill="#FACC15"/><rect x="12" y="72" width="76" height="12" rx="3" fill="#EAB308"/><circle cx="50" cy="22" r="5" fill="#EF4444"/><circle cx="16" cy="30" r="4" fill="#3B82F6"/><circle cx="84" cy="30" r="4" fill="#22C55E"/>',
 paw:'<ellipse cx="50" cy="66" rx="20" ry="17" fill="#92400E"/><ellipse cx="24" cy="44" rx="8" ry="11" fill="#92400E"/><ellipse cx="40" cy="30" rx="8" ry="11" fill="#92400E"/><ellipse cx="60" cy="30" rx="8" ry="11" fill="#92400E"/><ellipse cx="76" cy="44" rx="8" ry="11" fill="#92400E"/>',
 shirt:'<path d="M34 12 50 20 66 12 92 28 82 46 72 40V90H28V40L18 46 8 28Z" fill="#60A5FA"/><path d="M42 14Q50 26 58 14" fill="none" stroke="#1D4ED8"/><path d="M44 56q6-6 12 0q-6 2-6 8q-2-6-6-8Z" fill="#FACC15"/>',
-clock:'<circle cx="50" cy="52" r="38" fill="#F8FAFC"/><circle cx="50" cy="52" r="38" fill="none" stroke="#3B82F6" stroke-width="6"/><path d="M50 52V28M50 52 66 60" stroke-width="5"/><circle cx="50" cy="52" r="4" fill="#334155"/><path d="M50 18v6M50 80v6M16 52h6M78 52h6" stroke-width="3"/>'
+clock:'<circle cx="50" cy="52" r="38" fill="#F8FAFC"/><circle cx="50" cy="52" r="38" fill="none" stroke="#3B82F6" stroke-width="6"/><path d="M50 52V28M50 52 66 60" stroke-width="5"/><circle cx="50" cy="52" r="4" fill="#334155"/><path d="M50 18v6M50 80v6M16 52h6M78 52h6" stroke-width="3"/>',
+/* 2026-11-28 검수 반영 그림(직접 그림) */
+chick:'<path d="M42 78v10M54 78v10" stroke="#D97706" stroke-width="4"/><ellipse cx="48" cy="62" rx="22" ry="18" fill="#FDE047"/><circle cx="62" cy="40" r="13" fill="#FDE047"/><path d="M74 38 86 42 74 46Z" fill="#F59E0B"/><circle cx="65" cy="37" r="2.5" fill="#334155" stroke="none"/><path d="M34 60q8-8 16 0" fill="none" stroke="#CA8A04"/>',
+peas:'<path d="M14 60Q48 26 86 40Q58 76 14 60Z" fill="#4ADE80"/><circle cx="34" cy="54" r="7" fill="#16A34A"/><circle cx="50" cy="50" r="7" fill="#16A34A"/><circle cx="66" cy="46" r="7" fill="#16A34A"/>',
+door:'<rect x="30" y="12" width="40" height="76" rx="3" fill="#B45309"/><rect x="36" y="18" width="28" height="28" rx="2" fill="#D97706"/><rect x="36" y="52" width="28" height="30" rx="2" fill="#D97706"/><circle cx="63" cy="52" r="3" fill="#FDE047"/>'
 };
 return SP})();

@@ -1140,6 +1140,22 @@ hears:"听到",
 "onto":"到……上面",
 "roll":"卷",
 "tube":"管子，筒",
-"ups":"grown-ups = 大人"
+"ups":"grown-ups = 大人",
+"rub":"擦","swing":"秋千","bell":"铃",
+"chick":"小鸡",
+"tastes":"尝起来",
+"great":"很好的",
+"peas":"豌豆",
+"sniffs":"嗅",
+"forget":"忘记",
+"owner":"主人",
+"frozen":"冻住的",
+"helmet":"头盔",
+"yawns":"打哈欠",
+"wears":"穿，戴",
+"shooting":"流星（shooting star）",
+"spoonful":"一勺",
+"noon":"中午",
+"near":"靠近"
 }
 });
