@@ -24,6 +24,8 @@ const svg=n=>`<svg class="sp" viewBox="0 0 100 100" role="img" aria-label="${n}"
 const pics=a=>`<div class="pics">${a.map(svg).join('')}</div>`;
 
 /* ---------- 단계와 책 ---------- */
+/* 그림·음성 주소의 앞부분. 비우면 이 사이트(learning-z)의 art/ 를 씀. 다른 저장소나 중국 CDN으로 옮길 때 index.html의 window.RS_MEDIA_BASE 한 줄만 바꿈(예: 'https://cdn.example.com/readstep/'). docs/LIBRARY_PLAN.md 8.3 */
+const MEDIA=(typeof window.RS_MEDIA_BASE==='string'&&/^(https:\/\/|\.?\/)/.test(window.RS_MEDIA_BASE))?window.RS_MEDIA_BASE.replace(/\/?$/,'/'):'';
 const SK={detail:'Details',vocab:'Word meaning',main:'Main idea',seq:'Order of events',infer:'Inference'};
 const wc=b=>b.pages.reduce((n,p)=>n+p[0].match(/[A-Za-z']+/g).length,0);
 const byId=id=>BOOKS.find(b=>b.id===id);
@@ -77,7 +79,7 @@ let curStep=null,curLv='',curTopic='';
 const lvName=b=>`Level ${b.lv||b.step} · ${STEPS[b.step-1].name}`;
 const chip=(on,t)=>`<span class="chip${on?' done':''}">${on?IC.ok:''}${t}</span>`;
 function bookCard(b){const r=S.books[b.id]||{},hw=S.assigned.includes(b.id);
-  return `<button class="card book" data-book="${b.id}"><span class="cover${b.art?' art':''}">${b.art?`<img src="art/${b.id}-cover.webp" alt="" loading="lazy" decoding="async">`:b.cover.map(svg).join('')}</span><span class="bt" lang="en">${esc(b.title)}</span><span class="meta">Level ${esc(b.lv||String(b.step))} · ${b.type} · ${wc(b)} words</span><span class="chips">${hw?'<span class="chip hw">Homework</span>':''}${chip(r.listen,'Listen')}${chip(r.read,'Read')}${chip(r.build,'Rebuild')}${chip(passed(b),'Check')}</span></button>`}
+  return `<button class="card book" data-book="${b.id}"><span class="cover${b.art?' art':''}">${b.art?`<img src="${MEDIA}art/${b.id}-cover.webp" alt="" loading="lazy" decoding="async">`:b.cover.map(svg).join('')}</span><span class="bt" lang="en">${esc(b.title)}</span><span class="meta">Level ${esc(b.lv||String(b.step))} · ${b.type} · ${wc(b)} words</span><span class="chips">${hw?'<span class="chip hw">Homework</span>':''}${chip(r.listen,'Listen')}${chip(r.read,'Read')}${chip(r.build,'Rebuild')}${chip(passed(b),'Check')}</span></button>`}
 DRAW.library=function(){const rs=recStep();if(curStep==null)curStep=rs;
   const all=BOOKS.filter(b=>b.step===curStep),done=all.filter(bookDone).length,LVS=(window.RS_DATA.LEVELS||[]).filter(l=>l.step===curStep),tps=[...new Set(all.map(b=>b.topic).filter(Boolean))].sort();
   if(curLv&&!LVS.some(l=>l.id===curLv))curLv='';if(curTopic&&!tps.includes(curTopic))curTopic='';
