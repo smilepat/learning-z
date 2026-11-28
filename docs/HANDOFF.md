@@ -86,6 +86,7 @@ STATUS.md             한눈에 보는 상태 (repo-ops-system 양식)
 ```
 
 바꿀 때 같이 봐야 하는 짝
+- 코드나 데이터 파일을 고치면 `index.html`의 `?v=` 값(예: 20261127b)을 바꾼다. 바꾸지 않으면 브라우저가 최대 10분 동안 예전 파일을 쓴다(GitHub Pages 캐시 max-age=600).
 - 책을 고치면: `tools/check.html`로 검사 → 드라이브 검수 시트(`ReadStep/05_Review`, 비공개)에 그 책의 줄 고치기 → 그 책이 `REVIEWED.human`에 있었다면 빼기
 - 단계 기준을 고치면: `data/books.js`의 STEPS와 `docs/level-guide.md`를 함께
 - 할 일이 바뀌면: `data/project.js`와 `STATUS.md`를 함께
