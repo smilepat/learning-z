@@ -45,6 +45,8 @@ done:[
 '시범 15묶음: 레벨 2-5 10권(2-5 새 책 15권 완료, 시범 새 책 150권 완료). 파닉스 P5 7권(oa·oo·ou·oi·igh·aw·ir), 이야기·정보글 3권(아시아 2: tai chi, 종이 등), 시간 단위 정보글 1권. P5 해독 96~100%. 새 낱말 그림 8개, 표지 10장. 초안이 110~118낱말로 짧아 문장을 더해 120~132낱말로 맞춤'
 ],
 next:[
+'사람 검수자: 일단 1명으로 함(사용자, 2026-11-27). 검수 속도와 인원은 나중에 다시 정함',
+'그림·음성 저장 위치(사용자 검토 중, 2026-11-27): 원본 PNG는 구글 드라이브(비공개), 웹용 WebP·MP3는 단계별로 나눈 저장소(레포 하나에 1GB 이하), 중국 서비스 전에는 중국 안 CDN(ICP 신고 필요)으로 옮기는 안을 제안함. 1,500권 추정: 웹용 약 4.4GB, 원본 약 32GB',
 '1,500권 1단계: 시범 150권(Word Spotter, Sentence Builder 10레벨 × 15권) 새 책 작성 끝(2026-11-27, 10권 묶음 15번). 다음은 시범 측정 정리와 2단계 일정 다시 계산(docs/LIBRARY_PLAN.md 6절), 그 전에 사람 결정: 검수자 수, 그림·음성 저장 위치, 파닉스 사이트 연결, 6단계 이름 상표 확인',
 '아시아 소재 책: 지금 30권(rice-noodles, morning-market, lantern-night, grandpa-farm, dumplings-grandma, boats-river, tea-grandpa, my-chopsticks, red-new-year, noodle-shop, panda-eats, round-moon, dragon-dance, mango-market, like-rice, water-day, leo-river, amy-tire, leo-tea, how-rice, amy-umbrella, leo-fishing, fruit-stand, old-bike, whose-kitten, leo-cooks, floating-market, rice-balls, leo-taichi, paper-lantern). 시범 150권 중 30권을 아시아 소재로 채움(완료)(시리즈 S04, S05)',
 '시범 1~15묶음 150권의 사람 검수: 글, 퀴즈, 표지 그림 149장(AI 생성, draft). 그림 65장은 사람 판단이 필요함, 15묶음 10장도 인물 일관성 확인 필요(readstep-art manifest.csv). 중국어와 한국어 뜻(새 낱말 653개, 제목 150개)도 AI 초안',
