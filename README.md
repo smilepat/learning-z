@@ -61,7 +61,7 @@ ReadStep (가칭) · 단계별 영어 읽기 서비스 프로토타입 v0.8
 | `docs/SCOPE.md` | 프로젝트 전체 범위: 하는 것, 미룬 것, 하지 않는 것, 결정 대기 |
 | `docs/DIFFERENTIATION.md` | 참고 서비스와 다르게 가는 계획 |
 | `docs/chunk-review-2026-11-19.md` | 끊어 읽기 규칙을 훑어보고 고친 기록, 사람이 볼 곳 |
-| `docs/review-sheet.csv` | 본문과 퀴즈 검수표 |
+| (공개 레포 밖) | 본문과 퀴즈 검수표는 퀴즈 정답이 들어 있어 2026-11-27부터 비공개 구글 드라이브 시트에 둡니다(`ReadStep/05_Review`). 교사와 학부모는 사이트의 Teachers, Parents 화면에서 책별 정답표(Answer key)를 봅니다 |
 | `docs/REA_ANALYSIS.md` | 참고 서비스 공개 관찰 기록, 가져오지 않은 것 |
 | `docs/DATA_SOURCES.md` | 데이터 출처와 검수 상태 |
 | `docs/HANDOFF.md` | 인수인계, 결정 기록 |
